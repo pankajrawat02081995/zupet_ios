@@ -83,6 +83,7 @@ final class SignInVC: UIViewController {
     /// Navigates to the Sign-Up screen
     @IBAction func signupOnPress(_ sender: UIButton) {
         // Push or present Sign-Up screen
+        push(SignUpVC.self, from: .main)
     }
 
     // MARK: - Deinitialization

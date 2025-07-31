@@ -12,16 +12,16 @@ import UIKit
 struct OTPViewConfiguration {
     var digitCount: Int = 6
     var spacing: CGFloat = 10
-    var font: UIFont = .systemFont(ofSize: 20, weight: .medium)
-    var textColor: UIColor = .label
-    var placeholderText: String = "-"
-    var placeholderColor: UIColor = .darkGray
+    var font: UIFont = .monroeRegular(16)
+    var textColor: UIColor = .textBlack
+    var placeholderText: String = "_"
     var placeholderYOffset: CGFloat = 6
-    var backgroundColor: UIColor = .systemGray6
-    var borderActiveColor: UIColor = .systemBlue
-    var borderInactiveColor: UIColor = .systemGray4
+    var backgroundColor: UIColor = .AppLightGray
+    var borderActiveColor: UIColor = .appGray
+    var borderInactiveColor: UIColor = .clear
     var cornerRadius: CGFloat = 10
     var borderWidth: CGFloat = 1
+    var fieldSize: CGFloat = 40
 }
 
 // MARK: - Delegate
@@ -35,11 +35,11 @@ protocol OTPViewDelegate: AnyObject {
 
 final class OTPView: UIStackView {
 
-    // MARK: - Subclassed TextField
+    // MARK: - OTP TextField
 
     final class OTPDigitTextField: UITextField {
 
-        private var config: OTPViewConfiguration
+        private let config: OTPViewConfiguration
 
         init(config: OTPViewConfiguration) {
             self.config = config
@@ -63,6 +63,11 @@ final class OTPView: UIStackView {
             layer.cornerRadius = config.cornerRadius
             layer.borderWidth = config.borderWidth
             layer.borderColor = config.borderInactiveColor.cgColor
+            translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                widthAnchor.constraint(equalToConstant: config.fieldSize),
+                heightAnchor.constraint(equalToConstant: config.fieldSize)
+            ])
             updatePlaceholder()
         }
 
@@ -75,7 +80,7 @@ final class OTPView: UIStackView {
             attributedPlaceholder = NSAttributedString(
                 string: config.placeholderText,
                 attributes: [
-                    .foregroundColor: config.placeholderColor,
+                    .foregroundColor: config.textColor,
                     .font: config.font,
                     .paragraphStyle: style
                 ]
@@ -94,7 +99,7 @@ final class OTPView: UIStackView {
 
         override func resignFirstResponder() -> Bool {
             let result = super.resignFirstResponder()
-            updateBorder(isActive: false)
+            updateBorder(isActive: !(text?.isEmpty ?? true))
             return result
         }
     }
@@ -174,7 +179,7 @@ final class OTPView: UIStackView {
     }
 
     func setConfig(_ newConfig: OTPViewConfiguration) {
-        self.config = newConfig
+        config = newConfig
         textFields.forEach { $0.removeFromSuperview() }
         textFields.removeAll()
         setup()

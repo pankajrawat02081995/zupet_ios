@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PetSelectionXIB" id="gTV-IL-0wX" customClass="PetSelectionXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="144" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="144" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_small_dog" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-xF-Zn5">
+                        <rect key="frame" x="0.0" y="0.0" width="144" height="140"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="WrK-xF-Zn5" secondAttribute="bottom" id="Fau-Mi-CcV"/>
+                <constraint firstItem="WrK-xF-Zn5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xmb-Iz-auT"/>
+                <constraint firstAttribute="trailing" secondItem="WrK-xF-Zn5" secondAttribute="trailing" id="niS-Ao-pHe"/>
+                <constraint firstItem="WrK-xF-Zn5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tPa-M0-Jfx"/>
+            </constraints>
+            <size key="customSize" width="144" height="140"/>
+            <connections>
+                <outlet property="imgPet" destination="WrK-xF-Zn5" id="iZh-47-lvM"/>
+            </connections>
+            <point key="canvasLocation" x="175.57251908396947" y="30.281690140845072"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_small_dog" width="124" height="124"/>
+    </resources>
+</document>
