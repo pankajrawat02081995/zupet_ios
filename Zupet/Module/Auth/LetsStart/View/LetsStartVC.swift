@@ -1,5 +1,5 @@
 //
-//  PetNoseScanerVC.swift
+//  LetsStartVC.swift
 //  Zupet
 //
 //  Created by Pankaj Rawat on 01/08/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PetNoseScanerVC: UIViewController {
+class LetsStartVC: UIViewController {
 
     @IBOutlet weak var containerView: UIView!{
         didSet {
@@ -17,39 +17,25 @@ class PetNoseScanerVC: UIViewController {
         }
     }
     @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var cameraView: UIView!
-    @IBOutlet weak var btnContinue: UIButton!
-    @IBOutlet weak var btnFlash: UIButton!
-    @IBOutlet weak var btnRefresh: UIButton!
-    @IBOutlet weak var btnFlip: UIButton!
-    
+    @IBOutlet weak var btnStart: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         // Apply diagonal gradient to btnContinue button and background view
-        btnContinue.applyDiagonalGradient()
-        btnContinue.updateGradientFrameIfNeeded()
-
         bgView.applyDiagonalGradient()
         bgView.updateGradientFrameIfNeeded()
+        
+        btnStart.applyDiagonalGradient()
+        btnStart.updateGradientFrameIfNeeded()
     }
-    
-    @IBAction func continewOnPress(_ sender: UIButton) {
-        push(PetDetailVC.self, from: .main)
-    }
-    
-    @IBAction func flashOnPress(_ sender: UIButton) {
-    }
-    @IBAction func refreshOnPress(_ sender: UIButton) {
-    }
-    
-    @IBAction func flipOnPress(_ sender: UIButton) {
+
+    @IBAction func startOnPress(_ sender: UIButton) {
+        push(PetSelectionVC.self, from: .main)
     }
     
 }

@@ -15,4 +15,7 @@ class SignUpVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func signupOnPress(_ sender: UIButton) {
+        push(OtpVC.self, from: .main)
+    }
 }

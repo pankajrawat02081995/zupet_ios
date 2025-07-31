@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="237-X9-hHM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -89,13 +89,14 @@
                             <constraint firstAttribute="trailing" secondItem="LGQ-Yv-R4Y" secondAttribute="trailing" id="qJw-6f-Sb7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="J4g-im-9CQ"/>
                     <connections>
                         <outlet property="bgView" destination="LGQ-Yv-R4Y" id="wiM-FY-tx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141.22137404580153" y="-17.605633802816904"/>
+            <point key="canvasLocation" x="785.49618320610682" y="-17.605633802816904"/>
         </scene>
         <!--OnboardingVC-->
         <scene sceneID="APx-l9-7nR">
@@ -175,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2e-rH-Km3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568.70229007633588" y="-18.30985915492958"/>
+            <point key="canvasLocation" x="1495.4198473282443" y="-18.30985915492958"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="M5u-71-xUK">
@@ -465,7 +466,7 @@ Back!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRP-iF-ADa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267.9389312977098" y="-18.30985915492958"/>
+            <point key="canvasLocation" x="2194.6564885496182" y="-18.30985915492958"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="ueB-gE-RGH">
@@ -668,6 +669,9 @@ Started</string>
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="signupOnPress:" destination="Kz3-hm-kGd" eventType="touchUpInside" id="9Cw-Eh-2Y5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -783,7 +787,7 @@ Started</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJW-lo-Th2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921" y="-18"/>
+            <point key="canvasLocation" x="2846.5648854961833" y="-18.30985915492958"/>
         </scene>
         <!--OtpVC-->
         <scene sceneID="I8m-aI-WGt">
@@ -914,7 +918,7 @@ Started</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hs-lc-A1w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-27"/>
+            <point key="canvasLocation" x="3547.3282442748091" y="-27.464788732394368"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NUz-il-9gx">
@@ -1034,12 +1038,12 @@ care of your Pet</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcy-X0-UqD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3342.7480916030531" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="4269.4656488549617" y="-27.464788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Lets StartVC-->
         <scene sceneID="uZz-yo-7Sg">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="vSn-JV-VRv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LetsStartVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vSn-JV-VRv" customClass="LetsStartVC" customModule="Zupet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IxF-5l-tjH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1098,6 +1102,9 @@ care of your Pet</string>
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startOnPress:" destination="vSn-JV-VRv" eventType="touchUpInside" id="eLx-Y9-wfR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1151,10 +1158,15 @@ care of your Pet</string>
                             <constraint firstItem="02j-HV-4Qw" firstAttribute="top" secondItem="IxF-5l-tjH" secondAttribute="top" id="wmm-zl-mZY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgView" destination="02j-HV-4Qw" id="Hcs-yQ-SkE"/>
+                        <outlet property="btnStart" destination="iSK-1b-AAU" id="5FT-mH-oWi"/>
+                        <outlet property="containerView" destination="Iah-4o-sVM" id="744-RJ-zwY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5Y-xK-4E3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3342.7480916030531" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="4269.4656488549617" y="-27.464788732394368"/>
         </scene>
         <!--Pet SelectionVC-->
         <scene sceneID="ojO-DS-CIY">
@@ -1287,7 +1299,7 @@ Zupet with You?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh3-5B-vbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4087.7862595419847" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="5014.5038167938928" y="-27.464788732394368"/>
         </scene>
         <!--Pet Nose ScanerVC-->
         <scene sceneID="dth-sq-IPQ">
@@ -1465,7 +1477,7 @@ your furyy friend</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tR8-0T-uOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4829.7709923664124" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="5756.4885496183206" y="-27.464788732394368"/>
         </scene>
         <!--Pet DetailVC-->
         <scene sceneID="y7H-Ml-mht">
@@ -1897,12 +1909,12 @@ your Dog</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sF6-9A-iY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580.9160305343512" y="23.943661971830988"/>
+            <point key="canvasLocation" x="6507.6335877862593" y="23.943661971830988"/>
         </scene>
-        <!--View Controller-->
+        <!--WelcomeVC-->
         <scene sceneID="huO-j0-e7C">
             <objects>
-                <viewController id="c0H-n5-rdI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c0H-n5-rdI" customClass="WelcomeVC" customModule="Zupet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qae-8e-yR6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1952,7 +1964,24 @@ your Dog</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HdM-Td-wyq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6475" y="15"/>
+            <point key="canvasLocation" x="7400.7633587786258" y="14.788732394366198"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mRj-T8-bli">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="237-X9-hHM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RsN-48-vJV">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fh9-4d-nCB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10e-UU-qHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-141.22137404580153" y="-17.605633802816904"/>
         </scene>
     </scenes>
     <resources>

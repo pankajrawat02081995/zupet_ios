@@ -72,7 +72,7 @@ class PetSelectionVC: UIViewController {
     }
 
     @IBAction func continueOnPress(_ sender: UIButton) {
-        // Continue logic
+        push(PetNoseScanerVC.self, from: .main)
     }
 
     private func updateContinueButtonState() {

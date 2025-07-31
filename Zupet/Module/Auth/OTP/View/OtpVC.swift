@@ -15,7 +15,6 @@ class OtpVC: UIViewController {
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var otpView: OTPView!
     
-    /// The top container view that has rounded top corners
     @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.cornerRadius = 24
@@ -23,34 +22,51 @@ class OtpVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        lblSubTitle.addTappableHighlight(substring: "contact.ZupetAI@gmail.com",color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
-            Log.debug("Email tapped!") // Or open mail composer
-        }
-        
-        lblResendOtp.addTappableHighlight(substring: "Resend Again",color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
-            Log.debug("Resend tapped!") // Or open mail composer
-        }
-        
+
+        // Offload attributed string setup to background, then apply on main
+        setupHighlightsAsync()
+
+        // Set OTPView delegate (safe on main)
         otpView.delegate = self
     }
-    
-    @IBAction func verifyOnPress(_ sender: UIButton) {
+
+    private func setupHighlightsAsync() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+
+            let email = "contact.ZupetAI@gmail.com"
+            let resend = "Resend Again"
+
+            DispatchQueue.main.async {
+                self.lblSubTitle.addTappableHighlight(substring: email, color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
+                    Log.debug("Email tapped!")
+                }
+
+                self.lblResendOtp.addTappableHighlight(substring: resend, color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
+                    Log.debug("Resend tapped!")
+                }
+            }
+        }
     }
-    
+
+    @IBAction func verifyOnPress(_ sender: UIButton) {
+        push(LetsStartVC.self, from: .main)
+    }
+
+    deinit {
+        print("OtpVC deallocated – ✅ no memory hold")
+    }
 }
 
-extension OtpVC:OTPViewDelegate{
+extension OtpVC: OTPViewDelegate {
     func otpDidChange(code: String) {
-    
+        // Optional real-time logic
     }
-    
+
     func otpDidComplete(code: String) {
-        
+        // Auto-verify maybe
     }
-    
-    
 }

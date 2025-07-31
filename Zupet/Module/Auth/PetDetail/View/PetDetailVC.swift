@@ -95,8 +95,7 @@ class PetDetailVC: UIViewController {
     // MARK: - Continue Action
     
     @IBAction func continueButtonTapped(_ sender: UIButton) {
-        // Safe: no closures, no retained references
-        // Proceed with validation or navigation
+        push(WelcomeVC.self, from: .main)
     }
     
     // MARK: - Deinit for Debugging
