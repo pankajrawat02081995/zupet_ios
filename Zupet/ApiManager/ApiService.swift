@@ -277,10 +277,14 @@ public actor APIManager {
         } else if response.statusCode == 500 {
             throw APIError.defaultMessage(try data.dataToDictionary()["message"] as? String ?? "")
         } else if response.statusCode == 401 || response.statusCode == 400{
-            try await refreshTokenIfNeeded()
+//            try await refreshTokenIfNeeded()
             let (retryData, retryResponse) = try await makeRequest()
             guard retryResponse.statusCode == 200 else {
-                throw APIError.authenticationFailed
+                if response.statusCode == 400{
+                    return data
+                }else{
+                    throw APIError.authenticationFailed
+                }
             }
             return retryData
         } else {
@@ -335,34 +339,34 @@ public actor APIManager {
         return body
     }
     
-    private func refreshTokenIfNeeded() async throws {
-        // Assuming you store refreshToken and can update accessToken
-        let refreshToken = await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.refreshToken
-        guard let refreshToken =
-                refreshToken else {
-            throw APIError.authenticationFailed
-        }
-        
-        guard let refreshURL = APIConstants.refreshToken else { return }
-        var request = URLRequest(url: refreshURL)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(refreshToken)", forHTTPHeaderField: "Authorization")
-        
-        let (data, response) = try await session.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            AuthHandler.shared.handleUnauthorized()
-            await ToastManager.shared.showToast(message: APIError.authenticationFailed.errorMessage)
-            return
-        }
-        
-        // Parse new token
-        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-        let newAccessToken = json?["access_token"] as? String ?? ""
-        //        let newRefreshToken = json?["refresh_token"] as? String
-        
-        await self.updateUserDefaultModel(accessToken:newAccessToken,refreshToken:"")
-    }
+//    private func refreshTokenIfNeeded() async throws {
+//        // Assuming you store refreshToken and can update accessToken
+//        let refreshToken = await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.refreshToken
+//        guard let refreshToken =
+//                refreshToken else {
+//            throw APIError.authenticationFailed
+//        }
+//        
+//        guard let refreshURL = APIConstants.refreshToken else { return }
+//        var request = URLRequest(url: refreshURL)
+//        request.httpMethod = "GET"
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("Bearer \(refreshToken)", forHTTPHeaderField: "Authorization")
+//        
+//        let (data, response) = try await session.data(for: request)
+//        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+//            AuthHandler.shared.handleUnauthorized()
+//            await ToastManager.shared.showToast(message: APIError.authenticationFailed.errorMessage)
+//            return
+//        }
+//        
+//        // Parse new token
+//        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+//        let newAccessToken = json?["access_token"] as? String ?? ""
+//        //        let newRefreshToken = json?["refresh_token"] as? String
+//        
+//        await self.updateUserDefaultModel(accessToken:newAccessToken,refreshToken:"")
+//    }
     
     func updateUserDefaultModel(accessToken:String,refreshToken:String) async {
         if var userData = await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse){

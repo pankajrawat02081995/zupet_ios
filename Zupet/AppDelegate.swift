@@ -13,6 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         sleep(UInt32(0.01))
+        
+        
+        Task { [weak self] in
+            guard self != nil else { return }
+            await APIManager.initializeShared()
+            Log.debug("ApiManager is Ready")
+        }
         return true
     }
 

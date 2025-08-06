@@ -14,27 +14,18 @@ import Foundation
 
 enum APIConstants{
     
-    static let baseURL = "https://futuristic-policy.dev.falconsystem.com"
-    static let baseAccURL = "https://futuristic-accounting.dev.falconsystem.com"
+    static let baseURL = "http://172.105.13.154:9003/api/"
     
-    static let version = "/ams-v1"
-    static let versionAcc = "/acc-v1"
+    static let version = "v1/mobile-app/users/"
     
-    static var userlogin: URL? { url("/adminop/userlogin") }
-    static var refreshToken: URL? { url("/adminop/get-refresh-token") }
-    static var recentActivity: URL? { url("/quoteop/get_quotes_for_broker_recent_activity") }
-    static var getPolicy: URL? { url("/quoteop/get-all-policy-data-paginated") }
+    static var login: URL? { url("auth/login") }
+    static var signup: URL? { url("auth/signup") }
     
-    static var brokerList: URL? { urlAcc("/accounting/broker/get") }
-    static func brokerUserList(_ id: Int)-> URL? { urlAcc("accounting/user/get?agency_id=\(id)") }
-    static func updateUser(_ id: Int)-> URL? { urlAcc("/accounting/user/update/\(id)") }
-    static var addUser: URL? { urlAcc("/accounting/user/add") }
+    
+    
     
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)
     }
     
-    private static func urlAcc(_ path: String) -> URL? {
-        URL(string: baseAccURL + versionAcc + path)
-    }
 }

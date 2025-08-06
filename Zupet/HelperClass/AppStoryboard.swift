@@ -11,9 +11,7 @@ import UIKit
 public enum AppStoryboard: String {
     case main = "Main"
     case auth = "Auth"
-    case admin = "Admin"
-    case dashboard = "Dashboard"
-    case onboarding = "Onboarding"
+    case tabbar = "Tabbar"
     
     var instance: UIStoryboard {
         UIStoryboard(name: self.rawValue, bundle: .main)

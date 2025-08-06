@@ -7,6 +7,9 @@
 
 enum ErrorMessages: String {
     case invalidEmail = "Enter a valid email address."
+    case invalidPhone = "Enter a valid phone number."
+    case fullName = "Enter full name."
+    case phone = "Enter phone number."
     case invalidPassword = "Password must be at least 8 characters, include uppercase, lowercase, and a number."
     case requiredField = "This field is required"
     case passwordRequired = "Password cannot be empty."
@@ -32,9 +35,11 @@ enum ConstantParam:String, Codable{
     case PasswordUser = "pwd"
     case UserType = "user_type_id"
     case Id = "id"
+    case FullName = "fullName"
 }
 
 struct ConstantApiParam{
+    static let FullName = "fullName"
     static let UserID = "user_id"
     static let Password = "password"
     static let AgencyID = "agency_id"

@@ -19,7 +19,7 @@
         <array key="Manrope-Medium.ttf">
             <string>Manrope-Medium</string>
         </array>
-        <array key="Manrope-Regular.ttf">
+        <array key="Manrope-VariableFont_wght.ttf">
             <string>Manrope-Regular</string>
         </array>
     </customFonts>
@@ -643,6 +643,9 @@ Started</string>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="ic_uncheckbox"/>
+                                        <connections>
+                                            <action selector="termsOnPress:" destination="Kz3-hm-kGd" eventType="touchUpInside" id="Mp8-g1-53r"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By checking the box you agree to our Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdp-hB-8ev">
                                         <rect key="frame" x="46" y="372.99999999999994" width="331" height="16.666666666666686"/>
@@ -729,6 +732,9 @@ Started</string>
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="signinOnPress:" destination="Kz3-hm-kGd" eventType="touchUpInside" id="KLv-Wd-MgE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -784,6 +790,13 @@ Started</string>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="393" height="1000"/>
+                    <connections>
+                        <outlet property="btnTerms" destination="gh7-nv-h5b" id="pXq-2o-crf"/>
+                        <outlet property="txtEmail" destination="77m-VG-NVI" id="boq-Za-vxc"/>
+                        <outlet property="txtFullName" destination="Pk7-VE-TFM" id="BFu-CO-pmo"/>
+                        <outlet property="txtPassword" destination="ulN-EV-cYq" id="vCM-d8-7Xh"/>
+                        <outlet property="txtPhone" destination="deq-Sv-iVt" id="ZvT-la-En3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJW-lo-Th2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1520,6 +1533,9 @@ your Dog</string>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iy1-tl-e1t">
                                                                         <rect key="frame" x="16" y="0.0" width="361" height="140"/>
                                                                         <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pet_profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ubl-Gm-48S">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="140"/>
+                                                                            </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dummy_dog" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-n1-1wj">
                                                                                 <rect key="frame" x="10" y="20" width="100" height="100"/>
                                                                                 <constraints>
@@ -1554,18 +1570,22 @@ your Dog</string>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="AppLightGray"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="hIv-va-Yga" firstAttribute="trailing" secondItem="w7l-t2-2ix" secondAttribute="trailing" id="4gR-MW-YqC"/>
                                                                             <constraint firstAttribute="bottom" secondItem="CF5-n1-1wj" secondAttribute="bottom" constant="20" id="53I-s4-1UP"/>
                                                                             <constraint firstItem="EQj-NO-agG" firstAttribute="leading" secondItem="hIv-va-Yga" secondAttribute="leading" id="A1f-RS-xnH"/>
                                                                             <constraint firstItem="hIv-va-Yga" firstAttribute="leading" secondItem="w7l-t2-2ix" secondAttribute="leading" id="GVZ-Do-KYb"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="Ubl-Gm-48S" secondAttribute="bottom" id="HBf-Mp-vEP"/>
                                                                             <constraint firstItem="EQj-NO-agG" firstAttribute="top" secondItem="hIv-va-Yga" secondAttribute="bottom" constant="4" id="Hfw-s8-Y23"/>
                                                                             <constraint firstItem="CF5-n1-1wj" firstAttribute="leading" secondItem="Iy1-tl-e1t" secondAttribute="leading" constant="10" id="ScL-yg-RPy"/>
                                                                             <constraint firstItem="EQj-NO-agG" firstAttribute="trailing" secondItem="hIv-va-Yga" secondAttribute="trailing" id="Sxg-I3-I3r"/>
+                                                                            <constraint firstItem="Ubl-Gm-48S" firstAttribute="leading" secondItem="Iy1-tl-e1t" secondAttribute="leading" id="Xwc-kY-2ef"/>
                                                                             <constraint firstItem="CF5-n1-1wj" firstAttribute="top" secondItem="w7l-t2-2ix" secondAttribute="top" constant="-10" id="aJ4-nF-Tdr"/>
                                                                             <constraint firstItem="hIv-va-Yga" firstAttribute="top" secondItem="w7l-t2-2ix" secondAttribute="bottom" constant="6" id="aqG-ub-d0e"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Ubl-Gm-48S" secondAttribute="trailing" id="cWP-aa-clm"/>
                                                                             <constraint firstItem="w7l-t2-2ix" firstAttribute="leading" secondItem="CF5-n1-1wj" secondAttribute="trailing" constant="35" id="fk2-Md-5fg"/>
+                                                                            <constraint firstItem="Ubl-Gm-48S" firstAttribute="top" secondItem="Iy1-tl-e1t" secondAttribute="top" id="gok-iy-xFV"/>
                                                                             <constraint firstItem="CF5-n1-1wj" firstAttribute="top" secondItem="Iy1-tl-e1t" secondAttribute="top" constant="20" id="hAY-84-Qbo"/>
                                                                             <constraint firstAttribute="trailing" secondItem="w7l-t2-2ix" secondAttribute="trailing" constant="16" id="tdO-gf-59b"/>
                                                                         </constraints>
@@ -2003,6 +2023,7 @@ your Dog</string>
         <image name="ic_girl_dog" width="179" height="248"/>
         <image name="ic_google" width="24" height="24"/>
         <image name="ic_lock" width="24" height="24"/>
+        <image name="ic_pet_profile_bg" width="347" height="144"/>
         <image name="ic_phone" width="24" height="24"/>
         <image name="ic_refresh" width="49" height="48"/>
         <image name="ic_small_bone_icon" width="343" height="63"/>

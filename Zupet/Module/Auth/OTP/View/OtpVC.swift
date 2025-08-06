@@ -22,11 +22,14 @@ class OtpVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
+    
+    var email : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Offload attributed string setup to background, then apply on main
+        self.lblSubTitle.text = "Please enter the 6-digit code sent to your email \(email ?? "") for verification."
         setupHighlightsAsync()
 
         // Set OTPView delegate (safe on main)
@@ -37,11 +40,11 @@ class OtpVC: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
 
-            let email = "contact.ZupetAI@gmail.com"
+//            let email = "contact.ZupetAI@gmail.com"
             let resend = "Resend Again"
 
             DispatchQueue.main.async {
-                self.lblSubTitle.addTappableHighlight(substring: email, color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
+                self.lblSubTitle.addTappableHighlight(substring: self.email ?? "", color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
                     Log.debug("Email tapped!")
                 }
 

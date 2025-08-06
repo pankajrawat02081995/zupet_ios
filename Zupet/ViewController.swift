@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     // MARK: - Deinit (Debug)
 
     deinit {
-        print("ViewController deinitialized — no memory held ✅")
+        Log.debug("ViewController deinitialized — no memory held ✅")
     }
 }
 
