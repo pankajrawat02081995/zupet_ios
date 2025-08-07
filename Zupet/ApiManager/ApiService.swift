@@ -234,11 +234,11 @@ public actor APIManager {
         }
         
         Log.debug("**** Api: \(url.absoluteString)")
-        Log.debug("Bearer \(await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.accessToken ?? "")")
+        Log.debug("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")")
         
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalCacheData
-        request.setValue("Bearer \(await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")", forHTTPHeaderField: "Authorization")
         
         setHeaders(request: &request, headers: headers)
         
@@ -259,7 +259,7 @@ public actor APIManager {
             request.httpMethod = method.rawValue
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = body
-            request.setValue("Bearer \(await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+            request.setValue("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")", forHTTPHeaderField: "Authorization")
             
             setHeaders(request: &request, headers: headers)
             
@@ -298,7 +298,7 @@ public actor APIManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")", forHTTPHeaderField: "Authorization")
         
          setHeaders(request: &request, headers: headers)
         
@@ -341,7 +341,7 @@ public actor APIManager {
     
 //    private func refreshTokenIfNeeded() async throws {
 //        // Assuming you store refreshToken and can update accessToken
-//        let refreshToken = await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.refreshToken
+//        let refreshToken = await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.refreshToken
 //        guard let refreshToken =
 //                refreshToken else {
 //            throw APIError.authenticationFailed
@@ -367,14 +367,6 @@ public actor APIManager {
 //        
 //        await self.updateUserDefaultModel(accessToken:newAccessToken,refreshToken:"")
 //    }
-    
-    func updateUserDefaultModel(accessToken:String,refreshToken:String) async {
-        if var userData = await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse){
-            userData.accessToken = accessToken
-            userData.refreshToken = refreshToken
-            await UserDefaultsManager.shared.set(userData, forKey: UserDefaultsKey.LoginResponse)
-        }
-    }
     
 }
 
@@ -422,9 +414,4 @@ private extension Data {
             append(data)
         }
     }
-}
-
-struct LoginModel:Codable{
-     var refreshToken : String?
-     var accessToken : String?
 }

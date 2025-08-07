@@ -13,6 +13,8 @@ enum ErrorMessages: String {
     case invalidPassword = "Password must be at least 8 characters, include uppercase, lowercase, and a number."
     case requiredField = "This field is required"
     case passwordRequired = "Password cannot be empty."
+    case petName = "Pet Name cannot be empty."
+    case petSpecies = "Please choose a species"
     case emailRequired = "Email cannot be empty."
     case somethingWentWrong = "Something went wrong."
     case nouserfound = "No user found."
@@ -46,6 +48,15 @@ struct ConstantApiParam{
     static let Email = "email"
     static let State = "state"
     static let Business_Email = "Business Email"
+    static let name = "name"
+    static let species = "species"
+    static let noseId = "noseId"
+    static let age = "age"
+    static let weight = "weight"
+    static let height = "height"
+    static let feet = "feet"
+    static let otp = "otp"
+    static let inches = "inches"
 }
 
 struct ConstantPlaceholderValue{

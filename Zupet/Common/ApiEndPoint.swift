@@ -16,13 +16,12 @@ enum APIConstants{
     
     static let baseURL = "http://172.105.13.154:9003/api/"
     
-    static let version = "v1/mobile-app/users/"
+    static let version = "v1/mobile-app/"
     
-    static var login: URL? { url("auth/login") }
-    static var signup: URL? { url("auth/signup") }
-    
-    
-    
+    static var login: URL? { url("users/auth/login") }
+    static var signup: URL? { url("users/auth/signup") }
+    static var petCreate: URL? { url("pets/create") }
+    static var socialLogin: URL? { url("users/auth/social") }
     
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)

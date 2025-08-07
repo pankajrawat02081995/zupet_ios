@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>GIDClientID</key>
+    <string>198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1.apps.googleusercontent.com</string>
+
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1</string>
+            </array>
+        </dict>
+    </array>
+
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSExceptionDomains</key>

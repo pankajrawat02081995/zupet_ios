@@ -54,7 +54,7 @@ actor UserDefaultsManager {
     // MARK: - Clear All
     func clearAll() async {
         // Clear any in-app cache first (if exists)
-//        await LoginModel.userCache.clear()
+//        await SigninModel.userCache.clear()
         
         // Remove all keys one by one
         let keys = defaults.dictionaryRepresentation().keys
@@ -71,29 +71,10 @@ actor UserDefaultsManager {
         }
         Log.debug("✅ UserDefaults cleared. Remaining keys:  \(defaults.dictionaryRepresentation().keys)")
     }
+ 
     
-//    func getSelectedAgency() async -> AgencyModelResponseData?{
-//        return await UserDefaultsManager.shared.get(AgencyModelResponseData.self, forKey: UserDefaultsKey.SelectedAgencies)
-//    }
-//    
-//    func fatchCurentUser() async -> UserModel?{
-//        return await UserDefaultsManager.shared.get(LoginModel.self, forKey: UserDefaultsKey.LoginResponse)?.decodedUser
-//    }
+    func fatchCurentUser() async -> SigninModel?{
+        return await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)
+    }
     
-//    func getAgencyID() async -> Int{
-//        let selectedAgency = await UserDefaultsManager.shared.getSelectedAgency()
-//        let currentUser = await UserDefaultsManager.shared.fatchCurentUser()
-//        
-//        let agencyID = selectedAgency?.agencyID ?? currentUser?.agencyId ?? 0
-//        return agencyID
-//    }
-//    
-//    func getCurrentUserType() async -> UserType {
-//        let userTypeId = await UserDefaultsManager.shared.fatchCurentUser()?.userTypeId ?? 0
-//        return userTypeId == 41 ? .admin : .normal
-//    }
-//    
-//    func isAdmin() async -> Bool {
-//        return await getCurrentUserType() == .admin
-//    }
 }

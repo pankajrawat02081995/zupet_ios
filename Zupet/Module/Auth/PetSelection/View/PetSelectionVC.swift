@@ -81,7 +81,6 @@ class PetSelectionVC: UIViewController {
         btnContinue.isEnabled = isAnySelected
         btnContinue.alpha = isAnySelected ? 1.0 : 0.5 // visually show enabled/disabled
     }
-
     
     deinit {
         Log.debug("PetSelectionVC deinitialized")

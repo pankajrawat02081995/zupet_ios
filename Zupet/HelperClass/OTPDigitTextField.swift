@@ -28,7 +28,7 @@ struct OTPViewConfiguration {
 
 protocol OTPViewDelegate: AnyObject {
     func otpDidChange(code: String)
-    func otpDidComplete(code: String)
+    func otpDidComplete(isComplete: Bool)
 }
 
 // MARK: - OTP View
@@ -161,7 +161,9 @@ final class OTPView: UIStackView {
         delegate?.otpDidChange(code: code)
 
         if code.count == config.digitCount {
-            delegate?.otpDidComplete(code: code)
+            delegate?.otpDidComplete(isComplete: true)
+        }else{
+            delegate?.otpDidComplete(isComplete: false)
         }
     }
 
@@ -200,6 +202,11 @@ extension OTPView: UITextFieldDelegate {
                 _ = textFields[currentField.tag - 1].becomeFirstResponder()
             }
             delegate?.otpDidChange(code: getOTP())
+            if getOTP().count == config.digitCount {
+                delegate?.otpDidComplete(isComplete: true)
+            }else{
+                delegate?.otpDidComplete(isComplete: false)
+            }
             return false
         }
 
