@@ -10,9 +10,6 @@ import UIKit
 /// ViewController for handling Sign In screen logic and UI
 final class SignInVC: UIViewController {
     
-    // MARK: - Outlets
-    
-    /// The top container view that has rounded top corners
     @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.cornerRadius = 20
@@ -20,118 +17,85 @@ final class SignInVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
-    
-    /// Text field for entering email
     @IBOutlet weak var txtEmail: UITextField!
-    
-    /// Text field for entering password
     @IBOutlet weak var txtPassword: UITextField!
-    
-    /// "Remember me" checkbox button
     @IBOutlet weak var btnRemember: UIButton!
-    
-    /// Google Sign-In button
     @IBOutlet weak var btnGoogle: UIButton!
-    
-    /// Sign-In button with gradient background
     @IBOutlet weak var btnSignIn: UIButton!
-    
-    /// Background view with gradient
     @IBOutlet weak var bgView: UIView!
     
     private var viewModel: SignInViewModel!
-    
-    // MARK: - Lifecycle Methods
+    private var didSetupGradients = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Additional setup if needed
-        viewModel = SignInViewModel(view: self)
+        viewModel = SignInViewModel(view: self) // Make view weak in ViewModel
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        // Apply diagonal gradient to Sign-In button and background view
+        guard !didSetupGradients else { return }
         btnSignIn.applyDiagonalGradient()
         btnSignIn.updateGradientFrameIfNeeded()
-        
         bgView.applyDiagonalGradient()
         bgView.updateGradientFrameIfNeeded()
+        didSetupGradients = true
     }
     
-    // MARK: - Actions
-    
-    /// Handles "Forgot Password" button press
     @IBAction func forgotPasswordOnPress(_ sender: UIButton) {
-        // Navigate to Forgot Password screen
+        push(ForgotPasswordVC.self, from: .main)
     }
     
-    /// Toggles "Remember me" state
     @IBAction func rememberMeOnPress(_ sender: UIButton) {
         sender.isSelected.toggle()
-        // Save to user defaults or in-memory state
     }
     
-    /// Handles sign in process when button is pressed
     @IBAction func signOnPress(_ sender: UIButton) {
-        Task {
-            // Validate fields before proceeding
-            if await isValid() {
-                viewModel.callSignInApi()
+        Task { [weak self] in
+            guard let self else { return }
+            if await self.isValid() {
+                self.viewModel.callSignInApi()
             }
         }
     }
     
-    /// Handles Google Sign-In process
     @IBAction func googleOnPress(_ sender: UIButton) {
-        // Trigger Google Sign-In flow
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let user = try await GoogleSignInManager.shared.signIn(from: self)
-                Log.debug("Google User: \(user.name), \(user.email)")
-                viewModel.socialLogin()
+                self.viewModel.socialLogin(token: user.idToken, type: .Google)
             } catch {
                 Log.debug("Google Sign-In failed: \(error.localizedDescription)")
             }
         }
     }
     
-    /// Navigates to the Sign-Up screen
     @IBAction func signupOnPress(_ sender: UIButton) {
-        // Push or present Sign-Up screen
         push(SignUpVC.self, from: .main)
     }
     
-    // MARK: - Deinitialization
-    
-    /// Clean-up to ensure no memory leaks
-    deinit {
-        Log.debug("SignInVC deinitialized")
-    }
-    
     private func isValid() async -> Bool {
-        
         if txtEmail.trim().isEmpty {
             await ToastManager.shared.showToast(message: ErrorMessages.emailRequired.rawValue)
             return false
         }
-        
         if !Validator.isValidEmail(txtEmail.text ?? "") {
             await ToastManager.shared.showToast(message: ErrorMessages.invalidEmail.rawValue)
             return false
         }
-        
         if txtPassword.trim().isEmpty {
             await ToastManager.shared.showToast(message: ErrorMessages.passwordRequired.rawValue)
             return false
         }
-        
         if !Validator.isValidPassword(txtPassword.text ?? "") {
             await ToastManager.shared.showToast(message: ErrorMessages.invalidPassword.rawValue)
             return false
         }
-        
         return true
+    }
+    
+    deinit {
+        Log.debug("SignInVC deinitialized")
     }
 }

@@ -41,17 +41,17 @@ final class SignInViewModel {
                 let jsonData = try await APIManagerHelper.shared.convertIntoData(from: parameters)
 
                 // Perform the network request and decode response into SignupModel
-                let response: SignupModel = try await APIManagerHelper.shared.handleRequest(
+                let response: SigninModel = try await APIManagerHelper.shared.handleRequest(
                     .postRequest(url: url, body: jsonData, method: .post, headers: [:]),
-                    responseType: SignupModel.self
+                    responseType: SigninModel.self
                 )
 
                 // Handle successful response
                 if response.success == true {
                     // You can call delegate or closure to notify view
-                    await self.view?.push(OtpVC.self, from: .main){ [weak self] vc in
-                        vc.email = self?.view?.txtEmail.text ?? ""
-                    }
+                    await UserDefaultsManager.shared.set(response.data, forKey: UserDefaultsKey.LoginResponse)
+                    await self.view?.push(TabbarVC.self, from: .tabbar)
+                    fatchBreed()
                 }
 
                 // Show message to user (non-blocking on main thread)
@@ -64,7 +64,7 @@ final class SignInViewModel {
         }
     }
     
-    func socialLogin() {
+    func socialLogin(token:String,type:SocialType) {
         // Use Swift concurrency with weak self to avoid retain cycles
         Task { [weak self] in
             // Optional binding to ensure `self` still exists
@@ -77,9 +77,9 @@ final class SignInViewModel {
             }
 
             // Construct request parameters
-            let parameters: [String: Any] = await [
-                ConstantApiParam.Email: self.view?.txtEmail.text ?? "",
-                ConstantApiParam.Password: self.view?.txtPassword.text ?? "",
+            let parameters: [String: Any] =  [
+                ConstantApiParam.socialType: type.rawValue,
+                ConstantApiParam.socialToken: token
             ]
 
             do {
@@ -95,7 +95,9 @@ final class SignInViewModel {
                 // Handle successful response
                 if response.success == true {
                     // You can call delegate or closure to notify view
-                    await self.view?.push(TabbarVC.self, from: .tabbar)
+//                    await self.view?.push(TabbarVC.self, from: .tabbar)
+                    await self.view?.push(PetDetailVC.self, from: .main)
+                    fatchBreed()
                 }
 
                 // Show message to user (non-blocking on main thread)
@@ -104,6 +106,22 @@ final class SignInViewModel {
             } catch {
                 // Show error message to user
                 await ToastManager.shared.showToast(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func fatchBreed(){
+        // Example 1 - User Profile
+        Task {
+            do {
+                guard let url = APIConstants.petBreed else {return}
+                if let profile: SignupModel = try await APIService.shared.callSilentAPI(url: url, type: SignupModel.self) {
+//                    print("User Name:", profile.name)
+                } else {
+//                    print("No profile found")
+                }
+            } catch {
+                Log.error("Error:\(error)")
             }
         }
     }

@@ -9,6 +9,12 @@ import Foundation
 import GoogleSignIn
 import UIKit
 
+enum SocialType : String{
+    case Google = "google"
+    case Apple = "apple"
+}
+
+@MainActor
 final class GoogleSignInManager {
     static let shared = GoogleSignInManager()
 

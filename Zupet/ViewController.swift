@@ -17,8 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // Start 2-second delayed navigation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.navigateToNextVC()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            Task{
+                await self?.navigateToNextVC()
+            }
         }
     }
 
@@ -30,9 +32,15 @@ class ViewController: UIViewController {
 
     // MARK: - Navigation
 
-    private func navigateToNextVC() {
+    private func navigateToNextVC() async {
         // Replace "NextViewController" with your actual destination VC class
-        push(SignInVC.self, from: .main)
+         let token = await UserDefaultsManager.shared.get(UserData.self, forKey: UserDefaultsKey.LoginResponse)
+        if token.isNil {
+            push(OnboardingVC.self, from: .main)
+        }else{
+            push(PetDetailVC.self, from: .main)
+        }
+        
     }
 
     // MARK: - Deinit (Debug)

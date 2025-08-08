@@ -65,7 +65,7 @@ class OtpVC: UIViewController {
                         Log.debug("Resend tapped!")
                         self.startTimer()
                         // 🔁 You can call resend OTP API here if needed
-                        self.viewModel?.callOtpVerify()
+                        self.viewModel?.callOtpVerify(isResend: true)
                     }
                 }
             }

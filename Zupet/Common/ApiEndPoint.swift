@@ -20,8 +20,12 @@ enum APIConstants{
     
     static var login: URL? { url("users/auth/login") }
     static var signup: URL? { url("users/auth/signup") }
-    static var petCreate: URL? { url("pets/create") }
+    static var forgotPassword: URL? { url("users/auth/forgot-password") }
     static var socialLogin: URL? { url("users/auth/social") }
+    
+    static var petCreate: URL? { url("pets/create") }
+    static var petBreed: URL? { url("pets/breeds") }
+    
     
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)

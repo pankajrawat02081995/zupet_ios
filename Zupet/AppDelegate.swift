@@ -7,19 +7,33 @@
 
 import UIKit
 import GoogleSignIn
+import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        sleep(UInt32(0.01))
+        
+        // Keyboard handling (no toolbar)
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardManager.shared.keyboardDistance = 10
+        IQKeyboardManager.shared.layoutIfNeededOnUpdate = true // no warning, still valid
+        
+        // Toolbar handling (new manager)
+        let toolbarManager = IQKeyboardToolbarManager.shared
+        toolbarManager.isEnabled = true
+        toolbarManager.playInputClicks = false  // ✅ no deprecation warning
+
+        KeyboardGlobalManager.shared.start()
         
         Task { [weak self] in
             guard self != nil else { return }
             await APIManager.initializeShared()
             Log.debug("ApiManager is Ready")
         }
+        
         return true
     }
     

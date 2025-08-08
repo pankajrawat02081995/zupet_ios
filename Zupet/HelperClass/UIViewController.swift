@@ -138,6 +138,22 @@ extension UIViewController {
         }
     }
     
+    /// Push a view controller from storyboard onto the current navigation stack
+    public func set<T: UIViewController>(_ type: T.Type, from storyboard: AppStoryboard, setup: ((T) -> Void)? = nil) {
+        let vc = T.instantiate(from: storyboard)
+        setup?(vc)
+        
+        if let nav = UIApplication.topNavigationController() {
+            nav.setViewControllers([vc], animated: true)
+        } else {
+            guard let navigationController = self.navigationController else {
+                Log.error("NavigationController not found. Make sure this view controller is embedded in a UINavigationController.")
+                return
+            }
+            navigationController.setViewControllers([vc], animated: true)
+        }
+    }
+    
     public func popView(){
         navigationController?.popViewController(animated: true)
     }

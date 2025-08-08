@@ -19,6 +19,7 @@ enum ErrorMessages: String {
     case somethingWentWrong = "Something went wrong."
     case nouserfound = "No user found."
     case invalidURL = "Invalid view or URL."
+    case completeOtp = "Please complete the OTP."
 }
 
 enum ConstantParam:String, Codable{
@@ -56,6 +57,8 @@ struct ConstantApiParam{
     static let height = "height"
     static let feet = "feet"
     static let otp = "otp"
+    static let socialToken = "socialToken"
+    static let socialType = "socialType"
     static let inches = "inches"
 }
 

@@ -143,3 +143,72 @@ private extension UIApplication {
         }
     }
 }
+
+/// Call `KeyboardGlobalManager.shared.start()` in AppDelegate.didFinishLaunching.
+final class KeyboardGlobalManager {
+    static let shared = KeyboardGlobalManager()
+    private var started = false
+
+    private init() {}
+
+    /// Start global behavior: UITextField: Return -> resign.
+    /// UITextView: add Done button above keyboard to dismiss.
+    func start() {
+        guard !started else { return }
+        started = true
+
+        // For UITextField: when editing begins, add a `.editingDidEndOnExit` target that resigns the field.
+        NotificationCenter.default.addObserver(forName: UITextField.textDidBeginEditingNotification,
+                                               object: nil,
+                                               queue: .main) { notification in
+            guard let tf = notification.object as? UITextField else { return }
+
+            // Avoid adding the same action multiple times
+            let selName = NSStringFromSelector(#selector(UITextField.dismissKeyboardOnReturn(_:)))
+            let actions = tf.actions(forTarget: tf, forControlEvent: .editingDidEndOnExit) ?? []
+            guard !actions.contains(selName) else { return }
+
+            tf.addTarget(tf, action: #selector(UITextField.dismissKeyboardOnReturn(_:)), for: .editingDidEndOnExit)
+
+            // Optional: set return key to `.done` to make behavior consistent
+            if tf.returnKeyType == .default {
+                tf.returnKeyType = .done
+            }
+        }
+
+        // For UITextView: when editing begins, add a toolbar with a Done button if none exists.
+        NotificationCenter.default.addObserver(forName: UITextView.textDidBeginEditingNotification,
+                                               object: nil,
+                                               queue: .main) { notification in
+            guard let tv = notification.object as? UITextView else { return }
+
+            // If there's already an inputAccessoryView (maybe custom), don't override it.
+            guard tv.inputAccessoryView == nil else { return }
+
+            let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+            let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let done = UIBarButtonItem(title: "Done", style: .done, target: tv, action: #selector(UITextView.dismissKeyboard))
+            toolbar.items = [spacer, done]
+            toolbar.sizeToFit()
+            tv.inputAccessoryView = toolbar
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+private extension UITextField {
+    /// Called when Return / Done is pressed. Resigns the text field.
+    @objc func dismissKeyboardOnReturn(_ sender: UITextField) {
+        self.resignFirstResponder()
+    }
+}
+
+private extension UITextView {
+    /// Called by the toolbar Done button.
+    @objc func dismissKeyboard() {
+        self.resignFirstResponder()
+    }
+}
