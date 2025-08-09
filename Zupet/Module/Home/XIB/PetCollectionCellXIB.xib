@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-ExtraBold.ttf">
+            <string>Manrope-ExtraBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PetCollectionCellXIB" id="gTV-IL-0wX" customClass="PetCollectionCellXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="145"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="388" height="145"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ret-lv-Tms">
+                        <rect key="frame" x="16" y="0.0" width="356" height="145"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pet_profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="wh1-Wt-YoO">
+                                <rect key="frame" x="0.0" y="0.0" width="356" height="145"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dummy_dog" translatesAutoresizingMaskIntoConstraints="NO" id="de8-N2-ZQW">
+                                <rect key="frame" x="10" y="22.666666666666671" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="roT-l6-Hde"/>
+                                    <constraint firstAttribute="height" constant="100" id="yFf-UI-vXB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="ThemeOrangeStart"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35J-BE-TD5">
+                                <rect key="frame" x="145" y="32.666666666666664" width="195" height="32.999999999999993"/>
+                                <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="24"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Retriver.3 yrs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sl-65-YMI">
+                                <rect key="frame" x="145" y="71.666666666666671" width="195" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy : 2 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPV-uK-IXo">
+                                <rect key="frame" x="145" y="92.666666666666671" width="195" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Sl-65-YMI" firstAttribute="top" secondItem="35J-BE-TD5" secondAttribute="bottom" constant="6" id="1Kd-Cp-bFA"/>
+                            <constraint firstItem="de8-N2-ZQW" firstAttribute="top" secondItem="35J-BE-TD5" secondAttribute="top" constant="-10" id="1Qj-M9-ft7"/>
+                            <constraint firstItem="de8-N2-ZQW" firstAttribute="leading" secondItem="Ret-lv-Tms" secondAttribute="leading" constant="10" id="1zC-mE-fpp"/>
+                            <constraint firstAttribute="bottom" secondItem="wh1-Wt-YoO" secondAttribute="bottom" id="6HY-t8-xbL"/>
+                            <constraint firstItem="de8-N2-ZQW" firstAttribute="centerY" secondItem="Ret-lv-Tms" secondAttribute="centerY" id="RWu-8b-dAu"/>
+                            <constraint firstItem="9Sl-65-YMI" firstAttribute="trailing" secondItem="35J-BE-TD5" secondAttribute="trailing" id="Ryx-ns-5ik"/>
+                            <constraint firstItem="ZPV-uK-IXo" firstAttribute="leading" secondItem="9Sl-65-YMI" secondAttribute="leading" id="S7g-6c-wc1"/>
+                            <constraint firstItem="9Sl-65-YMI" firstAttribute="leading" secondItem="35J-BE-TD5" secondAttribute="leading" id="X18-o5-7aL"/>
+                            <constraint firstAttribute="trailing" secondItem="35J-BE-TD5" secondAttribute="trailing" constant="16" id="ZqI-6D-6Wt"/>
+                            <constraint firstItem="wh1-Wt-YoO" firstAttribute="top" secondItem="Ret-lv-Tms" secondAttribute="top" id="ZzB-RP-bck"/>
+                            <constraint firstItem="ZPV-uK-IXo" firstAttribute="top" secondItem="9Sl-65-YMI" secondAttribute="bottom" constant="4" id="fZg-u9-QCu"/>
+                            <constraint firstItem="wh1-Wt-YoO" firstAttribute="leading" secondItem="Ret-lv-Tms" secondAttribute="leading" id="hfZ-2P-2zo"/>
+                            <constraint firstAttribute="trailing" secondItem="wh1-Wt-YoO" secondAttribute="trailing" id="hrR-6i-ug8"/>
+                            <constraint firstItem="35J-BE-TD5" firstAttribute="leading" secondItem="de8-N2-ZQW" secondAttribute="trailing" constant="35" id="m1d-p4-zNP"/>
+                            <constraint firstItem="ZPV-uK-IXo" firstAttribute="trailing" secondItem="9Sl-65-YMI" secondAttribute="trailing" id="zRm-Pv-ew2"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="14"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Ret-lv-Tms" secondAttribute="bottom" id="9AZ-Uf-7DV"/>
+                <constraint firstItem="Ret-lv-Tms" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Dwg-pd-aEy"/>
+                <constraint firstItem="Ret-lv-Tms" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="ZfM-2Z-Zye"/>
+                <constraint firstAttribute="trailing" secondItem="Ret-lv-Tms" secondAttribute="trailing" constant="16" id="svW-Y1-IOD"/>
+            </constraints>
+            <size key="customSize" width="388" height="145"/>
+            <point key="canvasLocation" x="309.92366412213738" y="32.04225352112676"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_dummy_dog" width="100" height="100"/>
+        <image name="ic_pet_profile_bg" width="347" height="144"/>
+        <namedColor name="TextBlack">
+            <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ThemeOrangeStart">
+            <color red="1" green="0.58399999141693115" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

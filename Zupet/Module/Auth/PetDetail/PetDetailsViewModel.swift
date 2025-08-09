@@ -33,10 +33,11 @@ final class PetDetailsViewModel{
                 ConstantApiParam.name: self.view?.txtPetName.text ?? "",
                 ConstantApiParam.species: self.view?.txtSpecies.text ?? "",
                 ConstantApiParam.noseId: "1234",
-                ConstantApiParam.age: self.view?.txtAge.text ?? "",
-                ConstantApiParam.weight: self.view?.txtWeight.text ?? "",
-                ConstantApiParam.height: [ConstantApiParam.feet:self.view?.txtHeight.text ?? "",
-                                          ConstantApiParam.inches:self.view?.txtHeightInch.text ?? ""]
+                ConstantApiParam.breed : self.view?.txtBreed.text ?? "",
+                ConstantApiParam.age: Int(self.view?.txtAge.text ?? "") ?? 0,
+                ConstantApiParam.weight: Int(self.view?.txtWeight.text ?? "") ?? 0,
+                ConstantApiParam.height: [ConstantApiParam.feet:Int(self.view?.txtHeight.text ?? "") ?? 0,
+                                          ConstantApiParam.inches:Int(self.view?.txtHeightInch.text ?? "") ?? 0]
             ]
             
             Log.debug(parameters)

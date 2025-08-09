@@ -29,7 +29,7 @@ class OtpVC: UIViewController {
     var parameters: [String: Any]? = nil
     var isOtpComplete : Bool? = false
     var otp : String? = nil
-
+    
     // ✅ Additions for timer
     private var timer: Timer?
     private var remainingSeconds: Int = 30
@@ -45,6 +45,9 @@ class OtpVC: UIViewController {
         
         otpView.delegate = self
         
+#if DEBUG
+        otp = "15"
+#endif
         // ✅ Start 30 sec timer
         startTimer()
     }
@@ -52,14 +55,14 @@ class OtpVC: UIViewController {
     private func setupHighlightsAsync() {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
-
+            
             let resend = "Resend Again"
             
             DispatchQueue.main.async {
                 self.lblSubTitle.addTappableHighlight(substring: self.email ?? "", color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
                     Log.debug("Email tapped!")
                 }
-
+                
                 self.lblResendOtp.addTappableHighlight(substring: resend, color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
                     if self.remainingSeconds <= 0 {
                         Log.debug("Resend tapped!")
@@ -97,7 +100,7 @@ class OtpVC: UIViewController {
         lblResendOtp.isUserInteractionEnabled = false
         lblResendOtp.alpha = 0.5
         updateTimerLabel()
-
+        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
@@ -112,7 +115,7 @@ class OtpVC: UIViewController {
             }
         }
     }
-
+    
     // ✅ New: Timer label update
     private func updateTimerLabel() {
         lblTimeCount.text = "Request new code in 00:\(String(format: "%02d", remainingSeconds))"

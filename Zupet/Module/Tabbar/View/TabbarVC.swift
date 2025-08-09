@@ -12,6 +12,8 @@ class TabbarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setValue(CustomTabBar(), forKey: "tabBar")
+        
         // Apply corner radius
         tabBar.layer.cornerRadius = 20
         tabBar.layer.masksToBounds = false // Make sure shadow shows
@@ -30,3 +32,14 @@ class TabbarVC: UITabBarController {
     }
 }
 
+import UIKit
+
+class CustomTabBar: UITabBar {
+    private let customHeight: CGFloat = 90 // Your desired height
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var size = super.sizeThatFits(size)
+        size.height = customHeight
+        return size
+    }
+}

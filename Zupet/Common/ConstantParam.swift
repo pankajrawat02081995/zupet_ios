@@ -53,6 +53,7 @@ struct ConstantApiParam{
     static let species = "species"
     static let noseId = "noseId"
     static let age = "age"
+    static let breed = "breed"
     static let weight = "weight"
     static let height = "height"
     static let feet = "feet"

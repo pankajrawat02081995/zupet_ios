@@ -28,6 +28,7 @@ class PetDetailVC: UIViewController {
 
     @IBOutlet weak var txtAge: UITextField!
     
+    @IBOutlet weak var txtBreed: UITextField!
     @IBOutlet weak var lblWeight: UILabel!
     @IBOutlet weak var txtWeight: UITextField!
     
@@ -44,11 +45,24 @@ class PetDetailVC: UIViewController {
     private let heightFeetOptions: [String] = ["0 ft", "1 ft", "2 ft", "3 ft", "4 ft", "5 ft", "6 ft", "7 ft"]
     private let heightInchOptions: [String] = ["0 inch", "1 inch", "2 inch", "3 inch", "4 inch", "5 inch", "6 inch", "7 inch", "8 inch", "9 inch", "10 inch", "11 inch"]
 
+    private var breedOptions: BreedData?
+
+    func loadBreedOptions() async {
+        breedOptions = await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)
+        debugPrint(await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catBreeds ?? [])
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dropDown = DropdownView()
+
+        // Preload breed options in background without blocking UI
+        Task { [weak self] in
+            await self?.loadBreedOptions()
+        }
+        
         viewModel = PetDetailsViewModel(view: self)
         setupTextFields()
     }
@@ -73,12 +87,14 @@ class PetDetailVC: UIViewController {
         txtAge.delegate = self
         txtHeight.delegate = self
         txtWeight.delegate = self
+        txtBreed.delegate = self
         
         // Add real-time change listeners
         txtPetName.addTarget(self, action: #selector(petNameChanged), for: .editingChanged)
-        txtSpecies.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
+        txtSpecies.addTarget(self, action: #selector(speciesInfoChanged), for: .editingDidBegin)
         txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
         txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
+        txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
         txtHeightInch.addTarget(self, action: #selector(heightInchInfoChanged), for: .editingDidBegin)
         txtWeight.addTarget(self, action: #selector(weightInfoChanged), for: .editingChanged)
     }
@@ -90,16 +106,19 @@ class PetDetailVC: UIViewController {
         lblPetName.text = txtPetName.text
     }
     
-    @objc private func breedInfoChanged(){
+    @objc private func speciesInfoChanged() {
         self.txtSpecies.resignFirstResponder()
-        dropDown?.show(from: self.txtSpecies, data: ["Dog","Cat"], onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
-            let age = self.txtAge.text ?? ""
-            self.txtSpecies.text = index
-            self.lblBreed.text = "\(index) . \(age)"
-        })
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.dropDown?.show(from: self.txtSpecies, data: ["Dog", "Cat"]) { [weak self] selection in
+                guard let self else { return }
+                Log.debug(selection)
+                self.txtSpecies.text = selection
+                self.lblBreed.text = "\(selection) . \(self.txtAge.text ?? "")"
+            }
+        }
     }
+    
     /// Combines species and age into breed label
     @objc private func ageInfoChanged() {
         self.txtAge.resignFirstResponder()
@@ -109,6 +128,16 @@ class PetDetailVC: UIViewController {
             let species = self.txtSpecies.text ?? ""
             self.txtAge.text = index
             self.lblBreed.text = "\(species) . \(index)"
+        })
+    }
+    
+    /// Combines species and age into breed label
+    @objc private func breedInfoChanged() {
+        self.txtBreed.resignFirstResponder()
+        dropDown?.show(from: self.txtBreed, data: breedOptions?.dogBreeds ?? [], onSelect: {[weak self] (index) in
+            guard let self = self else { return }
+            Log.debug(index)
+            self.txtBreed.text = index
         })
     }
     
@@ -139,8 +168,9 @@ class PetDetailVC: UIViewController {
     /// Combines height and weight into weight label
     @objc private func weightInfoChanged() {
         let height = txtHeight.text ?? ""
+        let inch = self.txtHeightInch.text ?? ""
         let weight = txtWeight.text ?? ""
-        lblWeight.text = "\(height) . \(weight) kg"
+        lblWeight.text = "\(height) \(inch) . \(weight) kg"
     }
     
     // MARK: - Continue Action

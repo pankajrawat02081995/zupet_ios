@@ -51,7 +51,7 @@ final class SignInViewModel {
                     // You can call delegate or closure to notify view
                     await UserDefaultsManager.shared.set(response.data, forKey: UserDefaultsKey.LoginResponse)
                     await self.view?.push(TabbarVC.self, from: .tabbar)
-                    fatchBreed()
+                    await APIService.shared.fatchBreed()
                 }
 
                 // Show message to user (non-blocking on main thread)
@@ -97,7 +97,7 @@ final class SignInViewModel {
                     // You can call delegate or closure to notify view
 //                    await self.view?.push(TabbarVC.self, from: .tabbar)
                     await self.view?.push(PetDetailVC.self, from: .main)
-                    fatchBreed()
+                    await APIService.shared.fatchBreed()
                 }
 
                 // Show message to user (non-blocking on main thread)
@@ -110,19 +110,19 @@ final class SignInViewModel {
         }
     }
     
-    func fatchBreed(){
-        // Example 1 - User Profile
-        Task {
-            do {
-                guard let url = APIConstants.petBreed else {return}
-                if let profile: SignupModel = try await APIService.shared.callSilentAPI(url: url, type: SignupModel.self) {
-//                    print("User Name:", profile.name)
-                } else {
-//                    print("No profile found")
-                }
-            } catch {
-                Log.error("Error:\(error)")
-            }
-        }
-    }
+//    func fatchBreed(){
+//        // Example 1 - User Profile
+//        Task {
+//            do {
+//                guard let url = APIConstants.petBreed else {return}
+//                if let profile: SignupModel = try await APIService.shared.callSilentAPI(url: url, type: SignupModel.self) {
+////                    print("User Name:", profile.name)
+//                } else {
+////                    print("No profile found")
+//                }
+//            } catch {
+//                Log.error("Error:\(error)")
+//            }
+//        }
+//    }
 }

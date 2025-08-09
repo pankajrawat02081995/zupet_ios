@@ -29,6 +29,10 @@ final class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+#if DEBUG
+        txtEmail.text = "p@yopmail.com"
+        txtPassword.text = "Qwerty@1234"
+#endif
         viewModel = SignInViewModel(view: self) // Make view weak in ViewModel
     }
     
