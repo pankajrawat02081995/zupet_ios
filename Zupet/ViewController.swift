@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         if token.isNil {
             push(OnboardingVC.self, from: .main)
         }else{
-            push(TabbarVC.self, from: .tabbar)
+            push(HomeVC.self, from: .tabbar)
         }
         
     }

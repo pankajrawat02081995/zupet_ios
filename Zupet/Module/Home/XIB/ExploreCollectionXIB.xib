@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExploreCollectionXIB" id="gTV-IL-0wX" customClass="ExploreCollectionXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="207" height="155"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="207" height="155"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mood_check" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-oo-uUY">
+                        <rect key="frame" x="0.0" y="0.0" width="207" height="119"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Check" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1l-xm-owF">
+                        <rect key="frame" x="0.0" y="135" width="207" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="C42-X7-5PE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="TextBlack"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="gy5-oo-uUY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="07M-GN-KOy"/>
+                <constraint firstItem="k1l-xm-owF" firstAttribute="trailing" secondItem="gy5-oo-uUY" secondAttribute="trailing" id="AmY-ea-ZqN"/>
+                <constraint firstItem="k1l-xm-owF" firstAttribute="leading" secondItem="gy5-oo-uUY" secondAttribute="leading" id="KQs-fT-zii"/>
+                <constraint firstAttribute="trailing" secondItem="gy5-oo-uUY" secondAttribute="trailing" id="S8C-vi-TLp"/>
+                <constraint firstItem="gy5-oo-uUY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lDh-nm-Lzs"/>
+                <constraint firstItem="k1l-xm-owF" firstAttribute="top" secondItem="gy5-oo-uUY" secondAttribute="bottom" constant="16" id="m1w-hZ-f5r"/>
+                <constraint firstAttribute="bottom" secondItem="k1l-xm-owF" secondAttribute="bottom" id="pMZ-PE-O4f"/>
+            </constraints>
+            <size key="customSize" width="207" height="155"/>
+            <connections>
+                <outlet property="imgExplore" destination="gy5-oo-uUY" id="hLI-ew-n6F"/>
+                <outlet property="lblTitle" destination="k1l-xm-owF" id="1FC-BC-SAm"/>
+            </connections>
+            <point key="canvasLocation" x="185.49618320610685" y="35.563380281690144"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_mood_check" width="142" height="64"/>
+        <namedColor name="TextBlack">
+            <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
