@@ -14,7 +14,7 @@ extension UIView {
         backgroundColor: UIColor = .textWhite,
         textColor: UIColor = .AppLightGray,
         borderColor: UIColor = .AppLightGray,
-        font: UIFont = .monroeSemiBold(14),
+        font: UIFont = .manropeSemiBold(14),
         cornerRadius: CGFloat = 8
     ) {
         let tip = PopTipView(

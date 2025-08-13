@@ -9,7 +9,11 @@ import UIKit
 
 class ExploreTableXIB: UITableViewCell {
     
+    @IBOutlet weak var imgExplore: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewTop: NSLayoutConstraint!
+    @IBOutlet weak var imgExploreHieght: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var items: [String] = []
@@ -27,11 +31,16 @@ class ExploreTableXIB: UITableViewCell {
         updateCollectionHeight()
     }
     
-    func configure(with items: [String], tableView: UITableView) {
+    func configure(with items: [String], tableView: UITableView,isHome:Bool=true) {
         self.items = items
         collectionView.reloadData()
         
         DispatchQueue.main.async {
+            if isHome == false{
+                self.lblTitle.text = ""
+                self.imgExploreHieght.constant = 0
+                self.collectionViewTop.constant = 0
+            }
             self.collectionView.layoutIfNeeded()
             self.updateCollectionHeight()
             

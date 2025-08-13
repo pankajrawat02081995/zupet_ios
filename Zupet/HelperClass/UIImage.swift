@@ -16,7 +16,7 @@ struct UserImageGenerator {
         size: CGSize = CGSize(width: 40, height: 40), // Adjusted for navigation bar use
         backgroundColor: UIColor = .lightGray,
         textColor: UIColor = .textWhite,
-        font: UIFont = .monroeBold(20) // Adjusted font size
+        font: UIFont = .manropeBold(20) // Adjusted font size
     ) async -> UIImage? {
         
         // Attempt to download the image

@@ -15,34 +15,23 @@ public extension CGFloat {
 }
 
 public extension UIFont {
-    
-    static func monroeRegular(_ size: CGFloat, isError: Bool = false) -> UIFont {
-        MonroeFontStyle.regular.with(size: isError ? size : size.autoScaledForDevice)
-    }
-    
-    static func monroeMedium(_ size: CGFloat, isError: Bool = false) -> UIFont {
-        MonroeFontStyle.medium.with(size: isError ? size : size.autoScaledForDevice)
-    }
-    
-    static func monroeBold(_ size: CGFloat, isError: Bool = false) -> UIFont {
-        MonroeFontStyle.bold.with(size: isError ? size : size.autoScaledForDevice)
-    }
-    
-    static func monroeSemiBold(_ size: CGFloat, isError: Bool = false) -> UIFont {
-        MonroeFontStyle.semiBold.with(size: isError ? size : size.autoScaledForDevice)
-    }
-
-    static func monroeItalic(_ size: CGFloat, isError: Bool = false) -> UIFont {
-        MonroeFontStyle.italic.with(size: isError ? size : size.autoScaledForDevice)
-    }
+    static func manropeExtraLight(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.extraLight.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeLight(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.light.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeRegular(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.regular.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeMedium(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.medium.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeSemiBold(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.semiBold.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeBold(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.bold.with(size: isError ? size : size.autoScaledForDevice) }
+    static func manropeExtraBold(_ size: CGFloat, isError: Bool = false) -> UIFont { ManropeFontStyle.extraBold.with(size: isError ? size : size.autoScaledForDevice) }
 }
 
-private enum MonroeFontStyle: String{
-    case regular = "Monroe-Regular"
-    case medium = "Monroe-Medium"
-    case bold = "Monroe-Bold"
-    case semiBold = "Monroe-SemiBold"
-    case italic = "Monroe-Italic"
+private enum ManropeFontStyle: String {
+    case extraLight = "Manrope-ExtraLight"
+    case light      = "Manrope-Light"
+    case regular    = "Manrope-Regular"
+    case medium     = "Manrope-Medium"
+    case semiBold   = "Manrope-SemiBold"
+    case bold       = "Manrope-Bold"
+    case extraBold  = "Manrope-ExtraBold"
     
     func with(size: CGFloat) -> UIFont {
         UIFont(name: rawValue, size: size) ?? UIFont.systemFont(ofSize: size)

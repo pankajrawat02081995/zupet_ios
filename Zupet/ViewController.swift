@@ -36,9 +36,9 @@ class ViewController: UIViewController {
         // Replace "NextViewController" with your actual destination VC class
          let token = await UserDefaultsManager.shared.get(UserData.self, forKey: UserDefaultsKey.LoginResponse)
         if token.isNil {
-            push(OnboardingVC.self, from: .main)
+            set(OnboardingVC.self, from: .main)
         }else{
-            push(HomeVC.self, from: .tabbar)
+            set(TabbarVC.self, from: .tabbar)
         }
         
     }

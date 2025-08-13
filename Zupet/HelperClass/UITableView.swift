@@ -99,7 +99,7 @@ extension UITableView {
         }
         let messageLabel = UILabel()
         messageLabel.text = message
-        messageLabel.font = .monroeMedium(16)
+        messageLabel.font = .manropeMedium(16)
         messageLabel.textColor = .lightGray
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0

@@ -12,6 +12,15 @@ class SignUpVC: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var containerView: UIView!{
+        didSet {
+            containerView.layer.cornerRadius = 24
+            containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            containerView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var lblTerms: UILabel!
     /// Full name input field
     @IBOutlet weak var txtFullName: UITextField!
     
@@ -39,6 +48,28 @@ class SignUpVC: UIViewController {
         
         // Initialize the ViewModel. Ensure it does not strongly capture `self`.
         viewModel = SignUpViewModel(view: self)
+        
+        setupHighlightsAsync()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // Apply diagonal gradient to btnContinue button and background view
+        bgView.applyDiagonalGradient()
+        bgView.updateGradientFrameIfNeeded()
+    }
+    
+    private func setupHighlightsAsync() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.lblTerms.addTappableHighlight(substring: "Terms and Conditions", color: .ThemeOrangeEnd, font: .manropeMedium(12)) {
+                    Log.debug("Terms tapped!")
+                }
+            }
+        }
     }
     
     // MARK: - Button Actions
@@ -46,6 +77,7 @@ class SignUpVC: UIViewController {
     /// Handles Terms button press
     @IBAction func termsOnPress(_ sender: UIButton) {
         // TODO: Navigate to terms and conditions screen
+        sender.isSelected = !sender.isSelected
     }
     
     /// Handles Sign In button press
@@ -100,6 +132,11 @@ class SignUpVC: UIViewController {
         
         if !Validator.isValidPassword(txtPassword.text ?? "") {
             await ToastManager.shared.showToast(message: ErrorMessages.invalidPassword.rawValue)
+            return false
+        }
+        
+        if !btnTerms.isSelected{
+            await ToastManager.shared.showToast(message: ErrorMessages.TermsAndCondition.rawValue)
             return false
         }
         

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-Bold.ttf">
+            <string>Manrope-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoodDetectionCameraXIB" rowHeight="736" id="KGk-i7-Jjw" customClass="MoodDetectionCameraXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="527" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="527" height="736"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJG-jg-098">
+                        <rect key="frame" x="16" y="16" width="495" height="495"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dummy_nose_scaner" translatesAutoresizingMaskIntoConstraints="NO" id="Lfu-sG-Wpn">
+                                <rect key="frame" x="0.0" y="0.0" width="495" height="495"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lfu-sG-Wpn" firstAttribute="leading" secondItem="nJG-jg-098" secondAttribute="leading" id="6Ru-8f-LtK"/>
+                            <constraint firstAttribute="trailing" secondItem="Lfu-sG-Wpn" secondAttribute="trailing" id="Ca0-xg-Ffe"/>
+                            <constraint firstAttribute="width" secondItem="nJG-jg-098" secondAttribute="height" multiplier="1:1" id="ge5-Ei-tmX"/>
+                            <constraint firstItem="Lfu-sG-Wpn" firstAttribute="top" secondItem="nJG-jg-098" secondAttribute="top" id="oKb-Hb-p7G"/>
+                            <constraint firstAttribute="bottom" secondItem="Lfu-sG-Wpn" secondAttribute="bottom" id="ty8-g9-FS9"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYD-nV-ah6">
+                        <rect key="frame" x="16" y="535" width="495" height="115"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdV-Ub-R6t">
+                                <rect key="frame" x="10" y="10" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0RO-LQ-fNH"/>
+                                    <constraint firstAttribute="width" constant="48" id="lfc-mH-7ZM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O8-QL-f5r">
+                                <rect key="frame" x="62" y="11.999999999999998" width="423" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analysis: Max shows relaxed body posture, gentle tail wagging, and alert ears. Perfect time for play!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOW-Sb-Q12">
+                                <rect key="frame" x="62" y="36.333333333333371" width="417" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="34A853"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AOW-Sb-Q12" secondAttribute="bottom" constant="10" id="7Jf-pR-PvS"/>
+                            <constraint firstAttribute="trailing" secondItem="5O8-QL-f5r" secondAttribute="trailing" constant="10" id="A3j-9A-xrd"/>
+                            <constraint firstItem="xdV-Ub-R6t" firstAttribute="leading" secondItem="aYD-nV-ah6" secondAttribute="leading" constant="10" id="DLT-aa-d2B"/>
+                            <constraint firstAttribute="trailing" secondItem="AOW-Sb-Q12" secondAttribute="trailing" constant="16" id="DlI-uz-eig"/>
+                            <constraint firstItem="AOW-Sb-Q12" firstAttribute="top" secondItem="5O8-QL-f5r" secondAttribute="bottom" constant="4" id="ISA-Jg-tvP"/>
+                            <constraint firstItem="5O8-QL-f5r" firstAttribute="top" secondItem="aYD-nV-ah6" secondAttribute="top" constant="12" id="LY1-ag-66x"/>
+                            <constraint firstItem="5O8-QL-f5r" firstAttribute="leading" secondItem="xdV-Ub-R6t" secondAttribute="trailing" constant="4" id="a0f-fz-dkb"/>
+                            <constraint firstItem="xdV-Ub-R6t" firstAttribute="top" secondItem="aYD-nV-ah6" secondAttribute="top" constant="10" id="fsz-dX-THx"/>
+                            <constraint firstItem="AOW-Sb-Q12" firstAttribute="leading" secondItem="xdV-Ub-R6t" secondAttribute="trailing" constant="4" id="j41-cM-vx8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="34A853"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFP-dk-6Ws">
+                        <rect key="frame" x="16" y="674" width="495" height="52"/>
+                        <color key="backgroundColor" name="ThemeOrangeEnd"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="52" id="DFT-da-W9M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Manrope-Bold" family="Manrope" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Scan">
+                            <color key="titleColor" name="TextWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nJG-jg-098" secondAttribute="trailing" constant="16" id="5Yw-kS-wLP"/>
+                    <constraint firstItem="HFP-dk-6Ws" firstAttribute="top" secondItem="aYD-nV-ah6" secondAttribute="bottom" constant="24" id="8l3-Jq-yPp"/>
+                    <constraint firstItem="nJG-jg-098" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="EJR-gq-7KT"/>
+                    <constraint firstItem="HFP-dk-6Ws" firstAttribute="leading" secondItem="aYD-nV-ah6" secondAttribute="leading" id="Nqd-e0-iBJ"/>
+                    <constraint firstItem="aYD-nV-ah6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TRn-6T-gyb"/>
+                    <constraint firstItem="nJG-jg-098" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TUx-c4-zv8"/>
+                    <constraint firstAttribute="trailing" secondItem="aYD-nV-ah6" secondAttribute="trailing" constant="16" id="cmv-Dy-EcA"/>
+                    <constraint firstItem="HFP-dk-6Ws" firstAttribute="trailing" secondItem="aYD-nV-ah6" secondAttribute="trailing" id="gQU-kL-Iki"/>
+                    <constraint firstItem="aYD-nV-ah6" firstAttribute="top" secondItem="nJG-jg-098" secondAttribute="bottom" constant="24" id="m6e-h5-nEq"/>
+                    <constraint firstAttribute="bottom" secondItem="HFP-dk-6Ws" secondAttribute="bottom" constant="10" id="qzG-XF-2IP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="TextWhite"/>
+            <connections>
+                <outlet property="btnScan" destination="HFP-dk-6Ws" id="nnU-AT-ayk"/>
+                <outlet property="cameraView" destination="nJG-jg-098" id="C9C-9C-ion"/>
+                <outlet property="lblSubtitle" destination="AOW-Sb-Q12" id="KQ5-Ny-2PM"/>
+                <outlet property="lblTitle" destination="5O8-QL-f5r" id="Jep-G1-78X"/>
+            </connections>
+            <point key="canvasLocation" x="162.59541984732823" y="263.38028169014086"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_dummy_nose_scaner" width="343" height="343"/>
+        <namedColor name="34A853">
+            <color red="0.20392156862745098" green="0.6588235294117647" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextBlack">
+            <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ThemeOrangeEnd">
+            <color red="1" green="0.46299999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

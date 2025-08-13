@@ -59,11 +59,11 @@ class OtpVC: UIViewController {
             let resend = "Resend Again"
             
             DispatchQueue.main.async {
-                self.lblSubTitle.addTappableHighlight(substring: self.email ?? "", color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
+                self.lblSubTitle.addTappableHighlight(substring: self.email ?? "", color: .ThemeOrangeEnd, font: .manropeMedium(16)) {
                     Log.debug("Email tapped!")
                 }
                 
-                self.lblResendOtp.addTappableHighlight(substring: resend, color: .ThemeOrangeEnd, font: .monroeMedium(16)) {
+                self.lblResendOtp.addTappableHighlight(substring: resend, color: .ThemeOrangeEnd, font: .manropeMedium(16)) {
                     if self.remainingSeconds <= 0 {
                         Log.debug("Resend tapped!")
                         self.startTimer()

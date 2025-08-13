@@ -7,57 +7,117 @@
 
 import UIKit
 
-class RecentActivityTableXIB: UITableViewCell {
+enum XIBType {
+    case recentActivity
+    case trending
+    case nearYou
+}
 
-    @IBOutlet weak var tabelViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
-
+final class RecentActivityTableXIB: UITableViewCell {
+    
+    // MARK: - Outlets
+    @IBOutlet private weak var imgClock: UIImageView!
+    @IBOutlet private weak var lblTitle: UILabel!
+    @IBOutlet private weak var tabelViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    // MARK: - Properties
     private var items: [String] = []
-    var onHeightChange: (() -> Void)? // Notify parent when height changes
-
+    private var xibType: XIBType = .recentActivity
+    
+    /// Callback to notify parent when height changes
+    var onHeightChange: (() -> Void)?
+    
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTableView()
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        items.removeAll()
+        xibType = .recentActivity
+        lblTitle.text = nil
+        imgClock.image = nil
+        tabelViewHeight.constant = 0
+    }
+    
+    // MARK: - Setup
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-
-        let nib = UINib(nibName: "ActivityTableXIB", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ActivityTableXIB")
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        
+        tableView.register(cellType: ActivityTableXIB.self)
+        tableView.register(cellType: TrendingTopicsXIB.self)
+        tableView.register(cellType: NearYouXIB.self)
     }
-
-    func configure(with activities: [String]) {
+    
+    // MARK: - Configuration
+    func configure(with activities: [String], xibType: XIBType = .recentActivity) {
         self.items = activities
+        self.xibType = xibType
+        
+        switch xibType {
+        case .trending:
+            lblTitle.text = "Trending Topics"
+            imgClock.image = UIImage(named: "ic_trend")
+            tableView.estimatedRowHeight = 104
+            
+        case .nearYou:
+            lblTitle.text = "Near You"
+            imgClock.image = UIImage(named: "ic_near_you")
+            tableView.estimatedRowHeight = 76
+            
+        case .recentActivity:
+            lblTitle.text = "Recent Activity"
+            imgClock.image = UIImage(named: "ic_clock")
+            tableView.estimatedRowHeight = 44
+        }
+        
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
         tableView.layoutIfNeeded()
+        
         updateTableHeight()
     }
-
+    
+    // MARK: - Layout Updates
     private func updateTableHeight() {
         let height = tableView.contentSize.height
+        
         if tabelViewHeight.constant != height {
             tabelViewHeight.constant = height
-            onHeightChange?() // Tell parent to update its layout
+            UIView.performWithoutAnimation { [weak self] in
+                self?.onHeightChange?()
+            }
         }
     }
 }
 
+// MARK: - UITableViewDataSource
 extension RecentActivityTableXIB: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        items.count
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableXIB", for: indexPath) as? ActivityTableXIB else {
-            return UITableViewCell()
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch xibType {
+        case .trending:
+            let cell: TrendingTopicsXIB = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+            
+        case .nearYou:
+            let cell: NearYouXIB = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+            
+        case .recentActivity:
+            let cell: ActivityTableXIB = tableView.dequeueReusableCell(for: indexPath)
+            return cell
         }
-        // Example:
-        // cell.lblTitle.text = items[indexPath.row]
-        return cell
     }
 }

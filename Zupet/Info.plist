@@ -29,16 +29,17 @@
         </dict>
     </dict>
 
-	<key>UIAppFonts</key>
-	<array>
-		<string>Manrope-Bold.ttf</string>
-		<string>Manrope-ExtraBold.ttf</string>
-		<string>Manrope-ExtraLight.ttf</string>
-		<string>Manrope-Light.ttf</string>
-		<string>Manrope-Medium.ttf</string>
-		<string>Manrope-Regular.ttf</string>
-		<string>Manrope-SemiBold.ttf</string>
-	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>Manrope-ExtraLight.ttf</string>
+        <string>Manrope-Light.ttf</string>
+        <string>Manrope-Regular.ttf</string>
+        <string>Manrope-Medium.ttf</string>
+        <string>Manrope-SemiBold.ttf</string>
+        <string>Manrope-Bold.ttf</string>
+        <string>Manrope-ExtraBold.ttf</string>
+    </array>
+
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>

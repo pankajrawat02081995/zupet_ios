@@ -12,7 +12,7 @@ import UIKit
 struct OTPViewConfiguration {
     var digitCount: Int = 6
     var spacing: CGFloat = 10
-    var font: UIFont = .monroeRegular(16)
+    var font: UIFont = .manropeRegular(16)
     var textColor: UIColor = .textBlack
     var placeholderText: String = "_"
     var placeholderYOffset: CGFloat = 6

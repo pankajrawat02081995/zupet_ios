@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bgView: UIView!
     private var petList: [String] = ["Pet1", "Pet2", "Pet3"] // Replace with your model later
@@ -35,33 +36,34 @@ class HomeVC: UIViewController {
     }
     
     // MARK: - Table View Setup
-      private func setupTableView() {
-          tableView.delegate = self
-          tableView.dataSource = self
-          tableView.tableFooterView = UIView()
-          
-          tableView.showsVerticalScrollIndicator = false
-          tableView.separatorStyle = .none
-          
-          // Register PetTableCellXIB
-//          let nib = UINib(nibName: "PetTableCellXIB", bundle: nil)
-//          tableView.register(nib, forCellReuseIdentifier: "PetTableCellXIB")
-          tableView.register(cellType: PetTableCellXIB.self)
-          tableView.register(cellType: ExploreTableXIB.self)
-          tableView.register(cellType: RecentActivityTableXIB.self)
-          
-          
-          // Auto height
-          tableView.rowHeight = UITableView.automaticDimension
-          tableView.estimatedRowHeight = 200
-      }
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
+        
+        // Register PetTableCellXIB
+        //          let nib = UINib(nibName: "PetTableCellXIB", bundle: nil)
+        //          tableView.register(nib, forCellReuseIdentifier: "PetTableCellXIB")
+        tableView.register(cellType: PetTableCellXIB.self)
+        tableView.register(cellType: ExploreTableXIB.self)
+        tableView.register(cellType: RecentActivityTableXIB.self)
+        tableView.register(cellType: AboutPetTableXIB.self)
+        tableView.register(cellType: LostPetTableXIB.self)
+        
+        // Auto height
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 200
+    }
 
 }
 
 // MARK: - UITableViewDataSource
 extension HomeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 // Only one section for now
+        return 5 // Only one section for now
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,6 +94,18 @@ extension HomeVC: UITableViewDataSource {
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()
             }
+            return cell
+        }else if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutPetTableXIB", for: indexPath) as? AboutPetTableXIB else {
+                return UITableViewCell()
+            }
+            
+            return cell
+        }else if indexPath.section == 4 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LostPetTableXIB", for: indexPath) as? LostPetTableXIB else {
+                return UITableViewCell()
+            }
+            cell.configure(with: ["asdad","asdasd","asdasd"])
             return cell
         }
         return UITableViewCell()

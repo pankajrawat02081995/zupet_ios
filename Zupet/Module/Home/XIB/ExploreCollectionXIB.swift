@@ -12,7 +12,7 @@ class ExploreCollectionXIB: UICollectionViewCell {
     @IBOutlet weak var imgExplore: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
-            lblTitle.font = .monroeMedium(14)
+            lblTitle.font = .manropeMedium(14)
         }
     }
     

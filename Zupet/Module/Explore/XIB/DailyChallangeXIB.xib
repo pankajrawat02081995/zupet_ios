@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="529" id="KGk-i7-Jjw" customClass="DailyChallangeXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1047" height="529"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="1047" height="529"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FH0-kk-LYC">
+                        <rect key="frame" x="16" y="16" width="1015" height="497"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n44-A1-wZD">
+                                <rect key="frame" x="0.0" y="20" width="1015" height="196"/>
+                                <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="Nga-Rn-u5V"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cat_daily_challange" translatesAutoresizingMaskIntoConstraints="NO" id="TZg-xA-Fy2">
+                                <rect key="frame" x="871" y="0.0" width="159" height="161"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Challange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0d1-dK-gS6">
+                                <rect key="frame" x="14" y="59.999999999999993" width="386" height="28.666666666666664"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teach your dog a new trick today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEj-vX-PIh">
+                                <rect key="frame" x="14" y="92.666666666666671" width="386" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" name="TextBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtP-n8-8Ty">
+                                <rect key="frame" x="12" y="413" width="150" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Hg5-VL-w1b"/>
+                                    <constraint firstAttribute="width" constant="150" id="b64-lg-dkg"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start Challange">
+                                    <color key="titleColor" name="TextWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="challangeOnPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hfP-sA-Kcd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="TouchBarBezel"/>
+                        <constraints>
+                            <constraint firstItem="0d1-dK-gS6" firstAttribute="leading" secondItem="FH0-kk-LYC" secondAttribute="leading" constant="14" id="02c-Df-xfR"/>
+                            <constraint firstAttribute="trailing" secondItem="n44-A1-wZD" secondAttribute="trailing" id="82S-Mf-sNo"/>
+                            <constraint firstAttribute="bottom" secondItem="CtP-n8-8Ty" secondAttribute="bottom" constant="40" id="8QB-JA-8Cp"/>
+                            <constraint firstAttribute="trailing" secondItem="TZg-xA-Fy2" secondAttribute="trailing" constant="-15" id="Aa9-qq-l5s"/>
+                            <constraint firstItem="YEj-vX-PIh" firstAttribute="leading" secondItem="0d1-dK-gS6" secondAttribute="leading" id="KZU-Hb-UyC"/>
+                            <constraint firstItem="YEj-vX-PIh" firstAttribute="trailing" secondItem="0d1-dK-gS6" secondAttribute="trailing" id="QWV-Ab-s4V"/>
+                            <constraint firstItem="n44-A1-wZD" firstAttribute="leading" secondItem="FH0-kk-LYC" secondAttribute="leading" id="SSZ-dE-i3R"/>
+                            <constraint firstItem="CtP-n8-8Ty" firstAttribute="leading" secondItem="FH0-kk-LYC" secondAttribute="leading" constant="12" id="Vcd-xP-KE3"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="n44-A1-wZD" secondAttribute="bottom" id="aIh-1Z-uvQ"/>
+                            <constraint firstItem="TZg-xA-Fy2" firstAttribute="top" secondItem="FH0-kk-LYC" secondAttribute="top" id="dDh-iz-UTZ"/>
+                            <constraint firstItem="0d1-dK-gS6" firstAttribute="top" secondItem="n44-A1-wZD" secondAttribute="top" constant="40" id="gj4-B0-dZo"/>
+                            <constraint firstItem="YEj-vX-PIh" firstAttribute="top" secondItem="0d1-dK-gS6" secondAttribute="bottom" constant="4" id="ieP-6U-cc0"/>
+                            <constraint firstItem="n44-A1-wZD" firstAttribute="top" secondItem="FH0-kk-LYC" secondAttribute="top" constant="20" id="jUv-1H-FTY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FH0-kk-LYC" secondAttribute="trailing" constant="16" id="0U0-XO-Thy"/>
+                    <constraint firstItem="FH0-kk-LYC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PE2-kg-w37"/>
+                    <constraint firstItem="FH0-kk-LYC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="RGc-bN-D78"/>
+                    <constraint firstAttribute="bottom" secondItem="FH0-kk-LYC" secondAttribute="bottom" constant="16" id="vJ0-kl-gGD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="TextWhite"/>
+            <connections>
+                <outlet property="btnChallenge" destination="CtP-n8-8Ty" id="oss-8h-cu3"/>
+                <outlet property="imgPet" destination="TZg-xA-Fy2" id="CXa-Wy-HKr"/>
+                <outlet property="lblSubTitle" destination="YEj-vX-PIh" id="Ds2-hx-dZd"/>
+                <outlet property="lblTitle" destination="0d1-dK-gS6" id="ZER-a1-CQS"/>
+            </connections>
+            <point key="canvasLocation" x="594.6564885496183" y="169.36619718309859"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_cat_daily_challange" width="159" height="161"/>
+        <namedColor name="TextBlack">
+            <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TouchBarBezel">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

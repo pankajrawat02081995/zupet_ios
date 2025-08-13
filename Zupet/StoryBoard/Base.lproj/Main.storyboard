@@ -194,7 +194,7 @@
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoY-cb-Lej">
-                                <rect key="frame" x="16" y="181" width="367" height="87.666666666666686"/>
+                                <rect key="frame" x="16" y="181" width="367" height="74.666666666666686"/>
                                 <string key="text">Welcome
 Back!</string>
                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
@@ -202,10 +202,10 @@ Back!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMY-A5-TfF">
-                                <rect key="frame" x="0.0" y="316.66666666666669" width="393" height="535.33333333333326"/>
+                                <rect key="frame" x="0.0" y="300.33333333333331" width="393" height="551.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dfM-O0-Vqg">
-                                        <rect key="frame" x="0.0" y="86.333333333333314" width="393" height="128"/>
+                                        <rect key="frame" x="0.0" y="102.66666666666669" width="393" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUG-P0-udd">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -278,25 +278,26 @@ Back!</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-dC-Yvt">
-                                        <rect key="frame" x="16" y="234.33333333333331" width="22" height="22"/>
+                                        <rect key="frame" x="16" y="250.66666666666669" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="ZMc-zp-HWu"/>
                                             <constraint firstAttribute="width" constant="22" id="hAQ-NV-4UC"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="ic_uncheckbox"/>
+                                        <state key="selected" image="ic_checkbox"/>
                                         <connections>
                                             <action selector="rememberMeOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="TTu-dX-6GZ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7e-b3-Bli">
-                                        <rect key="frame" x="46" y="236.99999999999994" width="81" height="16.666666666666657"/>
+                                        <rect key="frame" x="45.999999999999993" y="254.66666666666669" width="79.333333333333314" height="14"/>
                                         <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="12"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-KG-oTq">
-                                        <rect key="frame" x="274" y="230.33333333333331" width="103" height="30"/>
+                                        <rect key="frame" x="275" y="246.66666666666669" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jqG-23-zna"/>
                                         </constraints>
@@ -310,7 +311,7 @@ Back!</string>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="h78-fB-158">
-                                        <rect key="frame" x="16" y="330.33333333333331" width="361" height="120"/>
+                                        <rect key="frame" x="16" y="346.66666666666669" width="361" height="120"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7c-5M-CxL">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -361,7 +362,7 @@ Back!</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WeL-ha-Kwr">
-                                        <rect key="frame" x="114" y="443.33333333333331" width="165" height="24"/>
+                                        <rect key="frame" x="114" y="459.66666666666669" width="165" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="HGq-jx-zVM"/>
                                         </constraints>
@@ -419,7 +420,7 @@ Back!</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to acces your account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gER-Jz-wUq">
-                                <rect key="frame" x="16" y="278.66666666666669" width="361" height="22"/>
+                                <rect key="frame" x="16" y="265.66666666666669" width="361" height="18.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
@@ -484,7 +485,7 @@ Back!</string>
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uq-Vy-RPo">
-                                <rect key="frame" x="16" y="181" width="367" height="87.666666666666686"/>
+                                <rect key="frame" x="16" y="181" width="367" height="74.666666666666686"/>
                                 <string key="text">Get 
 Started</string>
                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
@@ -492,10 +493,10 @@ Started</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7St-cM-AIx">
-                                <rect key="frame" x="0.0" y="316.66666666666669" width="393" height="683.33333333333326"/>
+                                <rect key="frame" x="0.0" y="300.33333333333331" width="393" height="699.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Hp-MJq">
-                                        <rect key="frame" x="0.0" y="86.333333333333314" width="393" height="264"/>
+                                        <rect key="frame" x="0.0" y="102.66666666666669" width="393" height="264"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwd-gO-n7T">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -636,25 +637,26 @@ Started</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh7-nv-h5b">
-                                        <rect key="frame" x="16" y="370.33333333333331" width="22" height="22"/>
+                                        <rect key="frame" x="16" y="386.66666666666669" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="Q2F-Oo-trF"/>
                                             <constraint firstAttribute="height" constant="22" id="eIa-gI-jnm"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="ic_uncheckbox"/>
+                                        <state key="selected" image="ic_checkbox"/>
                                         <connections>
                                             <action selector="termsOnPress:" destination="Kz3-hm-kGd" eventType="touchUpInside" id="Mp8-g1-53r"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By checking the box you agree to our Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdp-hB-8ev">
-                                        <rect key="frame" x="46" y="372.99999999999994" width="331" height="16.666666666666686"/>
+                                        <rect key="frame" x="46" y="390.66666666666669" width="331" height="14"/>
                                         <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="12"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-Ia-UZl">
-                                        <rect key="frame" x="16" y="439.66666666666669" width="361" height="52"/>
+                                        <rect key="frame" x="16" y="454.66666666666669" width="361" height="52"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-dg-epJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -679,7 +681,7 @@ Started</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYG-Uo-eGT">
-                                        <rect key="frame" x="118.66666666666669" y="591.33333333333326" width="156" height="24"/>
+                                        <rect key="frame" x="118.66666666666669" y="607.66666666666674" width="156" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="SRW-fL-3Np"/>
                                         </constraints>
@@ -754,7 +756,7 @@ Started</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Creating a Free Account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpt-E7-xcn">
-                                <rect key="frame" x="16" y="278.66666666666669" width="361" height="22"/>
+                                <rect key="frame" x="16" y="265.66666666666669" width="361" height="18.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
@@ -791,7 +793,10 @@ Started</string>
                     </view>
                     <size key="freeformSize" width="393" height="1000"/>
                     <connections>
+                        <outlet property="bgView" destination="uds-yd-OGF" id="7wk-rK-Q8b"/>
                         <outlet property="btnTerms" destination="gh7-nv-h5b" id="pXq-2o-crf"/>
+                        <outlet property="containerView" destination="7St-cM-AIx" id="BGo-jU-meC"/>
+                        <outlet property="lblTerms" destination="cdp-hB-8ev" id="UFT-Bk-mZv"/>
                         <outlet property="txtEmail" destination="77m-VG-NVI" id="boq-Za-vxc"/>
                         <outlet property="txtFullName" destination="Pk7-VE-TFM" id="BFu-CO-pmo"/>
                         <outlet property="txtPassword" destination="ulN-EV-cYq" id="vCM-d8-7Xh"/>
@@ -821,7 +826,7 @@ Started</string>
                                 <rect key="frame" x="0.0" y="301" width="393" height="551"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7ar-ml-s2O">
-                                        <rect key="frame" x="16" y="360.33333333333337" width="361" height="52"/>
+                                        <rect key="frame" x="16" y="348" width="361" height="52"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgY-Iy-0aB">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -846,32 +851,32 @@ Started</string>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost There" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BI7-NW-Ot1">
-                                        <rect key="frame" x="16" y="122" width="361" height="44"/>
+                                        <rect key="frame" x="16" y="121.99999999999999" width="361" height="37.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-FX-Ouu">
-                                        <rect key="frame" x="16" y="172" width="361" height="38.333333333333343"/>
+                                        <rect key="frame" x="16" y="165.33333333333331" width="361" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUP-2S-23w" customClass="OTPView" customModule="Zupet" customModuleProvider="target">
-                                        <rect key="frame" x="44" y="260.33333333333337" width="305" height="50"/>
+                                        <rect key="frame" x="44" y="248" width="305" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="xzV-5y-mS6"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn’t receive any code? Resend Again" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLp-pq-fEl">
-                                        <rect key="frame" x="73" y="436.33333333333337" width="247" height="19.333333333333314"/>
+                                        <rect key="frame" x="73.666666666666686" y="424" width="246" height="16.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syH-m9-uoJ">
-                                        <rect key="frame" x="105.66666666666667" y="459.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
+                                        <rect key="frame" x="107.66666666666669" y="444.33333333333337" width="178" height="16.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -1085,7 +1090,7 @@ Zupet with You?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your pet type to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8Y-kd-D2V">
-                                <rect key="frame" x="16" y="267.33333333333331" width="361" height="22"/>
+                                <rect key="frame" x="16" y="267.33333333333331" width="361" height="18.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1207,7 +1212,7 @@ Pets nose</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C09-KK-G78">
-                                <rect key="frame" x="16" y="237.33333333333337" width="361" height="44"/>
+                                <rect key="frame" x="16" y="237.33333333333334" width="361" height="37.333333333333343"/>
                                 <string key="text">This helps us create a unique ID for 
 your furyy friend</string>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
@@ -1377,7 +1382,7 @@ your furyy friend</string>
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aj-FU-C4g">
-                                <rect key="frame" x="16" y="181" width="367" height="87.666666666666686"/>
+                                <rect key="frame" x="16" y="181" width="367" height="74.666666666666686"/>
                                 <string key="text">Tell us about 
 your Dog</string>
                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
@@ -1385,10 +1390,10 @@ your Dog</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WM2-nz-bKM">
-                                <rect key="frame" x="0.0" y="298.66666666666669" width="393" height="701.33333333333326"/>
+                                <rect key="frame" x="0.0" y="285.66666666666669" width="393" height="714.33333333333326"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-h4-3yW">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="701.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="714.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5St-71-Tq8">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="796"/>
@@ -1421,19 +1426,19 @@ your Dog</string>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7l-t2-2ix">
-                                                                                <rect key="frame" x="145" y="30" width="200" height="33"/>
+                                                                                <rect key="frame" x="145" y="30" width="200" height="28"/>
                                                                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="24"/>
                                                                                 <color key="textColor" name="TextBlack"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed.Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIv-va-Yga">
-                                                                                <rect key="frame" x="145" y="69" width="200" height="16.666666666666671"/>
+                                                                                <rect key="frame" x="145" y="63.999999999999993" width="200" height="16.666666666666664"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                                                 <color key="textColor" name="TextBlack"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height.Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQj-NO-agG">
-                                                                                <rect key="frame" x="145" y="89.666666666666629" width="200" height="16.666666666666671"/>
+                                                                                <rect key="frame" x="145" y="84.666666666666629" width="200" height="16.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                                                 <color key="textColor" name="TextBlack"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1788,7 +1793,7 @@ your Dog</string>
                                                                 <rect key="frame" x="0.0" y="684" width="393" height="72"/>
                                                                 <subviews>
                                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dy-on-jEp">
-                                                                        <rect key="frame" x="16" y="10.000000000000114" width="361" height="52"/>
+                                                                        <rect key="frame" x="16" y="10" width="361" height="52"/>
                                                                         <color key="backgroundColor" name="ThemeOrangeEnd"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="52" id="VAS-KP-HQ6"/>
@@ -1984,7 +1989,7 @@ your Dog</string>
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5r-mq-KRZ">
-                                <rect key="frame" x="16" y="181" width="367" height="87.666666666666686"/>
+                                <rect key="frame" x="16" y="181" width="367" height="74.666666666666686"/>
                                 <string key="text">Password
 Reset</string>
                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
@@ -1992,10 +1997,10 @@ Reset</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-Do-lOR">
-                                <rect key="frame" x="0.0" y="316.66666666666669" width="393" height="535.33333333333326"/>
+                                <rect key="frame" x="0.0" y="300.33333333333331" width="393" height="551.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="azk-Bf-TkZ">
-                                        <rect key="frame" x="0.0" y="301.99999999999994" width="393" height="60"/>
+                                        <rect key="frame" x="0.0" y="302.00000000000006" width="393" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5O6-z3-oeK">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -2034,7 +2039,7 @@ Reset</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-QK-phg">
-                                        <rect key="frame" x="16" y="383.99999999999994" width="361" height="52"/>
+                                        <rect key="frame" x="16" y="384.00000000000006" width="361" height="52"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbR-33-sL8">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -2062,7 +2067,7 @@ Reset</string>
                                         <rect key="frame" x="66.666666666666686" y="28" width="260" height="260"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Qb-PHT">
-                                        <rect key="frame" x="16" y="433.33333333333331" width="361" height="54"/>
+                                        <rect key="frame" x="16" y="449.66666666666669" width="361" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="vT0-cL-KLb"/>
                                         </constraints>
@@ -2092,7 +2097,7 @@ Reset</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Email account to reset password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-7q-ba6">
-                                <rect key="frame" x="16" y="278.66666666666669" width="361" height="22"/>
+                                <rect key="frame" x="16" y="265.66666666666669" width="361" height="18.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2175,26 +2180,26 @@ Reset</string>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost There" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTS-6Z-Dcf">
-                                        <rect key="frame" x="16" y="122" width="361" height="44"/>
+                                        <rect key="frame" x="16" y="121.99999999999999" width="361" height="37.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwJ-uX-LjD">
-                                        <rect key="frame" x="16" y="172" width="361" height="38.333333333333343"/>
+                                        <rect key="frame" x="16" y="165.33333333333331" width="361" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R2-7o-osy" customClass="OTPView" customModule="Zupet" customModuleProvider="target">
-                                        <rect key="frame" x="44" y="260.33333333333337" width="305" height="50"/>
+                                        <rect key="frame" x="44" y="248" width="305" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="mjq-If-GwR"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HV4-GP-iWp">
-                                        <rect key="frame" x="0.0" y="360.33333333333337" width="393" height="60"/>
+                                        <rect key="frame" x="0.0" y="348" width="393" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mo9-J5-Cyn">
                                                 <rect key="frame" x="16" y="4" width="361" height="52"/>
@@ -2285,6 +2290,7 @@ Reset</string>
         <image name="SplashBG" width="375" height="812"/>
         <image name="ic_app_name" width="157" height="109"/>
         <image name="ic_cat" width="149" height="264"/>
+        <image name="ic_checkbox" width="16" height="16"/>
         <image name="ic_dog" width="187" height="333"/>
         <image name="ic_dog2" width="150" height="265"/>
         <image name="ic_dog_with_shadow" width="144" height="199"/>

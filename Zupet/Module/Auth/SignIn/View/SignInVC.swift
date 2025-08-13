@@ -26,13 +26,27 @@ final class SignInVC: UIViewController {
     
     private var viewModel: SignInViewModel!
     private var didSetupGradients = false
+    private var credentialsManager : CredentialsManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-#if DEBUG
-        txtEmail.text = "p@yopmail.com"
-        txtPassword.text = "Qwerty@1234"
-#endif
+        
+        credentialsManager = CredentialsManager()
+        
+        if credentialsManager?.checkRememberMe() == true{
+            credentialsManager?.load { [weak self] email, password, rememberMe in
+                self?.txtEmail.text = email
+                self?.txtPassword.text = password
+                self?.btnRemember.isSelected = rememberMe
+            }
+        } else {
+            self.btnRemember.isSelected = false
+        }
+        
+        //#if DEBUG
+        //        txtEmail.text = "p@yopmail.com"
+        //        txtPassword.text = "Qwerty@1234"
+        //#endif
         viewModel = SignInViewModel(view: self) // Make view weak in ViewModel
     }
     
@@ -51,13 +65,18 @@ final class SignInVC: UIViewController {
     }
     
     @IBAction func rememberMeOnPress(_ sender: UIButton) {
-        sender.isSelected.toggle()
+        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func signOnPress(_ sender: UIButton) {
         Task { [weak self] in
             guard let self else { return }
             if await self.isValid() {
+                if btnRemember.isSelected {
+                    self.credentialsManager?.save(email: txtEmail.text ?? "", password: txtPassword.text ?? "", rememberMe: true)
+                } else {
+                    self.credentialsManager?.clear()
+                }
                 self.viewModel.callSignInApi()
             }
         }

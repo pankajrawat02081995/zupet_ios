@@ -11,13 +11,13 @@ class ActivityTableXIB: UITableViewCell {
 
     @IBOutlet weak var lblTime: UILabel!{
         didSet{
-            lblTime.font = .monroeRegular(12)
+            lblTime.font = .manropeRegular(12)
         }
     }
     
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
-            lblTime.font = .monroeRegular(14)
+            lblTime.font = .manropeRegular(14)
         }
     }
     

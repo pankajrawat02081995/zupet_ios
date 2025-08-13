@@ -31,7 +31,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Activity" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkt-Ih-y48">
-                        <rect key="frame" x="52" y="9.6666666666666643" width="136.66666666666666" height="25"/>
+                        <rect key="frame" x="48" y="9.6666666666666643" width="136.66666666666666" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="wuO-JD-Ddf"/>
                         </constraints>
@@ -54,13 +54,15 @@
                     <constraint firstAttribute="trailing" secondItem="eSl-We-yE9" secondAttribute="trailing" constant="16" id="Nsu-xe-W5d"/>
                     <constraint firstItem="Mf4-zy-CGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VTf-wQ-ISV"/>
                     <constraint firstItem="Mf4-zy-CGl" firstAttribute="centerY" secondItem="Zkt-Ih-y48" secondAttribute="centerY" id="VlJ-be-Tnx"/>
-                    <constraint firstItem="Zkt-Ih-y48" firstAttribute="leading" secondItem="Mf4-zy-CGl" secondAttribute="trailing" constant="12" id="aRn-nC-mQg"/>
+                    <constraint firstItem="Zkt-Ih-y48" firstAttribute="leading" secondItem="Mf4-zy-CGl" secondAttribute="trailing" constant="8" id="aRn-nC-mQg"/>
                     <constraint firstAttribute="bottom" secondItem="eSl-We-yE9" secondAttribute="bottom" constant="16" id="bSQ-dx-AXA"/>
                     <constraint firstItem="eSl-We-yE9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bmm-0c-bko"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="imgClock" destination="Mf4-zy-CGl" id="Bd3-lL-czy"/>
+                <outlet property="lblTitle" destination="Zkt-Ih-y48" id="xHC-Hp-bY7"/>
                 <outlet property="tabelViewHeight" destination="bvh-3O-SIH" id="dck-49-VfQ"/>
                 <outlet property="tableView" destination="eSl-We-yE9" id="nnX-s5-PaH"/>
             </connections>

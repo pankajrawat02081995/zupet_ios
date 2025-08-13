@@ -16,7 +16,7 @@ actor ToastManager {
     func showToast(
         message: String?,
         duration: TimeInterval = 2.0,
-        font: UIFont = .monroeBold(18),
+        font: UIFont = .manropeBold(18),
         backgroundColor: UIColor = UIColor.textBlack,
         textColor: UIColor = .textWhite
     ) async {

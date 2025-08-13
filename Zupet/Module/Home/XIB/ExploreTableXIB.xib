@@ -70,6 +70,10 @@
             <connections>
                 <outlet property="collectionView" destination="et5-lY-9bN" id="Pg3-u9-Kfs"/>
                 <outlet property="collectionViewHeight" destination="vWz-6d-9Xv" id="vd2-5O-KaN"/>
+                <outlet property="collectionViewTop" destination="4G2-bh-se1" id="bQe-2U-2Uv"/>
+                <outlet property="imgExplore" destination="Zga-Od-L0I" id="V7d-I5-opc"/>
+                <outlet property="imgExploreHieght" destination="YMK-ds-Om9" id="KXX-SA-wOy"/>
+                <outlet property="lblTitle" destination="BH8-kj-HDz" id="w8Y-bh-RKS"/>
             </connections>
             <point key="canvasLocation" x="44.274809160305338" y="11.971830985915494"/>
         </tableViewCell>

@@ -136,7 +136,7 @@ extension DropdownView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DropdownCell", for: indexPath)
         cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.font = .monroeRegular(14)
+        cell.textLabel?.font = .manropeRegular(14)
         cell.selectionStyle = .none
         return cell
     }

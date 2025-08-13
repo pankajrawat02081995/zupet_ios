@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWu-DX-NYn">
-                        <rect key="frame" x="385.66666666666669" y="0.0" width="72.333333333333314" height="21"/>
+                        <rect key="frame" x="401.66666666666669" y="0.0" width="72.333333333333314" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="72.329999999999998" id="SKr-0G-VOt"/>
                         </constraints>
@@ -50,7 +50,7 @@
                 <color key="backgroundColor" name="TextWhite"/>
                 <constraints>
                     <constraint firstItem="cdn-LY-amC" firstAttribute="leading" secondItem="k5C-rT-xg4" secondAttribute="trailing" constant="8" id="0kB-UF-4kC"/>
-                    <constraint firstAttribute="trailing" secondItem="fWu-DX-NYn" secondAttribute="trailing" constant="16" id="4hc-U4-NW6"/>
+                    <constraint firstAttribute="trailing" secondItem="fWu-DX-NYn" secondAttribute="trailing" id="4hc-U4-NW6"/>
                     <constraint firstItem="fWu-DX-NYn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdn-LY-amC" secondAttribute="trailing" constant="10" id="RRe-zS-cWt"/>
                     <constraint firstItem="k5C-rT-xg4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Va0-gT-xJW"/>
                     <constraint firstItem="cdn-LY-amC" firstAttribute="top" secondItem="k5C-rT-xg4" secondAttribute="top" constant="-4" id="eTf-8C-DS3"/>

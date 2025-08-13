@@ -20,6 +20,7 @@ enum ErrorMessages: String {
     case nouserfound = "No user found."
     case invalidURL = "Invalid view or URL."
     case completeOtp = "Please complete the OTP."
+    case TermsAndCondition = "By creating an account, you agree to our Terms and Conditions"
 }
 
 enum ConstantParam:String, Codable{
