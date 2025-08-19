@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // Start 2-second delayed navigation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             Task{
                 await self?.navigateToNextVC()
             }
@@ -30,19 +30,6 @@ class ViewController: UIViewController {
         bgView.updateGradientFrameIfNeeded()
     }
 
-    // MARK: - Navigation
-
-    private func navigateToNextVC() async {
-        // Replace "NextViewController" with your actual destination VC class
-         let token = await UserDefaultsManager.shared.get(UserData.self, forKey: UserDefaultsKey.LoginResponse)
-        if token.isNil {
-            set(OnboardingVC.self, from: .main)
-        }else{
-            set(TabbarVC.self, from: .tabbar)
-        }
-        
-    }
-
     // MARK: - Deinit (Debug)
 
     deinit {
@@ -50,3 +37,20 @@ class ViewController: UIViewController {
     }
 }
 
+
+class AppNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Hide navigation bar everywhere
+        self.setNavigationBarHidden(true, animated: false)
+        
+        // Enable swipe back gesture
+        self.interactivePopGestureRecognizer?.delegate = self
+        self.interactivePopGestureRecognizer?.isEnabled = true
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return self.viewControllers.count > 1
+    }
+}

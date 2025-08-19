@@ -50,7 +50,7 @@ final class SignInViewModel {
                 if response.success == true {
                     // You can call delegate or closure to notify view
                     await UserDefaultsManager.shared.set(response.data, forKey: UserDefaultsKey.LoginResponse)
-                    await self.view?.push(TabbarVC.self, from: .tabbar)
+                    await self.view?.navigateToNextVC()
                     await APIService.shared.fatchBreed()
                 }
 
@@ -87,16 +87,16 @@ final class SignInViewModel {
                 let jsonData = try await APIManagerHelper.shared.convertIntoData(from: parameters)
 
                 // Perform the network request and decode response into SignupModel
-                let response: SignupModel = try await APIManagerHelper.shared.handleRequest(
+                let response: SigninModel = try await APIManagerHelper.shared.handleRequest(
                     .postRequest(url: url, body: jsonData, method: .post, headers: [:]),
-                    responseType: SignupModel.self
+                    responseType: SigninModel.self
                 )
 
                 // Handle successful response
                 if response.success == true {
+                    await UserDefaultsManager.shared.set(response.data, forKey: UserDefaultsKey.LoginResponse)
                     // You can call delegate or closure to notify view
-//                    await self.view?.push(TabbarVC.self, from: .tabbar)
-                    await self.view?.push(PetDetailVC.self, from: .main)
+                    await self.view?.navigateToNextVC()
                     await APIService.shared.fatchBreed()
                 }
 

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSCameraUsageDescription</key>
+    <string>This app needs camera access to allow you to take photos of your pets.</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses your location to help you find nearby vets and pet services.</string>
+
     <key>GIDClientID</key>
     <string>198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1.apps.googleusercontent.com</string>
 

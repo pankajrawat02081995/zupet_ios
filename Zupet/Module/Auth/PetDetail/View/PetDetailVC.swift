@@ -11,6 +11,8 @@ class PetDetailVC: UIViewController {
     
     // MARK: - Outlets
     
+    
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var containerView: UIView!{
         didSet {
@@ -45,11 +47,15 @@ class PetDetailVC: UIViewController {
     private let heightFeetOptions: [String] = ["0 ft", "1 ft", "2 ft", "3 ft", "4 ft", "5 ft", "6 ft", "7 ft"]
     private let heightInchOptions: [String] = ["0 inch", "1 inch", "2 inch", "3 inch", "4 inch", "5 inch", "6 inch", "7 inch", "8 inch", "9 inch", "10 inch", "11 inch"]
 
-    private var breedOptions: BreedData?
-
+    private var breedOptions: [String]?
+    var petSpecies: String?
+    @IBOutlet weak var lblTitle: UILabel!{
+        didSet{
+            lblTitle.text = "Tell us about \nyour \(petSpecies ?? "")"
+        }
+    }
     func loadBreedOptions() async {
-        breedOptions = await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)
-        debugPrint(await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catBreeds ?? [])
+        breedOptions =  petSpecies == "dog" ? await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.dogBreeds ?? [] : await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catBreeds ?? []
     }
     
     // MARK: - Lifecycle
@@ -91,7 +97,7 @@ class PetDetailVC: UIViewController {
         
         // Add real-time change listeners
         txtPetName.addTarget(self, action: #selector(petNameChanged), for: .editingChanged)
-        txtSpecies.addTarget(self, action: #selector(speciesInfoChanged), for: .editingDidBegin)
+//        txtSpecies.addTarget(self, action: #selector(speciesInfoChanged), for: .editingDidBegin)
         txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
         txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
         txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
@@ -114,6 +120,7 @@ class PetDetailVC: UIViewController {
                 guard let self else { return }
                 Log.debug(selection)
                 self.txtSpecies.text = selection
+                self.txtBreed.text = ""
                 self.lblBreed.text = "\(selection) . \(self.txtAge.text ?? "")"
             }
         }
@@ -122,22 +129,25 @@ class PetDetailVC: UIViewController {
     /// Combines species and age into breed label
     @objc private func ageInfoChanged() {
         self.txtAge.resignFirstResponder()
-        dropDown?.show(from: self.txtAge, data: ["1","2","3","4","5"], onSelect: {[weak self] (index) in
+        dropDown?.show(from: self.txtAge, data: ["1","2","3","4","5","6","7","8","9","10","11","12"], onSelect: {[weak self] (index) in
             guard let self = self else { return }
             Log.debug(index)
-            let species = self.txtSpecies.text ?? ""
+            let species = self.txtBreed.text ?? ""
             self.txtAge.text = index
-            self.lblBreed.text = "\(species) . \(index)"
+            self.lblBreed.text = "\(species) . \(index) yrs"
         })
     }
     
     /// Combines species and age into breed label
     @objc private func breedInfoChanged() {
         self.txtBreed.resignFirstResponder()
-        dropDown?.show(from: self.txtBreed, data: breedOptions?.dogBreeds ?? [], onSelect: {[weak self] (index) in
+        if breedOptions?.isEmpty == true {return}
+        dropDown?.show(from: self.txtBreed, data: breedOptions ?? [], onSelect: {[weak self] (index) in
             guard let self = self else { return }
             Log.debug(index)
             self.txtBreed.text = index
+            self.lblBreed.text = "\(index) . \(self.txtAge.text ?? "")"
+
         })
     }
     
@@ -177,7 +187,9 @@ class PetDetailVC: UIViewController {
     
     @IBAction func continueButtonTapped(_ sender: UIButton) {
         Task{
-            viewModel.createPet()
+            if await isValid(){
+                viewModel.createPet()
+            }
         }
     }
     
@@ -196,13 +208,28 @@ class PetDetailVC: UIViewController {
             return false
         }
         
-        if txtSpecies.trim().isEmpty {
-            await ToastManager.shared.showToast(message: ErrorMessages.petSpecies.rawValue)
+        if txtBreed.trim().isEmpty {
+            await ToastManager.shared.showToast(message: ErrorMessages.petBreed.rawValue)
             return false
         }
         
         if txtAge.trim().isEmpty {
-            await ToastManager.shared.showToast(message: ErrorMessages.petSpecies.rawValue)
+            await ToastManager.shared.showToast(message: ErrorMessages.petAge.rawValue)
+            return false
+        }
+        
+        if txtHeight.trim().isEmpty {
+            await ToastManager.shared.showToast(message: ErrorMessages.petHeightft.rawValue)
+            return false
+        }
+        
+        if txtHeightInch.trim().isEmpty {
+            await ToastManager.shared.showToast(message: ErrorMessages.petHeightinch.rawValue)
+            return false
+        }
+        
+        if txtWeight.trim().isEmpty {
+            await ToastManager.shared.showToast(message: ErrorMessages.petWeight.rawValue)
             return false
         }
         

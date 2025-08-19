@@ -9,12 +9,17 @@ enum ErrorMessages: String {
     case invalidEmail = "Enter a valid email address."
     case invalidPhone = "Enter a valid phone number."
     case fullName = "Enter full name."
+    case petWeight = "Please enter pet weight."
+    case petHeightft = "Please enter pet height(ft)."
+    case petHeightinch = "Please enter pet height(inch)."
     case phone = "Enter phone number."
     case invalidPassword = "Password must be at least 8 characters, include uppercase, lowercase, and a number."
     case requiredField = "This field is required"
     case passwordRequired = "Password cannot be empty."
     case petName = "Pet Name cannot be empty."
     case petSpecies = "Please choose a species"
+    case petAge = "Please choose pet age"
+    case petBreed = "Please choose pet breed"
     case emailRequired = "Email cannot be empty."
     case somethingWentWrong = "Something went wrong."
     case nouserfound = "No user found."
@@ -43,6 +48,7 @@ enum ConstantParam:String, Codable{
 }
 
 struct ConstantApiParam{
+    static let Phone = "phone"
     static let FullName = "fullName"
     static let UserID = "user_id"
     static let Password = "password"

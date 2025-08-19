@@ -31,7 +31,7 @@ final class PetDetailsViewModel{
             // Construct request parameters
             let parameters: [String: Any] = await [
                 ConstantApiParam.name: self.view?.txtPetName.text ?? "",
-                ConstantApiParam.species: self.view?.txtSpecies.text ?? "",
+                ConstantApiParam.species: self.view?.petSpecies ?? "",
                 ConstantApiParam.noseId: "1234",
                 ConstantApiParam.breed : self.view?.txtBreed.text ?? "",
                 ConstantApiParam.age: Int(self.view?.txtAge.text ?? "") ?? 0,
@@ -55,6 +55,9 @@ final class PetDetailsViewModel{
                 // Handle successful response
                 if response.success == true {
                     // You can call delegate or closure to notify view
+                    var user = await UserDefaultsManager.shared.fatchCurentUser()
+                    user?.petsCount = 1
+                    await UserDefaultsManager.shared.set(user, forKey: UserDefaultsKey.LoginResponse)
                     await self.view?.push(WelcomeVC.self, from: .main)
                 }
                 

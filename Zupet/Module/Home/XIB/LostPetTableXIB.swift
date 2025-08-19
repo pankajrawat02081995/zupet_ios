@@ -14,6 +14,7 @@ final class LostPetTableXIB: UITableViewCell {
     
     private var items: [String] = [] // Replace String with your model type
     
+    var helpPress : ((Int)->Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
@@ -62,6 +63,10 @@ extension LostPetTableXIB: UICollectionViewDataSource {
          let cell : LostPetCollectionXIB = collectionView.dequeueReusableCell(for: indexPath)
 //        let items = ["asdad","asdasd","asdasd"]
 //        cell.configure(with: items[indexPath.item])
+        cell.helpPress = { [weak self] index in
+            guard self != nil else {return}
+            self?.helpPress?(index)
+        }
         return cell
     }
 }

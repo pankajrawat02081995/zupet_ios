@@ -74,8 +74,8 @@ actor UserDefaultsManager {
     }
  
     
-    func fatchCurentUser() async -> SigninModel?{
-        return await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)
+    func fatchCurentUser() async -> UserData?{
+        return await UserDefaultsManager.shared.get(UserData.self, forKey: UserDefaultsKey.LoginResponse)
     }
     
 }

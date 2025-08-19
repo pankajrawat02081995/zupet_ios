@@ -9,6 +9,15 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!{
+        didSet{
+            Task{
+                lblTitle.text = "Hello \(await UserDefaultsManager.shared.fatchCurentUser()?.fullName ?? "")"
+            }
+        }
+    }
+    
     @IBOutlet weak var containerView: UIView!{
         didSet {
             containerView.layer.cornerRadius = 24
@@ -20,10 +29,11 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bgView: UIView!
     private var petList: [String] = ["Pet1", "Pet2", "Pet3"] // Replace with your model later
-
+    private var viewModel : HomeViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel = HomeViewModel(view: self)
         setupTableView()
     }
     
@@ -58,6 +68,11 @@ class HomeVC: UIViewController {
         tableView.estimatedRowHeight = 200
     }
 
+    @IBAction func imgUserOnPress(_ sender: UIButton) {
+        presentPopup(from: self, mainTitle: .Logout, subTitle: .Logout, btnOkTitle: .Yes, btnCancelTitle: .No) {
+            self.viewModel?.callLogoutApi()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -83,6 +98,14 @@ extension HomeVC: UITableViewDataSource {
             }
             let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
             cell.configure(with: apiData, tableView: tableView)
+            cell.isExploreTaped = { [weak self] exploreType in
+                guard self != nil else {return}
+                if exploreType == .FindVeterinary{
+                    self?.push(FindVetVC.self, from: .vet)
+                }else if exploreType == .MoodChecker{
+                    self?.push(MoodDetectionVC.self, from: .home)
+                }
+            }
             return cell
         }else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentActivityTableXIB", for: indexPath) as? RecentActivityTableXIB else {
@@ -106,6 +129,10 @@ extension HomeVC: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configure(with: ["asdad","asdasd","asdasd"])
+            cell.helpPress = { [weak self] index in
+                guard self != nil else {return}
+                self?.push(LostPetAlertVC.self, from: .home)
+            }
             return cell
         }
         return UITableViewCell()

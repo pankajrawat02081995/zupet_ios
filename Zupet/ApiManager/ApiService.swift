@@ -234,11 +234,11 @@ public actor APIManager {
         }
         
         Log.debug("**** Api: \(url.absoluteString)")
-        Log.debug("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")")
+        Log.debug("Bearer \(await UserDefaultsManager.shared.fatchCurentUser()?.token ?? "")")
         
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalCacheData
-        request.setValue("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(await UserDefaultsManager.shared.fatchCurentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
         
         setHeaders(request: &request, headers: headers)
         
@@ -259,10 +259,10 @@ public actor APIManager {
             request.httpMethod = method.rawValue
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = body
-            request.setValue("Bearer \(await UserDefaultsManager.shared.get(SigninModel.self, forKey: UserDefaultsKey.LoginResponse)?.data?.token ?? "")", forHTTPHeaderField: "Authorization")
+            request.setValue("Bearer \(await UserDefaultsManager.shared.fatchCurentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
             
             setHeaders(request: &request, headers: headers)
-            
+            Log.debug(request)
             let (data, response) = try await session.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw APIError.invalidResponse

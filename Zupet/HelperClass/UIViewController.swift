@@ -48,6 +48,30 @@ enum PopButtonTitle:String{
 
 extension UIViewController {
     
+    // MARK: - Navigation
+
+     func navigateToNextVC() async {
+        let user = await UserDefaultsManager.shared.fatchCurentUser()
+        var destination: UIViewController
+
+        if user?.token?.isEmpty == true || user?.token == nil {
+            destination = OnboardingVC.instantiate(from: .main)
+        } else if user?.petsCount ?? 0 == 0 {
+            destination = LetsStartVC.instantiate(from: .main)
+        } else {
+            destination = TabbarVC.instantiate(from: .tabbar)
+        }
+
+        // Safely get current window scene
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
+            
+            // Replace root with AppNavigationController
+            window.rootViewController = AppNavigationController(rootViewController: destination)
+            window.makeKeyAndVisible()
+        }
+    }
+    
     func dictionaryFrom<T, V>(
         array: [T],
         keyPath: KeyPath<T, ConstantParam>,

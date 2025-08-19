@@ -23,7 +23,6 @@ class PetSelectionVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
-    @IBOutlet weak var pageController: PageIndicatorView!
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -67,12 +66,12 @@ class PetSelectionVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        pageController.numberOfPages = pages.count
-        pageController.currentPage = 0
     }
 
     @IBAction func continueOnPress(_ sender: UIButton) {
-        push(PetNoseScanerVC.self, from: .main)
+        push(PetNoseScanerVC.self, from: .main) { [weak self] vc in
+            vc.petSpecies = self?.pages.firstIndex(where: { $0.isSelected }) == 0 ? "Dog" : "Cat"
+        }
     }
 
     private func updateContinueButtonState() {
@@ -120,10 +119,6 @@ extension PetSelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         updateContinueButtonState() // 👈 important
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
-        pageController.currentPage = page
-    }
 }
 
 

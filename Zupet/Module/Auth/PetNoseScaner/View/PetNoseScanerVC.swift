@@ -22,7 +22,7 @@ class PetNoseScanerVC: UIViewController {
     @IBOutlet weak var btnFlash: UIButton!
     @IBOutlet weak var btnRefresh: UIButton!
     @IBOutlet weak var btnFlip: UIButton!
-    
+    var petSpecies : String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +41,9 @@ class PetNoseScanerVC: UIViewController {
     }
     
     @IBAction func continewOnPress(_ sender: UIButton) {
-        push(PetDetailVC.self, from: .main)
+        push(PetDetailVC.self, from: .main) { [weak self] vc in
+            vc.petSpecies = self?.petSpecies
+        }
     }
     
     @IBAction func flashOnPress(_ sender: UIButton) {

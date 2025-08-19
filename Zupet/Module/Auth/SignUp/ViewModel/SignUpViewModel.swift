@@ -35,7 +35,8 @@ final class SignUpViewModel {
             let parameters: [String: Any] = await [
                 ConstantApiParam.Email: self.view?.txtEmail.text ?? "",
                 ConstantApiParam.Password: self.view?.txtPassword.text ?? "",
-                ConstantApiParam.FullName: self.view?.txtFullName.text ?? ""
+                ConstantApiParam.FullName: self.view?.txtFullName.text ?? "",
+                ConstantApiParam.Phone: self.view?.txtPhone.text ?? ""
             ]
 
             do {

@@ -22,6 +22,7 @@ enum APIConstants{
     static var signup: URL? { url("users/auth/signup") }
     static var forgotPassword: URL? { url("users/auth/forgot-password") }
     static var socialLogin: URL? { url("users/auth/social") }
+    static var logout: URL? { url("users/profile/logout") }
     
     static var petCreate: URL? { url("pets/create") }
     static var petBreed: URL? { url("pets/breeds") }

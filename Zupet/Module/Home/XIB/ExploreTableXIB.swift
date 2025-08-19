@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ExploreType{
+    case FindVeterinary
+    case MoodChecker
+}
 class ExploreTableXIB: UITableViewCell {
     
     @IBOutlet weak var imgExplore: UIImageView!
@@ -20,6 +24,7 @@ class ExploreTableXIB: UITableViewCell {
     private let numberOfColumns: CGFloat = 2
     private let cellSpacing: CGFloat = 16
     
+    var isExploreTaped : ((ExploreType)->Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
@@ -105,5 +110,13 @@ extension ExploreTableXIB: UICollectionViewDelegateFlowLayout,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - (numberOfColumns - 1) * cellSpacing) / numberOfColumns
         return CGSize(width: width, height: width / 1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0{
+            isExploreTaped?(.MoodChecker)
+        }else if indexPath.item == 3{
+            isExploreTaped?(.FindVeterinary)
+        }
     }
 }

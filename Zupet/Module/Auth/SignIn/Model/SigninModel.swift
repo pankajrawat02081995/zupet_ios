@@ -20,7 +20,7 @@ struct UserData: Codable {
     let fullName: String?
     let avatar: String?
     let email: String?
-    let petsCount : Int?
+    var petsCount : Int?
 
     enum CodingKeys: String, CodingKey {
         case token

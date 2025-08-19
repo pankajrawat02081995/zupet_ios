@@ -45,10 +45,19 @@ public struct Validator {
     }
     
     // MARK: - Phone Number Validation (Basic)
+//    public static func isValidPhone(_ phone: String) -> Bool {
+//        let phoneRegex = #"^\d{10}$"#
+//        return phone.range(of: phoneRegex, options: .regularExpression) != nil
+//    }
     public static func isValidPhone(_ phone: String) -> Bool {
-        let phoneRegex = #"^\d{10}$"#
+        // ✅ Allows:
+        // - 10 digits (e.g. 9876543210)
+        // - +91 followed by 10 digits
+        // - +1 followed by 10 digits, etc.
+        let phoneRegex = #"^(\+\d{1,3})?\d{10}$"#
         return phone.range(of: phoneRegex, options: .regularExpression) != nil
     }
+
     
     // MARK: - Password Validation
     /// At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character

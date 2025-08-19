@@ -104,24 +104,36 @@ public extension UITextField {
     }
     
     @IBInspectable var leftImage: UIImage? {
-        get { return nil } // Not used for getting
-        set {
-            if let image = newValue {
-                let imageView = UIImageView(image: image)
-                imageView.contentMode = .scaleAspectFit
-                
-                let containerWidth: CGFloat = 36 // image width + padding
-                let container = UIView(frame: CGRect(x: 0, y: 0, width: containerWidth, height: 24))
-                imageView.frame = CGRect(x: 8, y: 0, width: 20, height: 24) // 8pt padding
-                container.addSubview(imageView)
-                
-                leftView = container
-                leftViewMode = .always
-            } else {
-                leftView = nil
+            get { return (leftView as? UIImageView)?.image }
+            set {
+                if let image = newValue {
+                    let imageView = UIImageView(image: image)
+                    imageView.contentMode = .scaleAspectFit
+
+                    // Match textfield height dynamically
+                    let padding: CGFloat = 8
+                    let imageSize: CGFloat = 20
+                    let height = self.frame.height
+
+                    let containerWidth = imageSize + padding * 2
+                    let container = UIView(frame: CGRect(x: 0, y: 0, width: containerWidth, height: height))
+
+                    // Center image vertically
+                    imageView.frame = CGRect(
+                        x: padding,
+                        y: (height - imageSize) / 2,
+                        width: imageSize,
+                        height: imageSize
+                    )
+
+                    container.addSubview(imageView)
+                    leftView = container
+                    leftViewMode = .always
+                } else {
+                    leftView = nil
+                }
             }
         }
-    }
     
     @IBInspectable var rightImage: UIImage? {
         get { return nil }
@@ -265,5 +277,57 @@ public extension UITextView {
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: textContainerInset.left + textContainer.lineFragmentPadding),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(textContainerInset.right + textContainer.lineFragmentPadding))
         ])
+    }
+}
+
+@IBDesignable
+final class PasswordTextField: UITextField {
+    
+    private var rightImageView: UIImageView!
+    
+    @IBInspectable var passwordrightImage: UIImage? {
+        get { return rightImageView?.image }
+        set {
+            if let image = newValue {
+                setupRightView(with: image)
+            } else {
+                rightView = nil
+                rightImageView = nil
+            }
+        }
+    }
+    
+    private func setupRightView(with image: UIImage) {
+            // Create imageView
+            rightImageView = UIImageView(image: image)
+            rightImageView.contentMode = .scaleAspectFit
+            rightImageView.isUserInteractionEnabled = true
+            rightImageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+            
+            // Add tap
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRightImage))
+            rightImageView.addGestureRecognizer(tapGesture)
+            
+            // Wrap in container with extra padding
+            let containerWidth: CGFloat = 24 + 16   // icon size + right padding
+            let container = UIView(frame: CGRect(x: 0, y: 0, width: containerWidth, height: 30))
+            
+            // Place imageView with 16pt padding from right
+            rightImageView.frame.origin.x = containerWidth - 40
+            rightImageView.center.y = container.bounds.midY
+            container.addSubview(rightImageView)
+            
+            rightView = container
+            rightViewMode = .always
+        }
+        
+    
+    @objc private func didTapRightImage() {
+        // Toggle secure text entry
+        isSecureTextEntry.toggle()
+        
+        // Change icon
+        let newImage = isSecureTextEntry ? UIImage(named: "ic_eye") : UIImage(named: "ic_eye_off")
+        rightImageView.image = newImage
     }
 }

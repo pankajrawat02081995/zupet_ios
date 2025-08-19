@@ -92,6 +92,9 @@
                                                                         <real key="value" value="2"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="imgUserOnPress:" destination="eeq-Gy-au5" eventType="touchUpInside" id="onT-Bh-tKJ"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" name="TextWhite"/>
@@ -171,6 +174,8 @@
                     <connections>
                         <outlet property="bgView" destination="pCb-ea-mhw" id="Eex-gx-5DN"/>
                         <outlet property="containerView" destination="XB1-or-DMY" id="Wul-qU-4ot"/>
+                        <outlet property="lblSubTitle" destination="Ogf-xd-hHA" id="ZaU-k4-AFN"/>
+                        <outlet property="lblTitle" destination="TUD-1a-Vgc" id="aPH-c6-M8k"/>
                         <outlet property="tableView" destination="MFR-fb-2X1" id="j3d-FF-Oj2"/>
                     </connections>
                 </viewController>

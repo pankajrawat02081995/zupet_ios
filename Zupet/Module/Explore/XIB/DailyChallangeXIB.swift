@@ -45,10 +45,10 @@ final class DailyChallangeXIB: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imgPet.image = nil
-        lblTitle.text = nil
-        lblSubTitle.text = nil
-        onChallengeTap = nil
+//        imgPet.image = nil
+//        lblTitle.text = nil
+//        lblSubTitle.text = nil
+//        onChallengeTap = nil
     }
     
     // MARK: - Configuration
@@ -56,7 +56,7 @@ final class DailyChallangeXIB: UITableViewCell {
     func configure(image: UIImage?,
                    subtitle: String,
                    onTap: (() -> Void)? = nil) {
-        imgPet.image = image
+//        imgPet.image = image
         lblSubTitle.text = subtitle
         onChallengeTap = onTap
     }

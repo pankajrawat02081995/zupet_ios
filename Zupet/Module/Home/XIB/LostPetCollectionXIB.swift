@@ -21,11 +21,15 @@ class LostPetCollectionXIB: UICollectionViewCell {
         }
     }
     @IBOutlet weak var imgPet: UIImageView!
+    
+    var helpPress : ((Int)->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     @IBAction func helpOnPress(_ sender: UIButton) {
+        helpPress?(sender.tag)
     }
 }

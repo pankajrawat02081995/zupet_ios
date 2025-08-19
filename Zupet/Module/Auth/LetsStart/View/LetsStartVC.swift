@@ -35,7 +35,10 @@ class LetsStartVC: UIViewController {
     }
 
     @IBAction func startOnPress(_ sender: UIButton) {
-        push(PetSelectionVC.self, from: .main)
+        Task{ [weak self] in
+            self?.push(PetSelectionVC.self, from: .main)
+            APIService.shared.fatchBreed()
+        }
     }
     
 }

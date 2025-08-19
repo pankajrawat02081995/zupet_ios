@@ -93,6 +93,8 @@ extension UIView {
 
     private struct AssociatedKeys {
         static var gradientLayer = 1001
+        static var passwordImages = 11
+        static var passwordImageView = 111
     }
 
     private var storedGradientLayer: CAGradientLayer? {
