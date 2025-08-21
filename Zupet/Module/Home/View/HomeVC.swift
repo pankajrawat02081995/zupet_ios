@@ -30,7 +30,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var bgView: UIView!
     private var petList: [String] = ["Pet1", "Pet2", "Pet3"] // Replace with your model later
     private var viewModel : HomeViewModel?
-    
+    var petID : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HomeViewModel(view: self)
@@ -79,35 +79,61 @@ class HomeVC: UIViewController {
 // MARK: - UITableViewDataSource
 extension HomeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.homeModel?.numberOfSections() ?? 0
+        return viewModel?.homeModel?.getAllSections().count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0{
-//            return viewModel?.homeModel?.numberOfRows(for: viewModel?.homeModel?.allPets().first?.id ?? "") ?? 0
-//        }else{
+        guard let sectionKey = viewModel?.homeModel?.getAllSections()[section] else {
+            return 0
+        }
+        
+        switch sectionKey {
+        case "homeSection":
+            // Example: return count from your model
+            return viewModel?.homeModel?.getSections(for: self.petID ?? "").count ?? 0
+            
+        case "lostSection":
             return 1
-//        }
+            
+        default:
+            return 0
+        }
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0{
-            if indexPath.row == 0 {
+        
+        
+        guard let sectionKey = viewModel?.homeModel?.getAllSections()[indexPath.section] else {
+            return UITableViewCell()
+        }
+        
+        switch sectionKey {
+        case "homeSection":
+            guard let rowKey = viewModel?.homeModel?.getSections(for: self.petID ?? "" )[indexPath.row] else {
+                return UITableViewCell()
+            }
+            
+            switch rowKey {
+            case "petCardSection":
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableCellXIB", for: indexPath) as? PetTableCellXIB else {
                     return UITableViewCell()
                 }
-                cell.configure(with: viewModel?.homeModel?.allPets() ?? [])
+                let index = viewModel?.homeModel?.getAllPets().firstIndex { pet in
+                    pet.id == self.petID ?? ""
+                }
+                cell.configure(with: viewModel?.homeModel?.getAllPets() ?? [], index: index ?? 0)
                 cell.petID = { [weak self] id in
                     guard let self = self else {return}
-                    self.viewModel?.getPetData(petID: id)
+                    self.petID = id
+                    self.tableView.reloadData()
                 }
                 return cell
-            }else if indexPath.row == 1 {
+            case "exploreSection":
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreTableXIB", for: indexPath) as? ExploreTableXIB else {
                     return UITableViewCell()
                 }
-                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-                cell.configure(with: apiData, tableView: tableView)
+                cell.configure(with: viewModel?.homeModel?.getExplore(for: self.petID ?? "") ?? [], tableView: tableView)
                 cell.isExploreTaped = { [weak self] exploreType in
                     guard self != nil else {return}
                     if exploreType == .FindVeterinary{
@@ -117,26 +143,27 @@ extension HomeVC: UITableViewDataSource {
                     }
                 }
                 return cell
-            }else if indexPath.row == 2 {
+            case "recentActivitySection":
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentActivityTableXIB", for: indexPath) as? RecentActivityTableXIB else {
                     return UITableViewCell()
                 }
-                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-                cell.configure(with: apiData)
+                cell.configure(with: viewModel?.homeModel?.getRecentActivity(for: self.petID ?? "") ?? [])
                 cell.onHeightChange = { [weak self] in
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 }
                 return cell
-            }else if indexPath.row == 3 {
+            case "aboutSection":
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutPetTableXIB", for: indexPath) as? AboutPetTableXIB else {
                     return UITableViewCell()
                 }
-                
+                cell.configure(with: viewModel?.homeModel?.getAbout(for: self.petID ?? "") ?? [], title: "About \(viewModel?.homeModel?.getPetDetails(by: self.petID ?? "")?.name ?? "")")
                 return cell
+            default:
+                break
             }
-        }
-        else if  indexPath.section == 1 {
+            
+        case "lostSection":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LostPetTableXIB", for: indexPath) as? LostPetTableXIB else {
                 return UITableViewCell()
             }
@@ -146,7 +173,71 @@ extension HomeVC: UITableViewDataSource {
                 self?.push(LostPetAlertVC.self, from: .home)
             }
             return cell
+            
+        default:
+            return UITableViewCell()
         }
+        
+        
+        
+        
+        
+        //        if indexPath.section == 0{
+        //            if indexPath.row == 0 {
+        //                guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableCellXIB", for: indexPath) as? PetTableCellXIB else {
+        //                    return UITableViewCell()
+        //                }
+        ////                cell.configure(with: viewModel?.homeModel?.allPets() ?? [])
+        //                cell.petID = { [weak self] id in
+        //                    guard let self = self else {return}
+        //                    self.viewModel?.getPetData(petID: id)
+        //                }
+        //                return cell
+        //            }else if indexPath.row == 1 {
+        //                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreTableXIB", for: indexPath) as? ExploreTableXIB else {
+        //                    return UITableViewCell()
+        //                }
+        //                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
+        //                cell.configure(with: apiData, tableView: tableView)
+        //                cell.isExploreTaped = { [weak self] exploreType in
+        //                    guard self != nil else {return}
+        //                    if exploreType == .FindVeterinary{
+        //                        self?.push(FindVetVC.self, from: .vet)
+        //                    }else if exploreType == .MoodChecker{
+        //                        self?.push(MoodDetectionVC.self, from: .home)
+        //                    }
+        //                }
+        //                return cell
+        //            }else if indexPath.row == 2 {
+        //                guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentActivityTableXIB", for: indexPath) as? RecentActivityTableXIB else {
+        //                    return UITableViewCell()
+        //                }
+        //                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
+        //                cell.configure(with: apiData)
+        //                cell.onHeightChange = { [weak self] in
+        //                    self?.tableView.beginUpdates()
+        //                    self?.tableView.endUpdates()
+        //                }
+        //                return cell
+        //            }else if indexPath.row == 3 {
+        //                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutPetTableXIB", for: indexPath) as? AboutPetTableXIB else {
+        //                    return UITableViewCell()
+        //                }
+        //
+        //                return cell
+        //            }
+        //        }
+        //        else if  indexPath.section == 1 {
+        //            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LostPetTableXIB", for: indexPath) as? LostPetTableXIB else {
+        //                return UITableViewCell()
+        //            }
+        //            cell.configure(with: ["asdad","asdasd","asdasd"])
+        //            cell.helpPress = { [weak self] index in
+        //                guard self != nil else {return}
+        //                self?.push(LostPetAlertVC.self, from: .home)
+        //            }
+        //            return cell
+        //        }
         return UITableViewCell()
     }
 }

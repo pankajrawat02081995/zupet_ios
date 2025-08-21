@@ -72,7 +72,7 @@ extension MoodDetectionVC: UITableViewDataSource {
         }else{
             let cell : RecentActivityTableXIB = tableView.dequeueReusableCell(for: indexPath)
             let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-            cell.configure(with: apiData)
+            cell.configureCustom(with: apiData)
             cell.onHeightChange = { [weak self] in
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()

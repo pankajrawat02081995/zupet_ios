@@ -12,7 +12,7 @@ final class AboutPetTableXIB: UITableViewCell {
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
 
-    private var items: [String] = [] // Replace String with your model if needed
+    private var items: [AboutItem] = [] // Replace String with your model if needed
     private let numberOfColumns: CGFloat = 3
     private let cellSpacing: CGFloat = 16
 
@@ -35,7 +35,7 @@ final class AboutPetTableXIB: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
     }
 
-    func configure(with items: [String], title: String) {
+    func configure(with items: [AboutItem], title: String) {
         self.items = items
         lblTitle.text = title
         collectionView.reloadData()
@@ -50,7 +50,7 @@ extension AboutPetTableXIB: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell : AboutPetCollectionXIB = collectionView.dequeueReusableCell(for: indexPath)
-//        cell.configure(aboutItem: items[indexPath.item])
+        cell.configure(aboutItem: items[indexPath.item])
         return cell
     }
 }

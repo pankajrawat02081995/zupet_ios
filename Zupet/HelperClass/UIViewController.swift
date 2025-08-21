@@ -59,7 +59,7 @@ extension UIViewController {
         } else if user?.petsCount ?? 0 == 0 {
             destination = LetsStartVC.instantiate(from: .main)
         } else {
-            destination = VetDetailsVC.instantiate(from: .vet)
+            destination = TabbarVC.instantiate(from: .tabbar)
         }
 
         // Safely get current window scene

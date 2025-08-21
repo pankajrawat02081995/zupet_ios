@@ -21,7 +21,7 @@ class ExploreTableXIB: UITableViewCell {
     @IBOutlet weak var imgExploreHieght: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var items: [String] = []
+    private var items: [ExploreItem] = []
     private let numberOfColumns: CGFloat = 2
     private let cellSpacing: CGFloat = 16
     
@@ -37,7 +37,7 @@ class ExploreTableXIB: UITableViewCell {
         updateCollectionHeight()
     }
     
-    func configure(with items: [String], tableView: UITableView,isHome:Bool=true) {
+    func configure(with items: [ExploreItem], tableView: UITableView,isHome:Bool=true) {
         self.items = items
         collectionView.reloadData()
         

@@ -26,9 +26,9 @@ class AboutPetCollectionXIB: UICollectionViewCell {
         // Initialization code
     }
     
-//    func configure(aboutItem:AboutItem){
-//        lblTitle.text = aboutItem.title 
-//        lblSubtitle.text = "\(aboutItem.dese ?? 0)"
-//    }
+    func configure(aboutItem:AboutItem){
+        lblTitle.text = aboutItem.title
+        lblSubtitle.text = "\(aboutItem.description.valueAsString ?? "")"
+    }
 
 }

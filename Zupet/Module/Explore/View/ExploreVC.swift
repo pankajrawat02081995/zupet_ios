@@ -91,7 +91,7 @@ extension ExploreVC: UITableViewDataSource {
         case 1:
             let cell: ExploreTableXIB = tableView.dequeueReusableCell(for: indexPath)
             let apiData = ["Events & Meetups", "Training Tips", "Health Tips", "Breed Analyzer"]
-//            cell.configure(with: apiData, tableView: tableView, isHome: false)
+            cell.configure(with: [], tableView: tableView, isHome: false)
             return cell
             
         case 2, 3:
@@ -99,7 +99,7 @@ extension ExploreVC: UITableViewDataSource {
                 return UITableViewCell()
             }
             let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-            cell.configure(with: apiData, xibType: indexPath.section == 2 ? .trending : .nearYou)
+            cell.configureCustom(with: apiData, xibType: indexPath.section == 2 ? .trending : .nearYou)
             
             // Prevent retain cycle by capturing self weakly
             cell.onHeightChange = { [weak self] in

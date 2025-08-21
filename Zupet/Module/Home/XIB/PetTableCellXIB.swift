@@ -22,10 +22,10 @@ class PetTableCellXIB: UITableViewCell {
     }
     
     // MARK: - Public Setup Method
-    func configure(with pets: [Pet]) {
+    func configure(with pets: [Pet],index:Int) {
         self.pets = pets
-        pageIndicator.numberOfPages = pets.count   // ✅ number of inner
-        pageIndicator.currentPage = 0
+        pageIndicator.numberOfPages = pets.count
+        pageIndicator.currentPage = index
         collectionView.reloadData()
         
         // Layout update after reload to ensure correct sizing

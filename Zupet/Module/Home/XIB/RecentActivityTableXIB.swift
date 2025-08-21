@@ -22,12 +22,12 @@ final class RecentActivityTableXIB: UITableViewCell {
     @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Properties
-    private var items: [String] = []
+    private var items: [RecentActivity] = []
     private var xibType: XIBType = .recentActivity
     
     /// Callback to notify parent when height changes
     var onHeightChange: (() -> Void)?
-    
+    private var dummyData : [String] = []
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,8 +57,36 @@ final class RecentActivityTableXIB: UITableViewCell {
     }
     
     // MARK: - Configuration
-    func configure(with activities: [String], xibType: XIBType = .recentActivity) {
+    func configure(with activities: [RecentActivity], xibType: XIBType = .recentActivity) {
         self.items = activities
+        self.xibType = xibType
+        
+        switch xibType {
+        case .trending:
+            lblTitle.text = "Trending Topics"
+            imgClock.image = UIImage(named: "ic_trend")
+            tableView.estimatedRowHeight = 104
+            
+        case .nearYou:
+            lblTitle.text = "Near You"
+            imgClock.image = UIImage(named: "ic_near_you")
+            tableView.estimatedRowHeight = 76
+            
+        case .recentActivity:
+            lblTitle.text = "Recent Activity"
+            imgClock.image = UIImage(named: "ic_clock")
+            tableView.estimatedRowHeight = 44
+        }
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        
+        updateTableHeight()
+    }
+    
+    func configureCustom(with activities: [String], xibType: XIBType = .recentActivity) {
+        self.dummyData = activities
         self.xibType = xibType
         
         switch xibType {
@@ -101,7 +129,7 @@ final class RecentActivityTableXIB: UITableViewCell {
 // MARK: - UITableViewDataSource
 extension RecentActivityTableXIB: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        return xibType == .recentActivity ? items.count : dummyData.count
     }
     
     func tableView(_ tableView: UITableView,

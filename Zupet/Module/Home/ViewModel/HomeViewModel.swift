@@ -73,10 +73,29 @@ final class HomeViewModel {
                     responseType: HomeResponse.self
                 )
                 homeModel = response
-                Log.debug("Home response: \(response.allPets().count)")
+                
+
+                let pets = response.getAllPets()
+//                
+//                let sections = response.getSections(for: pets.first?.id ?? "")
+//                let explore = response.getExplore(for: "68a462a1b7468c4fb3747be3")
+//                let recent = response.getRecentActivity(for: "68a462a1b7468c4fb3747be3")
+//                let about = response.getAbout(for: "68a462a1b7468c4fb3747be3")
+//                let lost = response.getLostPets()
+//                
+//                debugPrint(pets.count)
+//                debugPrint(sections)
+//                debugPrint(response.getExplore(for: pets.first?.id ?? ""))
+//                debugPrint(response.getRecentActivity(for: pets.first?.id ?? ""))
+//                debugPrint(response.getAbout(for: pets.first?.id ?? ""))
+//                
+//                
                 // Handle successful response
                 if response.success == true {
-                    getPetData(petID: response.allPets().first?.id ?? "")
+                    DispatchQueue.main.async { [self] in
+                        self.view?.petID = pets.first?.id ?? ""
+                    }
+                    
                     await self.view?.tableView.reloadData()
                 }
                 
@@ -91,14 +110,14 @@ final class HomeViewModel {
     }
     
     func getPetData(petID:String){
-        if let context = homeModel?.context(for: petID) {
-            print("🐶 Pet: \(context.pet.name)")
-            if let explore = context.explore {
-                print("Explore count: \(explore.count)")
-            }
-            if let about = context.about {
-                print("About items: \(about.map { $0.title })")
-            }
-        }
+//        if let context = homeModel?.context(for: petID) {
+//            print("🐶 Pet: \(context.pet.name)")
+//            if let explore = context.explore {
+//                print("Explore count: \(explore.count)")
+//            }
+//            if let about = context.about {
+//                print("About items: \(about.map { $0.title })")
+//            }
+//        }
     }
 }

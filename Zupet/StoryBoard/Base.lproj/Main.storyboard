@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="Manrope-Bold.ttf">
             <string>Manrope-Bold</string>
         </array>
@@ -278,24 +281,20 @@ Back!</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-dC-Yvt">
-                                        <rect key="frame" x="16" y="234.33333333333331" width="22" height="22"/>
+                                        <rect key="frame" x="16" y="234.33333333333331" width="108" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="ZMc-zp-HWu"/>
-                                            <constraint firstAttribute="width" constant="22" id="hAQ-NV-4UC"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="ic_uncheckbox"/>
+                                        <state key="normal" title="   Remember me" image="ic_uncheckbox">
+                                            <color key="titleColor" name="AppGray"/>
+                                        </state>
                                         <state key="selected" image="ic_checkbox"/>
                                         <connections>
                                             <action selector="rememberMeOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="TTu-dX-6GZ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7e-b3-Bli">
-                                        <rect key="frame" x="46" y="236.99999999999994" width="81" height="16.666666666666657"/>
-                                        <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="12"/>
-                                        <color key="textColor" name="AppGray"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-KG-oTq">
                                         <rect key="frame" x="274" y="230.33333333333331" width="103" height="30"/>
                                         <constraints>
@@ -404,18 +403,16 @@ Back!</string>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="t7e-b3-Bli" firstAttribute="leading" secondItem="xUz-dC-Yvt" secondAttribute="trailing" constant="8" id="4kB-Mh-1T2"/>
                                     <constraint firstItem="h78-fB-158" firstAttribute="leading" secondItem="cMY-A5-TfF" secondAttribute="leading" constant="16" id="F5T-ic-J3I"/>
                                     <constraint firstItem="xUz-dC-Yvt" firstAttribute="leading" secondItem="cMY-A5-TfF" secondAttribute="leading" constant="16" id="N9I-EV-joO"/>
                                     <constraint firstAttribute="trailing" secondItem="h78-fB-158" secondAttribute="trailing" constant="16" id="SNd-cc-H48"/>
-                                    <constraint firstItem="xUz-dC-Yvt" firstAttribute="centerY" secondItem="t7e-b3-Bli" secondAttribute="centerY" id="WD9-wL-kwQ"/>
                                     <constraint firstItem="xUz-dC-Yvt" firstAttribute="top" secondItem="dfM-O0-Vqg" secondAttribute="bottom" constant="20" id="aCr-EQ-QU0"/>
                                     <constraint firstAttribute="trailing" secondItem="dfM-O0-Vqg" secondAttribute="trailing" id="d42-13-1ni"/>
                                     <constraint firstItem="h78-fB-158" firstAttribute="top" secondItem="Zil-KG-oTq" secondAttribute="bottom" constant="70" id="fdj-co-49Q"/>
                                     <constraint firstItem="WeL-ha-Kwr" firstAttribute="centerX" secondItem="cMY-A5-TfF" secondAttribute="centerX" id="gWH-sz-arq"/>
-                                    <constraint firstItem="Zil-KG-oTq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t7e-b3-Bli" secondAttribute="trailing" constant="8" symbolic="YES" id="get-LS-Scb"/>
-                                    <constraint firstItem="t7e-b3-Bli" firstAttribute="centerY" secondItem="Zil-KG-oTq" secondAttribute="centerY" id="k80-VZ-6CY"/>
+                                    <constraint firstItem="Zil-KG-oTq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xUz-dC-Yvt" secondAttribute="trailing" constant="8" symbolic="YES" id="iaP-Lp-M1C"/>
                                     <constraint firstItem="dfM-O0-Vqg" firstAttribute="leading" secondItem="cMY-A5-TfF" secondAttribute="leading" id="nfc-xc-noC"/>
+                                    <constraint firstItem="xUz-dC-Yvt" firstAttribute="centerY" secondItem="Zil-KG-oTq" secondAttribute="centerY" id="qqU-Wh-9t5"/>
                                     <constraint firstItem="Zil-KG-oTq" firstAttribute="trailing" secondItem="Moy-j1-Lfs" secondAttribute="trailing" id="ybj-op-XKU"/>
                                 </constraints>
                             </view>
@@ -876,7 +873,7 @@ Started</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syH-m9-uoJ">
-                                        <rect key="frame" x="105.66666666666669" y="459.66666666666663" width="182" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666667" y="459.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -1662,7 +1659,7 @@ your Dog</string>
                                                                         <color key="textColor" name="TextBlack"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3 yrs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w91-94-3jg">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w91-94-3jg">
                                                                         <rect key="frame" x="16" y="24.333333333333368" width="361" height="47.666666666666657"/>
                                                                         <color key="backgroundColor" name="AppLightGray"/>
                                                                         <color key="textColor" name="TextBlack"/>
@@ -1709,7 +1706,7 @@ your Dog</string>
                                                                                 <color key="textColor" name="TextBlack"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="2 ft" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-w9-1N6">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-w9-1N6">
                                                                                 <rect key="frame" x="16" y="24.333333333333368" width="172.66666666666666" height="47.666666666666657"/>
                                                                                 <color key="backgroundColor" name="AppLightGray"/>
                                                                                 <color key="textColor" name="TextBlack"/>
@@ -1753,7 +1750,7 @@ your Dog</string>
                                                                                 <color key="textColor" name="TextBlack"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3 inch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-3J-Esp">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-3J-Esp">
                                                                                 <rect key="frame" x="0.0" y="24.333333333333368" width="172.33333333333334" height="47.666666666666657"/>
                                                                                 <color key="backgroundColor" name="AppLightGray"/>
                                                                                 <color key="textColor" name="TextBlack"/>
@@ -1799,7 +1796,7 @@ your Dog</string>
                                                                         <color key="textColor" name="TextBlack"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="24 kg" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-gx-dMP">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-gx-dMP">
                                                                         <rect key="frame" x="16" y="24.333333333333368" width="361" height="47.666666666666657"/>
                                                                         <color key="backgroundColor" name="AppLightGray"/>
                                                                         <color key="textColor" name="TextBlack"/>

@@ -19,7 +19,11 @@ final class SignInVC: UIViewController {
     }
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: PasswordTextField!
-    @IBOutlet weak var btnRemember: UIButton!
+    @IBOutlet weak var btnRemember: UIButton!{
+        didSet{
+            btnRemember.titleLabel?.font = .manropeMedium(12)
+        }
+    }
     @IBOutlet weak var btnGoogle: UIButton!
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var bgView: UIView!

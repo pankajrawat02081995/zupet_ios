@@ -21,8 +21,9 @@ class ExploreCollectionXIB: UICollectionViewCell {
         // Initialization code
     }
     
-    func configure(with text: String) {
-        lblTitle.text = text
+    func configure(with explore: ExploreItem) {
+        lblTitle.text = explore.title
+        imgExplore.setImage(from: explore.icon)
     }
     
 }

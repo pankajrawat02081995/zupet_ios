@@ -51,6 +51,7 @@ class PetDetailVC: UIViewController {
     private var breedOptions: [String]?
     private var colorOptions: [String]?
     var petSpecies: String?
+    var ageDate : Date? = nil
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
             lblTitle.text = "Tell us about \nyour \(petSpecies ?? "")"
@@ -117,6 +118,13 @@ class PetDetailVC: UIViewController {
         lblPetName.text = txtPetName.text
     }
     
+    func getAge(from birthDate: Date) -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: now)
+        return ageComponents.year ?? 0
+    }
+    
     @objc private func speciesInfoChanged() {
         self.txtSpecies.resignFirstResponder()
         DispatchQueue.main.async { [weak self] in
@@ -126,7 +134,7 @@ class PetDetailVC: UIViewController {
                 Log.debug(selection)
                 self.txtSpecies.text = selection
                 self.txtBreed.text = ""
-                self.lblBreed.text = "\(selection) . \(self.txtAge.text ?? "")"
+                self.lblBreed.text = "\(selection) . \("\(self.getAge(from: self.ageDate ?? Date()))") yrs"
             }
         }
     }
@@ -134,13 +142,13 @@ class PetDetailVC: UIViewController {
     /// Combines species and age into breed label
     @objc private func ageInfoChanged() {
         self.txtAge.resignFirstResponder()
-        dropDown?.show(from: self.txtAge, data: ["1","2","3","4","5","6","7","8","9","10","11","12"], onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
+        DatePickerManager.shared.showDatePicker(from: self.txtAge) { dateString, date in
+            Log.debug("\(dateString)")
             let species = self.txtBreed.text ?? ""
-            self.txtAge.text = index
-            self.lblBreed.text = "\(species) . \(index) yrs"
-        })
+            self.txtAge.text = dateString
+            self.ageDate = date
+            self.lblBreed.text = "\(species) . \("\(self.getAge(from: date))") yrs"
+        }
     }
     
     /// Combines species and age into breed label
