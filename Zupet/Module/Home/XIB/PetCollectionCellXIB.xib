@@ -97,6 +97,9 @@
                 <constraint firstAttribute="trailing" secondItem="Ret-lv-Tms" secondAttribute="trailing" constant="16" id="svW-Y1-IOD"/>
             </constraints>
             <size key="customSize" width="388" height="145"/>
+            <connections>
+                <outlet property="lblName" destination="35J-BE-TD5" id="iyD-VK-TKU"/>
+            </connections>
             <point key="canvasLocation" x="309.92366412213738" y="32.04225352112676"/>
         </collectionViewCell>
     </objects>

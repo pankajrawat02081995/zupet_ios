@@ -34,6 +34,7 @@ class PetDetailVC: UIViewController {
     @IBOutlet weak var lblWeight: UILabel!
     @IBOutlet weak var txtWeight: UITextField!
     
+    @IBOutlet weak var txtColor: UITextField!
     @IBOutlet weak var txtSpecies: UITextField!
     
     @IBOutlet weak var lblBreed: UILabel!
@@ -48,6 +49,7 @@ class PetDetailVC: UIViewController {
     private let heightInchOptions: [String] = ["0 inch", "1 inch", "2 inch", "3 inch", "4 inch", "5 inch", "6 inch", "7 inch", "8 inch", "9 inch", "10 inch", "11 inch"]
 
     private var breedOptions: [String]?
+    private var colorOptions: [String]?
     var petSpecies: String?
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
@@ -56,6 +58,8 @@ class PetDetailVC: UIViewController {
     }
     func loadBreedOptions() async {
         breedOptions =  petSpecies == "dog" ? await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.dogBreeds ?? [] : await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catBreeds ?? []
+        colorOptions =  petSpecies == "dog" ? await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.dogColors ?? [] : await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catColors ?? []
+
     }
     
     // MARK: - Lifecycle
@@ -101,6 +105,7 @@ class PetDetailVC: UIViewController {
         txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
         txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
         txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
+        txtColor.addTarget(self, action: #selector(colorInfoChanged), for: .editingDidBegin)
         txtHeightInch.addTarget(self, action: #selector(heightInchInfoChanged), for: .editingDidBegin)
         txtWeight.addTarget(self, action: #selector(weightInfoChanged), for: .editingChanged)
     }
@@ -148,6 +153,16 @@ class PetDetailVC: UIViewController {
             self.txtBreed.text = index
             self.lblBreed.text = "\(index) . \(self.txtAge.text ?? "")"
 
+        })
+    }
+    
+    @objc private func colorInfoChanged() {
+        self.txtColor.resignFirstResponder()
+        if colorOptions?.isEmpty == true {return}
+        dropDown?.show(from: self.txtColor, data: colorOptions ?? [], onSelect: {[weak self] (index) in
+            guard let self = self else { return }
+            Log.debug(index)
+            self.txtColor.text = index
         })
     }
     
@@ -210,6 +225,11 @@ class PetDetailVC: UIViewController {
         
         if txtBreed.trim().isEmpty {
             await ToastManager.shared.showToast(message: ErrorMessages.petBreed.rawValue)
+            return false
+        }
+        
+        if txtColor.trim().isEmpty {
+            await ToastManager.shared.showToast(message: ErrorMessages.petColor.rawValue)
             return false
         }
         

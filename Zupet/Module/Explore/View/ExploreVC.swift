@@ -91,7 +91,7 @@ extension ExploreVC: UITableViewDataSource {
         case 1:
             let cell: ExploreTableXIB = tableView.dequeueReusableCell(for: indexPath)
             let apiData = ["Events & Meetups", "Training Tips", "Health Tips", "Breed Analyzer"]
-            cell.configure(with: apiData, tableView: tableView, isHome: false)
+//            cell.configure(with: apiData, tableView: tableView, isHome: false)
             return cell
             
         case 2, 3:

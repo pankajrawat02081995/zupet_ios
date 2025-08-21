@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoXIB" id="gTV-IL-0wX" customClass="PhotoXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="82" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="82" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dummy_nose_scaner" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-Io-67a">
+                        <rect key="frame" x="0.0" y="0.0" width="82" height="80"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ View more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVI-0W-20E">
+                        <rect key="frame" x="0.0" y="29.666666666666671" width="82" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="ThemeOrangeEnd"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="iVI-0W-20E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1p9-Cy-gpX"/>
+                <constraint firstItem="Ak0-Io-67a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="65q-x2-E5A"/>
+                <constraint firstItem="iVI-0W-20E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ae3-oX-5av"/>
+                <constraint firstItem="iVI-0W-20E" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ZBe-6C-rwI"/>
+                <constraint firstItem="Ak0-Io-67a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iyy-pX-YVF"/>
+                <constraint firstAttribute="bottom" secondItem="Ak0-Io-67a" secondAttribute="bottom" id="kiZ-vh-DKw"/>
+                <constraint firstAttribute="trailing" secondItem="iVI-0W-20E" secondAttribute="trailing" id="n2W-AJ-UZb"/>
+                <constraint firstAttribute="trailing" secondItem="Ak0-Io-67a" secondAttribute="trailing" id="sxM-EA-CzV"/>
+            </constraints>
+            <size key="customSize" width="82" height="80"/>
+            <connections>
+                <outlet property="imgVet" destination="Ak0-Io-67a" id="eJ5-QD-BXI"/>
+                <outlet property="lblMore" destination="iVI-0W-20E" id="Ubm-KT-CQQ"/>
+            </connections>
+            <point key="canvasLocation" x="109.9236641221374" y="9.1549295774647899"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_dummy_nose_scaner" width="343" height="343"/>
+        <namedColor name="ThemeOrangeEnd">
+            <color red="1" green="0.46299999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -36,8 +36,6 @@ final class SignInVC: UIViewController {
         credentialsManager = CredentialsManager()
         
         // Add tap gesture
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(togglePasswordVisibility(_:)))
-        //        txtPassword.rightView?.addGestureRecognizer(tapGesture)
         if credentialsManager?.checkRememberMe() == true{
             credentialsManager?.load { [weak self] email, password, rememberMe in
                 self?.txtEmail.text = email
@@ -53,12 +51,6 @@ final class SignInVC: UIViewController {
                 txtPassword.text = "Qwerty@1234"
         #endif
         viewModel = SignInViewModel(view: self) // Make view weak in ViewModel
-    }
-    
-    @objc private func togglePasswordVisibility(_ sender: UITapGestureRecognizer) {
-        Log.debug("Taped")
-        txtPassword.isSecureTextEntry = !txtPassword.isSecureTextEntry
-        txtPassword.rightImage = txtPassword.isSecureTextEntry ? UIImage(named: "ic_eye") : UIImage(named: "ic_eye_off")
     }
     
     override func viewDidLayoutSubviews() {

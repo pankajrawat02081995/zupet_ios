@@ -12,9 +12,9 @@ class PetTableCellXIB: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageIndicator: PageIndicatorView!
     
-    private var pets: [String] = [] // Replace String with your Pet model if needed
+    private var pets: [Pet] = [] // Replace String with your Pet model if needed
     private var cellWidth: CGFloat = 0
-
+    var petID : ((String)->Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -22,9 +22,9 @@ class PetTableCellXIB: UITableViewCell {
     }
     
     // MARK: - Public Setup Method
-    func configure(with pets: [String]) {
+    func configure(with pets: [Pet]) {
         self.pets = pets
-        pageIndicator.numberOfPages = pets.count
+        pageIndicator.numberOfPages = pets.count   // ✅ number of inner
         pageIndicator.currentPage = 0
         collectionView.reloadData()
         
@@ -33,31 +33,29 @@ class PetTableCellXIB: UITableViewCell {
             self?.updateCellWidth()
         }
     }
-    
-    // MARK: - Collection View Setup
-    private func setupCollectionView() {
-//        let nib = UINib(nibName: "PetCollectionCellXIB", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: "PetCollectionCellXIB")
-        collectionView.register(cellType: PetCollectionCellXIB.self)
-        collectionView.dataSource = self
-        collectionView.delegate = self
         
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isPagingEnabled = true // We'll use snapping manually
-        collectionView.decelerationRate = .fast
+        // MARK: - Collection View Setup
+        private func setupCollectionView() {
+            collectionView.register(cellType: PetCollectionCellXIB.self)
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            
+            collectionView.showsHorizontalScrollIndicator = false
+            collectionView.isPagingEnabled = true // We'll use snapping manually
+            collectionView.decelerationRate = .fast
+            
+            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = .horizontal
+                layout.minimumLineSpacing = 0
+                layout.minimumInteritemSpacing = 0
+            }
+        }
         
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 0
-            layout.minimumInteritemSpacing = 0
+        private func updateCellWidth() {
+            cellWidth = collectionView.bounds.width
+            collectionView.collectionViewLayout.invalidateLayout()
         }
     }
-    
-    private func updateCellWidth() {
-        cellWidth = collectionView.bounds.width
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-}
 
 // MARK: - UICollectionView DataSource
 extension PetTableCellXIB: UICollectionViewDataSource {
@@ -69,8 +67,9 @@ extension PetTableCellXIB: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PetCollectionCellXIB", for: indexPath) as? PetCollectionCellXIB else {
             return UICollectionViewCell()
         }
+        let pets = pets[indexPath.item]
         // Configure your cell here
-        // cell.configure(with: pets[indexPath.item])
+         cell.config(data: pets)
         return cell
     }
 }
@@ -97,6 +96,7 @@ extension PetTableCellXIB: UIScrollViewDelegate {
     private func updateCurrentPage() {
         let page = Int(round(collectionView.contentOffset.x / cellWidth))
         pageIndicator.currentPage = page
+        petID?(pets[page].id)
     }
 }
 

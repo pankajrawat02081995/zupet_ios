@@ -45,12 +45,12 @@ final class AboutPetTableXIB: UITableViewCell {
 // MARK: - UICollectionViewDataSource
 extension AboutPetTableXIB: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3//items.count
+        return items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell : AboutPetCollectionXIB = collectionView.dequeueReusableCell(for: indexPath)
-//        cell.configure(text: items[indexPath.item])
+//        cell.configure(aboutItem: items[indexPath.item])
         return cell
     }
 }

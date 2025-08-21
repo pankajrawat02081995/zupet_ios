@@ -27,6 +27,10 @@ extension UIColor {
         return UIColor(named: "TextBlack") ?? UIColor()
     }
     
+    static var BoarderColor: UIColor {
+        return UIColor(named: "BoarderColor") ?? UIColor()
+    }
+    
     static var AppLightGray: UIColor {
         return UIColor(named: "AppLightGray") ?? UIColor()
     }

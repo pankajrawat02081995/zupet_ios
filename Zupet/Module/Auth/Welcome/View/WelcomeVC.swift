@@ -20,6 +20,8 @@ class WelcomeVC: UIViewController {
     
     private func navigateToNextVC() {
         // Replace "NextViewController" with your actual destination VC class
-        push(TabbarVC.self, from: .tabbar)
+        Task{
+            await self.navigateToNextVC()
+        }
     }
 }

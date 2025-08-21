@@ -36,6 +36,7 @@ final class PetDetailsViewModel{
                 ConstantApiParam.breed : self.view?.txtBreed.text ?? "",
                 ConstantApiParam.age: Int(self.view?.txtAge.text ?? "") ?? 0,
                 ConstantApiParam.weight: Int(self.view?.txtWeight.text ?? "") ?? 0,
+                ConstantApiParam.color: Int(self.view?.txtColor.text ?? "") ?? 0,
                 ConstantApiParam.height: [ConstantApiParam.feet:Int(self.view?.txtHeight.text ?? "") ?? 0,
                                           ConstantApiParam.inches:Int(self.view?.txtHeightInch.text ?? "") ?? 0]
             ]

@@ -11,6 +11,7 @@ enum ExploreType{
     case FindVeterinary
     case MoodChecker
 }
+
 class ExploreTableXIB: UITableViewCell {
     
     @IBOutlet weak var imgExplore: UIImageView!

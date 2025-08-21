@@ -17,6 +17,8 @@ struct BreedResponse: Codable {
 struct BreedData: Codable {
     let dogBreeds: [String]?
     let catBreeds: [String]?
+    let dogColors: [String]?
+    let catColors: [String]?
 }
 
 

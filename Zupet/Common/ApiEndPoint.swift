@@ -27,6 +27,7 @@ enum APIConstants{
     static var petCreate: URL? { url("pets/create") }
     static var petBreed: URL? { url("pets/breeds") }
     
+    static var home: URL? { url("home") }
     
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)

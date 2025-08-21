@@ -35,6 +35,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         viewModel = HomeViewModel(view: self)
         setupTableView()
+        viewModel?.callHomeApi()
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,53 +79,64 @@ class HomeVC: UIViewController {
 // MARK: - UITableViewDataSource
 extension HomeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5 // Only one section for now
+        return viewModel?.homeModel?.numberOfSections() ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // Only PetTableCellXIB for now
+//        if section == 0{
+//            return viewModel?.homeModel?.numberOfRows(for: viewModel?.homeModel?.allPets().first?.id ?? "") ?? 0
+//        }else{
+            return 1
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableCellXIB", for: indexPath) as? PetTableCellXIB else {
-                return UITableViewCell()
-            }
-            cell.configure(with: petList)
-            return cell
-        }else if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreTableXIB", for: indexPath) as? ExploreTableXIB else {
-                return UITableViewCell()
-            }
-            let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-            cell.configure(with: apiData, tableView: tableView)
-            cell.isExploreTaped = { [weak self] exploreType in
-                guard self != nil else {return}
-                if exploreType == .FindVeterinary{
-                    self?.push(FindVetVC.self, from: .vet)
-                }else if exploreType == .MoodChecker{
-                    self?.push(MoodDetectionVC.self, from: .home)
+        if indexPath.section == 0{
+            if indexPath.row == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableCellXIB", for: indexPath) as? PetTableCellXIB else {
+                    return UITableViewCell()
                 }
+                cell.configure(with: viewModel?.homeModel?.allPets() ?? [])
+                cell.petID = { [weak self] id in
+                    guard let self = self else {return}
+                    self.viewModel?.getPetData(petID: id)
+                }
+                return cell
+            }else if indexPath.row == 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreTableXIB", for: indexPath) as? ExploreTableXIB else {
+                    return UITableViewCell()
+                }
+                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
+                cell.configure(with: apiData, tableView: tableView)
+                cell.isExploreTaped = { [weak self] exploreType in
+                    guard self != nil else {return}
+                    if exploreType == .FindVeterinary{
+                        self?.push(FindVetVC.self, from: .vet)
+                    }else if exploreType == .MoodChecker{
+                        self?.push(MoodDetectionVC.self, from: .home)
+                    }
+                }
+                return cell
+            }else if indexPath.row == 2 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentActivityTableXIB", for: indexPath) as? RecentActivityTableXIB else {
+                    return UITableViewCell()
+                }
+                let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
+                cell.configure(with: apiData)
+                cell.onHeightChange = { [weak self] in
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                }
+                return cell
+            }else if indexPath.row == 3 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutPetTableXIB", for: indexPath) as? AboutPetTableXIB else {
+                    return UITableViewCell()
+                }
+                
+                return cell
             }
-            return cell
-        }else if indexPath.section == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentActivityTableXIB", for: indexPath) as? RecentActivityTableXIB else {
-                return UITableViewCell()
-            }
-            let apiData = ["Mood Check", "Talk to me", "GPS Tracker", "Find a Vet"]
-            cell.configure(with: apiData)
-            cell.onHeightChange = { [weak self] in
-                self?.tableView.beginUpdates()
-                self?.tableView.endUpdates()
-            }
-            return cell
-        }else if indexPath.section == 3 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutPetTableXIB", for: indexPath) as? AboutPetTableXIB else {
-                return UITableViewCell()
-            }
-            
-            return cell
-        }else if indexPath.section == 4 {
+        }
+        else if  indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LostPetTableXIB", for: indexPath) as? LostPetTableXIB else {
                 return UITableViewCell()
             }

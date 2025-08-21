@@ -19,7 +19,7 @@
         <array key="Manrope-Medium.ttf">
             <string>Manrope-Medium</string>
         </array>
-        <array key="Manrope-Regular.ttf">
+        <array key="Manrope-VariableFont_wght.ttf">
             <string>Manrope-Regular</string>
         </array>
     </customFonts>
@@ -876,7 +876,7 @@ Started</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syH-m9-uoJ">
-                                        <rect key="frame" x="105.66666666666667" y="459.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666669" y="459.66666666666663" width="182" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -1396,10 +1396,10 @@ your Dog</string>
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="701.33333333333337"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5St-71-Tq8">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="708"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="796"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="94M-hP-f1q">
-                                                        <rect key="frame" x="0.0" y="40" width="393" height="668"/>
+                                                        <rect key="frame" x="0.0" y="40" width="393" height="756"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3a-k0-0zc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
@@ -1609,8 +1609,52 @@ your Dog</string>
                                                                     <constraint firstAttribute="trailing" secondItem="i2f-Jp-FgK" secondAttribute="trailing" constant="16" id="eTu-LG-V1l"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjp-sY-h00">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cn-Ad-cGU">
                                                                 <rect key="frame" x="0.0" y="331.99999999999994" width="393" height="72"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXJ-fa-rve">
+                                                                        <rect key="frame" x="16" y="0.0" width="361" height="16.333333333333332"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                        <color key="textColor" name="TextBlack"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Inp-DH-9ZM">
+                                                                        <rect key="frame" x="16" y="24.333333333333368" width="361" height="47.666666666666657"/>
+                                                                        <color key="backgroundColor" name="AppLightGray"/>
+                                                                        <color key="textColor" name="TextBlack"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                                <real key="value" value="16"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                                <real key="value" value="16"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                                                                <color key="value" name="TextBlack"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_dropdown"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" name="TextWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="jXJ-fa-rve" firstAttribute="top" secondItem="2cn-Ad-cGU" secondAttribute="top" id="4yV-jm-wMQ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="jXJ-fa-rve" secondAttribute="trailing" constant="16" id="BRO-YF-ZUo"/>
+                                                                    <constraint firstItem="Inp-DH-9ZM" firstAttribute="leading" secondItem="2cn-Ad-cGU" secondAttribute="leading" constant="16" id="LZj-tL-16j"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Inp-DH-9ZM" secondAttribute="trailing" constant="16" id="LhM-a2-VK4"/>
+                                                                    <constraint firstItem="jXJ-fa-rve" firstAttribute="leading" secondItem="2cn-Ad-cGU" secondAttribute="leading" constant="16" id="e69-Ar-uTV"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Inp-DH-9ZM" secondAttribute="bottom" id="gbq-Rk-kt1"/>
+                                                                    <constraint firstItem="Inp-DH-9ZM" firstAttribute="top" secondItem="jXJ-fa-rve" secondAttribute="bottom" constant="8" id="geE-dG-bUG"/>
+                                                                    <constraint firstAttribute="height" constant="72" id="owx-8g-g3k"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjp-sY-h00">
+                                                                <rect key="frame" x="0.0" y="419.99999999999994" width="393" height="72"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wx0-DJ-pFj">
                                                                         <rect key="frame" x="16" y="0.0" width="361" height="16.333333333333332"/>
@@ -1654,7 +1698,7 @@ your Dog</string>
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-f0-mKC">
-                                                                <rect key="frame" x="0.0" y="419.99999999999994" width="393" height="72"/>
+                                                                <rect key="frame" x="0.0" y="508" width="393" height="72"/>
                                                                 <subviews>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjZ-L8-swa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="188.66666666666666" height="72"/>
@@ -1747,7 +1791,7 @@ your Dog</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-MR-X1c">
-                                                                <rect key="frame" x="0.0" y="508" width="393" height="72"/>
+                                                                <rect key="frame" x="0.0" y="596" width="393" height="72"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUz-TB-5yG">
                                                                         <rect key="frame" x="16" y="0.0" width="361" height="16.333333333333332"/>
@@ -1790,10 +1834,10 @@ your Dog</string>
                                                                 </constraints>
                                                             </view>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKP-WH-c29">
-                                                                <rect key="frame" x="0.0" y="596" width="393" height="72"/>
+                                                                <rect key="frame" x="0.0" y="684" width="393" height="72"/>
                                                                 <subviews>
                                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dy-on-jEp">
-                                                                        <rect key="frame" x="16" y="10" width="361" height="52"/>
+                                                                        <rect key="frame" x="16" y="10.000000000000114" width="361" height="52"/>
                                                                         <color key="backgroundColor" name="ThemeOrangeEnd"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="52" id="VAS-KP-HQ6"/>
@@ -1891,6 +1935,7 @@ your Dog</string>
                         <outlet property="lblWeight" destination="EQj-NO-agG" id="l7U-yi-SAR"/>
                         <outlet property="txtAge" destination="w91-94-3jg" id="Mzw-Cn-5ey"/>
                         <outlet property="txtBreed" destination="sws-Xk-lY8" id="lK2-Sz-xWT"/>
+                        <outlet property="txtColor" destination="Inp-DH-9ZM" id="weW-y1-jTQ"/>
                         <outlet property="txtHeight" destination="DGU-w9-1N6" id="2lD-Az-fXe"/>
                         <outlet property="txtHeightInch" destination="4ud-3J-Esp" id="9BU-dD-VZ0"/>
                         <outlet property="txtPetName" destination="4rX-Zk-I7E" id="Z0T-K4-2iS"/>
