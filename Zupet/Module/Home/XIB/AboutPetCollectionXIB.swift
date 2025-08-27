@@ -28,7 +28,7 @@ class AboutPetCollectionXIB: UICollectionViewCell {
     
     func configure(aboutItem:AboutItem){
         lblTitle.text = aboutItem.title
-        lblSubtitle.text = "\(aboutItem.description.valueAsString ?? "")"
+        lblSubtitle.text = "\(aboutItem.description.valueAsString)"
     }
 
 }

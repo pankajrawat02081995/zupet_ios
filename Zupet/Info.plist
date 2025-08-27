@@ -2,50 +2,48 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSCameraUsageDescription</key>
-    <string>This app needs camera access to allow you to take photos of your pets.</string>
-
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app uses your location to help you find nearby vets and pet services.</string>
-
-    <key>GIDClientID</key>
-    <string>198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1.apps.googleusercontent.com</string>
-
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1</string>
-            </array>
-        </dict>
-    </array>
-
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>172.105.13.154</key>
-            <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
-
-    <key>UIAppFonts</key>
-    <array>
-        <string>Manrope-ExtraLight.ttf</string>
-        <string>Manrope-Light.ttf</string>
-        <string>Manrope-Regular.ttf</string>
-        <string>Manrope-Medium.ttf</string>
-        <string>Manrope-SemiBold.ttf</string>
-        <string>Manrope-Bold.ttf</string>
-        <string>Manrope-ExtraBold.ttf</string>
-    </array>
-
+	<key>NSInternalInconsistencyException</key>
+	<string>test</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to allow you to take photos of your pets.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app uses your location to help you find nearby vets and pet services.</string>
+	<key>GIDClientID</key>
+	<string>198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1.apps.googleusercontent.com</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.198059773889-19jksvfjn1jdqvuttf8kmq3c31lomeo1</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>172.105.13.154</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Manrope-ExtraLight.ttf</string>
+		<string>Manrope-Light.ttf</string>
+		<string>Manrope-Regular.ttf</string>
+		<string>Manrope-Medium.ttf</string>
+		<string>Manrope-SemiBold.ttf</string>
+		<string>Manrope-Bold.ttf</string>
+		<string>Manrope-ExtraBold.ttf</string>
+	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>

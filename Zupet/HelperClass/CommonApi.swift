@@ -47,7 +47,7 @@ final class APIService {
         }
     }
     
-    func forgotPassword(parameters: [String:Any],viewController: UIViewController,isReset:Bool=false)  {
+    func forgotPassword(parameters: [String:Any],viewController: UIViewController,isReset:Bool=false,isResend:Bool=false)  {
         // Use Swift concurrency with weak self to avoid retain cycles
         Task { [weak self] in
             // Get the signup URL from constants
@@ -69,13 +69,15 @@ final class APIService {
                 // Handle successful response
                 if response.success == true {
                     // You can call delegate or closure to notify view
-                    if isReset{
-                        Log.debug("Set Root")
-                        viewController.navigationController?.popToRootViewController(animated: true)
-                    }else{
-                        viewController.push(ResetPassword.self, from: .main){ [weak self] vc in
-                            guard self != nil else { return }
-                            vc.email = parameters["email"] as? String ?? ""
+                    if isResend == false{
+                        if isReset{
+                            Log.debug("Set Root")
+                            viewController.navigationController?.popToRootViewController(animated: true)
+                        }else{
+                            viewController.push(ResetPassword.self, from: .main){ [weak self] vc in
+                                guard self != nil else { return }
+                                vc.email = parameters["email"] as? String ?? ""
+                            }
                         }
                     }
                 }

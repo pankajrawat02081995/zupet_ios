@@ -11,23 +11,20 @@ class PetDetailVC: UIViewController {
     
     // MARK: - Outlets
     
-    
-    
     @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var containerView: UIView!{
+    @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.cornerRadius = 24
             containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             containerView.clipsToBounds = true
         }
     }
+    
     @IBOutlet weak var lblPetName: UILabel!
     @IBOutlet weak var txtPetName: UITextField!
     
     @IBOutlet weak var txtHeight: UITextField!
-
     @IBOutlet weak var txtHeightInch: UITextField!
-
     @IBOutlet weak var txtAge: UITextField!
     
     @IBOutlet weak var txtBreed: UITextField!
@@ -38,12 +35,9 @@ class PetDetailVC: UIViewController {
     @IBOutlet weak var txtSpecies: UITextField!
     
     @IBOutlet weak var lblBreed: UILabel!
-    
     @IBOutlet weak var btnContinue: UIButton!
     
-    private var viewModel : PetDetailsViewModel!
-    
-    private var dropDown : DropdownView?
+    private var viewModel: PetDetailsViewModel?
     
     private let heightFeetOptions: [String] = ["0 ft", "1 ft", "2 ft", "3 ft", "4 ft", "5 ft", "6 ft", "7 ft"]
     private let heightInchOptions: [String] = ["0 inch", "1 inch", "2 inch", "3 inch", "4 inch", "5 inch", "6 inch", "7 inch", "8 inch", "9 inch", "10 inch", "11 inch"]
@@ -51,24 +45,18 @@ class PetDetailVC: UIViewController {
     private var breedOptions: [String]?
     private var colorOptions: [String]?
     var petSpecies: String?
-    var ageDate : Date? = nil
-    @IBOutlet weak var lblTitle: UILabel!{
-        didSet{
+    var ageDate: Date? = nil
+    
+    @IBOutlet weak var lblTitle: UILabel! {
+        didSet {
             lblTitle.text = "Tell us about \nyour \(petSpecies ?? "")"
         }
-    }
-    func loadBreedOptions() async {
-        breedOptions =  petSpecies == "dog" ? await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.dogBreeds ?? [] : await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catBreeds ?? []
-        colorOptions =  petSpecies == "dog" ? await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.dogColors ?? [] : await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)?.catColors ?? []
-
     }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropDown = DropdownView()
-
         // Preload breed options in background without blocking UI
         Task { [weak self] in
             await self?.loadBreedOptions()
@@ -80,148 +68,126 @@ class PetDetailVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         // Apply diagonal gradient to btnContinue button and background view
         btnContinue.applyDiagonalGradient()
         btnContinue.updateGradientFrameIfNeeded()
-
+        
         bgView.applyDiagonalGradient()
         bgView.updateGradientFrameIfNeeded()
+    }
+    
+    // MARK: - Data Load
+    
+    func loadBreedOptions() async {
+        let breedData = await UserDefaultsManager.shared.get(BreedData.self, forKey: UserDefaultsKey.BreedData)
+        breedOptions = petSpecies == "dog" ? breedData?.dogBreeds ?? [] : breedData?.catBreeds ?? []
+        colorOptions = petSpecies == "dog" ? breedData?.dogColors ?? [] : breedData?.catColors ?? []
     }
     
     // MARK: - TextField Setup
     
     private func setupTextFields() {
-        // Delegates not retained (safe memory-wise)
-        txtPetName.delegate = self
-        txtSpecies.delegate = self
-        txtAge.delegate = self
-        txtHeight.delegate = self
-        txtWeight.delegate = self
-        txtBreed.delegate = self
+        [txtPetName,txtColor, txtAge, txtHeight,txtHeightInch, txtBreed].forEach { $0?.delegate = self }
         
-        // Add real-time change listeners
         txtPetName.addTarget(self, action: #selector(petNameChanged), for: .editingChanged)
-//        txtSpecies.addTarget(self, action: #selector(speciesInfoChanged), for: .editingDidBegin)
-        txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
-        txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
-        txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
-        txtColor.addTarget(self, action: #selector(colorInfoChanged), for: .editingDidBegin)
-        txtHeightInch.addTarget(self, action: #selector(heightInchInfoChanged), for: .editingDidBegin)
-        txtWeight.addTarget(self, action: #selector(weightInfoChanged), for: .editingChanged)
+//        txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
+//        txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
+//        txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
+//        txtColor.addTarget(self, action: #selector(colorInfoChanged), for: .editingDidBegin)
+//        txtHeightInch.addTarget(self, action: #selector(heightInchInfoChanged), for: .editingDidBegin)
+//        txtWeight.addTarget(self, action: #selector(weightInfoChanged), for: .editingChanged)
     }
     
-    // MARK: - UITextField Events (Memory-safe, no retain cycles)
+    // MARK: - UITextField Events
     
-    /// Updates pet name label live
     @objc private func petNameChanged() {
         lblPetName.text = txtPetName.text
     }
     
-    func getAge(from birthDate: Date) -> Int {
+    private func getAge(from birthDate: Date) -> Int {
         let calendar = Calendar.current
         let now = Date()
         let ageComponents = calendar.dateComponents([.year], from: birthDate, to: now)
         return ageComponents.year ?? 0
     }
     
-    @objc private func speciesInfoChanged() {
-        self.txtSpecies.resignFirstResponder()
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.dropDown?.show(from: self.txtSpecies, data: ["Dog", "Cat"]) { [weak self] selection in
-                guard let self else { return }
-                Log.debug(selection)
-                self.txtSpecies.text = selection
-                self.txtBreed.text = ""
-                self.lblBreed.text = "\(selection) . \("\(self.getAge(from: self.ageDate ?? Date()))") yrs"
-            }
-        }
-    }
-    
-    /// Combines species and age into breed label
-    @objc private func ageInfoChanged() {
-        self.txtAge.resignFirstResponder()
-        DatePickerManager.shared.showDatePicker(from: self.txtAge) { dateString, date in
-            Log.debug("\(dateString)")
-            let species = self.txtBreed.text ?? ""
-            self.txtAge.text = dateString
-            self.ageDate = date
-            self.lblBreed.text = "\(species) . \("\(self.getAge(from: date))") yrs"
-        }
-    }
-    
-    /// Combines species and age into breed label
     @objc private func breedInfoChanged() {
-        self.txtBreed.resignFirstResponder()
-        if breedOptions?.isEmpty == true {return}
-        dropDown?.show(from: self.txtBreed, data: breedOptions ?? [], onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
-            self.txtBreed.text = index
-            self.lblBreed.text = "\(index) . \(self.txtAge.text ?? "")"
-
-        })
+        txtBreed.resignFirstResponder()
+        presentBottomSheet(items: breedOptions ?? [], title: "Breed") { [weak self] selected in
+            self?.txtBreed.text = selected
+            self?.updateBreedLabel()
+        }
     }
     
     @objc private func colorInfoChanged() {
-        self.txtColor.resignFirstResponder()
-        if colorOptions?.isEmpty == true {return}
-        dropDown?.show(from: self.txtColor, data: colorOptions ?? [], onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
-            self.txtColor.text = index
-        })
+        txtColor.resignFirstResponder()
+        presentBottomSheet(items: colorOptions ?? [], title: "Color") { [weak self] selected in
+            self?.txtColor.text = selected
+        }
     }
     
     @objc private func heightInfoChanged() {
-        self.txtHeight.resignFirstResponder()
-        dropDown?.show(from: self.txtHeight, data: self.heightFeetOptions, onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
-            let weight = self.txtWeight.text ?? ""
-            let inch = self.txtHeightInch.text ?? ""
-            self.txtHeight.text = index
-            self.lblWeight.text = "\(index) \(inch) . \(weight)"
-        })
+        txtHeight.resignFirstResponder()
+        presentBottomSheet(items: heightFeetOptions, title: "Height(feet)") { [weak self] selected in
+            self?.txtHeight.text = selected
+            self?.updateWeightLabel()
+        }
     }
     
     @objc private func heightInchInfoChanged() {
-        self.txtHeightInch.resignFirstResponder()
-        dropDown?.show(from: self.txtHeightInch, data: self.heightInchOptions, onSelect: {[weak self] (index) in
-            guard let self = self else { return }
-            Log.debug(index)
-            let weight = self.txtWeight.text ?? ""
-            let feet = self.txtHeight.text ?? ""
-            self.txtHeightInch.text = index
-            self.lblWeight.text = "\(feet) \(index) . \(weight)"
-        })
+        txtHeightInch.resignFirstResponder()
+        presentBottomSheet(items: heightInchOptions, title: "Height(inches)") { [weak self] selected in
+            self?.txtHeightInch.text = selected
+            self?.updateWeightLabel()
+        }
     }
     
-    /// Combines height and weight into weight label
     @objc private func weightInfoChanged() {
-        let height = txtHeight.text ?? ""
-        let inch = self.txtHeightInch.text ?? ""
+        updateWeightLabel()
+    }
+    
+    // MARK: - Label Updaters
+    
+    private func updateBreedLabel() {
+        let breed = txtBreed.text ?? ""
+        let age = "\(getAge(from: self.ageDate ?? Date()))"
+        lblBreed.text = breed.isEmpty ? "\(age) yrs" : "\(breed)\(age.isEmpty ? "" : " . \(age) yrs")"
+    }
+    
+    private func updateWeightLabel() {
+        let feet = txtHeight.text ?? ""
+        let inch = txtHeightInch.text ?? ""
         let weight = txtWeight.text ?? ""
-        lblWeight.text = "\(height) \(inch) . \(weight) kg"
+        lblWeight.text = "\(feet) \(inch)\(weight.isEmpty ? "" : " . \(weight) kg")"
+    }
+    
+    // MARK: - Bottom Sheet Helper
+    
+    private func presentBottomSheet(items: [String], title: String, onSelect: @escaping (String) -> Void) {
+        let bottomSheet = BottomSheetVC.create(items: items,title: title, bottomSheetType: .Globle, onSelect: onSelect)
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        present(bottomSheet, animated: true)
     }
     
     // MARK: - Continue Action
     
     @IBAction func continueButtonTapped(_ sender: UIButton) {
-        Task{
-            if await isValid(){
-                viewModel.createPet()
+        Task {
+            if await isValid() {
+                viewModel?.createPet()
             }
         }
     }
     
-    // MARK: - Deinit for Debugging
+    // MARK: - Validation
     
-    deinit {
-        // Not required for UITextField cleanup,
-        // but useful for confirming deallocation
-        Log.debug("PetDetailVC deinitialized")
+    private func validate(field: UITextField, error: ErrorMessages) async -> Bool {
+        guard !field.trim().isEmpty else {
+            await ToastManager.shared.showToast(message: error.rawValue)
+            return false
+        }
+        return true
     }
     
     private func isValid() async -> Bool {
@@ -263,10 +229,47 @@ class PetDetailVC: UIViewController {
         
         return true
     }
+    
+    // MARK: - Keyboard Dismiss
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    // MARK: - Deinit
+    
+    deinit {
+        Log.debug("PetDetailVC deinitialized")
+    }
 }
 
-// MARK: - UITextFieldDelegate (no retained memory)
+// MARK: - UITextFieldDelegate
 
 extension PetDetailVC: UITextFieldDelegate {
-    // Add if needed, e.g., dismiss keyboard on return
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == txtAge{
+            DatePickerManager.shared.showDatePicker(from: textField,maximumDate:Date()) { [weak self] dateString, date in
+                guard let self else { return }
+                Log.debug("\(dateString)")
+                self.txtAge.text = dateString
+                self.ageDate = date
+                self.updateBreedLabel()
+            }
+            return false
+        }else if textField == txtBreed{
+            self.breedInfoChanged()
+            return false
+        }else if textField == txtColor{
+            self.colorInfoChanged()
+            return false
+        }else if textField == txtHeight{
+            self.heightInfoChanged()
+            return false
+        }else if textField == txtHeightInch{
+            self.heightInchInfoChanged()
+            return false
+        }
+        return true
+    }
 }

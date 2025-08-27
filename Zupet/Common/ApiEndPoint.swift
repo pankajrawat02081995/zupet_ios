@@ -29,6 +29,11 @@ enum APIConstants{
     
     static var home: URL? { url("home") }
     
+    static var getProfile: URL? { url("users/profile/") }
+    static var deleteProfile: URL? { url("users/profile/delete") }
+    static var updateProfile: URL? { url("users/profile/update") }
+    static var changePassword: URL? { url("users/profile/update/password") }
+    
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)
     }

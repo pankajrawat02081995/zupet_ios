@@ -23,7 +23,7 @@ final class DatePickerManager {
     func showDatePicker(
         from view: UIView,
         mode: UIDatePicker.Mode = .date,
-        dateFormat: DateFormatType = .ddMMyyyy,
+        dateFormat: DateFormatType = .yyyyMMdd,
         initialDate: Date? = nil,
         minimumDate: Date? = nil,
         maximumDate: Date? = nil,
@@ -33,6 +33,15 @@ final class DatePickerManager {
         
         let overlay = UIView(frame: viewController.view.bounds)
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        overlay.isUserInteractionEnabled = true
+        
+        let alreadyHasTap = overlay.gestureRecognizers?.contains(where: { $0 is UITapGestureRecognizer }) ?? false
+
+        if !alreadyHasTap {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancelTapped))
+            overlay.addGestureRecognizer(tapGesture)
+        }
+
         
         let containerHeight: CGFloat = 300
         let container = UIView(frame: CGRect(x: 0, y: viewController.view.bounds.height, width: viewController.view.bounds.width, height: containerHeight))

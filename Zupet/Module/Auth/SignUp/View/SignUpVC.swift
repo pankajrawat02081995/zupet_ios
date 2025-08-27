@@ -20,6 +20,7 @@ class SignUpVC: UIViewController {
             containerView.clipsToBounds = true
         }
     }
+    @IBOutlet weak var imgCountryFlag: UIImageView!
     @IBOutlet weak var lblTerms: UILabel!
     /// Full name input field
     @IBOutlet weak var txtFullName: UITextField!
@@ -34,21 +35,27 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var btnTerms: UIButton!
     
     /// Password input field
-    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var txtPassword: PasswordTextField!
     
     // MARK: - Properties
     
     /// ViewModel managing business logic for sign-up
     private var viewModel: SignUpViewModel!
+    private var country : [Country]?
     
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let countrys = CountryManager.shared.getCountries()
+        self.country = countrys
+        self.imgCountryFlag.image = CountryManager.shared.getCurrentCountry()?.flagImage ?? UIImage()
+        self.txtPhone.setPrefix("(\(CountryManager.shared.getCurrentCountry()?.phoneCode ?? "")) ")
+        
         // Initialize the ViewModel. Ensure it does not strongly capture `self`.
         viewModel = SignUpViewModel(view: self)
-        
+        txtPhone.delegate = self
         setupHighlightsAsync()
         
     }
@@ -80,6 +87,13 @@ class SignUpVC: UIViewController {
         sender.isSelected = !sender.isSelected
     }
     
+    @IBAction func countryPickerOnPress(_ sender: UIButton) {
+        
+        presentBottomSheet(items: country ?? [], title: "Country") { [weak self] country in
+            self?.imgCountryFlag.image = country.flagImage ?? UIImage()
+            self?.txtPhone.setPrefix("(\(country.phoneCode ?? "")) ")
+        }
+    }
     /// Handles Sign In button press
     @IBAction func signinOnPress(_ sender: UIButton) {
         popView()
@@ -140,6 +154,28 @@ class SignUpVC: UIViewController {
             return false
         }
         
+        return true
+    }
+}
+
+extension SignUpVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtPhone{
+            // Allow only digits
+            let allowedCharacterSet = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            guard allowedCharacterSet.isSuperset(of: characterSet) else {
+                return false
+            }
+            
+            // Get updated text
+            let currentText = textField.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+            
+            // Limit to 10 characters
+            return updatedText.count <= 10
+        }
         return true
     }
 }

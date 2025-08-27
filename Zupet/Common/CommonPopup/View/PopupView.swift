@@ -36,11 +36,18 @@ final class PopupView: UIViewController {
         lblSubtitle.text = subTitle
         btnOk.setTitle(btnOkTitle ?? "OK", for: .normal)
         btnCancel.setTitle(btnCancelTitle ?? "Cancel", for: .normal)
-
+        
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        btnCancel.addInnerShadow(cornerRadius: btnCancel.layer.cornerRadius)
+        btnOk.addInnerShadow(cornerRadius: btnOk.layer.cornerRadius)
+    }
+
+
 
     // MARK: - Actions
     @IBAction private func okButtonTapped(_ sender: UIButton) {

@@ -137,3 +137,42 @@ extension UIView {
         storedGradientLayer?.frame = bounds
     }
 }
+
+extension UIView {
+    func addInnerShadow(cornerRadius: CGFloat = 12,
+                        color: UIColor = .black,
+                        opacity: Float = 0.2,
+                        radius: CGFloat = 3) {
+        
+        // Remove old inner shadows if any
+        layer.sublayers?
+            .filter { $0.name == "innerShadow" }
+            .forEach { $0.removeFromSuperlayer() }
+        
+        let innerShadow = CALayer()
+        innerShadow.frame = bounds
+        innerShadow.name = "innerShadow"
+        
+        // Create shadow path (bigger rect with hole)
+        let path = UIBezierPath(roundedRect: innerShadow.bounds.insetBy(dx: -radius, dy: -radius),
+                                cornerRadius: cornerRadius)
+        let cutout = UIBezierPath(roundedRect: innerShadow.bounds,
+                                  cornerRadius: cornerRadius).reversing()
+        path.append(cutout)
+        
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.frame = innerShadow.bounds
+        shadowLayer.shadowPath = path.cgPath
+        shadowLayer.masksToBounds = true
+        shadowLayer.fillRule = .evenOdd
+        shadowLayer.shadowColor = color.cgColor
+        shadowLayer.shadowOffset = .zero
+        shadowLayer.shadowOpacity = opacity
+        shadowLayer.shadowRadius = radius
+        
+        innerShadow.addSublayer(shadowLayer)
+        layer.addSublayer(innerShadow)
+        layer.masksToBounds = true
+        layer.cornerRadius = cornerRadius
+    }
+}

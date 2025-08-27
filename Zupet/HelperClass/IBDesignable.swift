@@ -149,6 +149,7 @@ public extension UITextField {
                 
                 rightView = container
                 rightViewMode = .always
+                rightView?.isUserInteractionEnabled = false
             } else {
                 rightView = nil
             }

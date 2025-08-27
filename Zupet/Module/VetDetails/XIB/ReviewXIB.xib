@@ -43,7 +43,7 @@
                             <constraint firstAttribute="width" constant="80" id="Nse-Fp-y4B"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="DarkGray"/>
+                        <color key="textColor" name="AppDarkGray"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFU-0z-iYj" customClass="StarRatingView" customModule="Zupet" customModuleProvider="target">
@@ -74,7 +74,7 @@
                         <rect key="frame" x="60" y="67" width="549" height="40.666666666666657"/>
                         <string key="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="DarkGray"/>
+                        <color key="textColor" name="AppDarkGray"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="a94-IR-3HZ">
@@ -131,11 +131,11 @@
         <image name="ic_dummy_nose_scaner" width="343" height="343"/>
         <image name="ic_star_fill" width="12" height="12"/>
         <image name="ic_unfill_star" width="20" height="20"/>
+        <namedColor name="AppDarkGray">
+            <color red="0.48600000143051147" green="0.47499999403953552" blue="0.47499999403953552" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AppGray">
             <color red="0.63099998235702515" green="0.63099998235702515" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkGray">
-            <color red="0.48627450980392156" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextBlack">
             <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

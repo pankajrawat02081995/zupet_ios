@@ -49,7 +49,7 @@ final class OtpViewModel{
                 if response.success == true {
                     if !isResend{
                         await UserDefaultsManager.shared.set(response.data, forKey: UserDefaultsKey.LoginResponse)
-                        await self.view?.push(LetsStartVC.self, from: .main)
+                        await self.view?.navigateToNextVC()
                     }
                 }
                 

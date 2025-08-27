@@ -141,7 +141,7 @@ final class OTPView: UIStackView {
             addArrangedSubview(field)
         }
 
-        _ = textFields.first?.becomeFirstResponder()
+//        _ = textFields.first?.becomeFirstResponder()
     }
 
     // MARK: - Logic

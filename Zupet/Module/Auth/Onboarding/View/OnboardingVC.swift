@@ -28,7 +28,7 @@ final class OnboardingVC: UIViewController {
     private var currentPage = 0 {
         didSet {
             pageIndicator.currentPage = currentPage
-            btnNext.setTitle(currentPage == pages.count - 1 ? "Get Started" : "Next", for: .normal)
+            btnNext.localize(currentPage == pages.count - 1 ? "Get Started" : "Next")// setTitle(currentPage == pages.count - 1 ? "Get Started" : "Next", for: .normal)
         }
     }
     

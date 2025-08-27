@@ -9,8 +9,44 @@ import UIKit
 import ObjectiveC
 
 private var errorLabelKey: UInt8 = 0
+private var prefixKey: UInt8 = 0
+
 
 public extension UITextField {
+    var prefixText: String? {
+        get { objc_getAssociatedObject(self, &prefixKey) as? String }
+        set { objc_setAssociatedObject(self, &prefixKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
+    private func getAssociated<T>(_ key: UnsafeRawPointer) -> T? {
+        objc_getAssociatedObject(self, key) as? T
+    }
+
+    private func setAssociated<T>(_ key: UnsafeRawPointer, value: T?) {
+        objc_setAssociatedObject(self, key, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+
+    
+    func setPrefix(_ text: String) {
+        self.prefixText = text   // store prefix
+        
+        let label = UILabel()
+        label.text = text
+        label.font = .systemFont(ofSize: 14) // replace with .manropeLight(14) if custom font
+        label.textColor = .black
+        label.sizeToFit()
+        
+        // Container with padding
+        let container = UIView(frame: CGRect(x: 0, y: 0,
+                                             width: 74 + label.frame.width,
+                                             height: label.frame.height))
+        label.frame.origin.x = 62
+        container.addSubview(label)
+        
+        self.leftView = container
+        self.leftViewMode = .always
+    }
+    
     
     func trim() -> String{
         return self.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -111,7 +147,7 @@ extension UITextField {
               let swizzled = class_getInstanceMethod(self, #selector(swizzled_canPerformAction(_:withSender:))) else { return }
         method_exchangeImplementations(original, swizzled)
     }
-
+    
     @objc func swizzled_canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(paste(_:)) || action == #selector(copy(_:)) || action == #selector(cut(_:)) || action == #selector(select(_:)) || action == #selector(selectAll(_:)) {
             return false
@@ -126,7 +162,7 @@ extension UITextView {
               let swizzled = class_getInstanceMethod(self, #selector(swizzled_canPerformAction(_:withSender:))) else { return }
         method_exchangeImplementations(original, swizzled)
     }
-
+    
     @objc func swizzled_canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(paste(_:)) || action == #selector(copy(_:)) || action == #selector(cut(_:)) || action == #selector(select(_:)) || action == #selector(selectAll(_:)) {
             return false

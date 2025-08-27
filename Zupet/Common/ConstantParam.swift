@@ -27,6 +27,15 @@ enum ErrorMessages: String {
     case invalidURL = "Invalid view or URL."
     case completeOtp = "Please complete the OTP."
     case TermsAndCondition = "By creating an account, you agree to our Terms and Conditions"
+    
+    case CurrentPassword = "Please enter your current password"
+    case NewPassword = "Please enter your new password"
+    case ConfirmPassword = "Please confirm your new password"
+    case ConfirmNewPassword = "New password and confirm password does not match"
+    
+    case validNewPassword = "New password must be at least 8 characters, include uppercase, lowercase, and a number."
+    case validOldPassword = "Current password must be at least 8 characters, include uppercase, lowercase, and a number."
+    case confirmPasswordRequired = "Confirm password must be at least 8 characters, include uppercase, lowercase, and a number."
 }
 
 enum ConstantParam:String, Codable{
@@ -50,7 +59,10 @@ enum ConstantParam:String, Codable{
 
 struct ConstantApiParam{
     static let Phone = "phone"
+    static let CountryCode = "countryCode"
     static let FullName = "fullName"
+    static let OldPassword = "oldPassword"
+    static let NewPassword = "newPassword"
     static let UserID = "user_id"
     static let Password = "password"
     static let AgencyID = "agency_id"
@@ -62,6 +74,9 @@ struct ConstantApiParam{
     static let noseId = "noseId"
     static let age = "age"
     static let breed = "breed"
+    static let mood = "mood"
+    static let dob = "dob"
+    static let avatar = "avatar"
     static let weight = "weight"
     static let color = "color"
     static let height = "height"

@@ -22,11 +22,20 @@ class LoaderManager {
         
         timeoutTask = Task { [weak self] in
             do {
-                try await Task.sleep(nanoseconds: 0 * 1_000_000_000) // Wait 2 seconds
+                try await Task.sleep(nanoseconds: 0 * 1_000_000_000) // adjust delay
                 
                 // Check if task is cancelled after sleeping
                 try Task.checkCancellation()
                 
+                // Hide keyboard on main thread\
+                Task{
+                    await MainActor.run {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                        to: nil, from: nil, for: nil)
+                    }
+                }
+                
+                // Show loader on main thread
                 await self?.showLoader()
                 
             } catch {
@@ -34,6 +43,8 @@ class LoaderManager {
             }
         }
     }
+
+
     
     @MainActor
     private func showLoader() {

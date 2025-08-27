@@ -65,6 +65,10 @@ final class SignInVC: UIViewController {
         bgView.applyDiagonalGradient()
         bgView.updateGradientFrameIfNeeded()
         didSetupGradients = true
+        
+        //MARK: Language Update
+        txtEmail.localize("Enter your email")
+        txtPassword.localize("Password")
     }
     
     @IBAction func forgotPasswordOnPress(_ sender: UIButton) {

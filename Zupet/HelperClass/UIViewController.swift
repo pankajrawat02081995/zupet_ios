@@ -33,20 +33,31 @@ enum AppIdentifire:String{
 
 enum PopupMainTitle : String{
     case Logout = "Logout"
+    case Delete = "Delete Account"
 }
 
 enum PopupSubTitle: String{
     case Logout = "Are you sure you want to logout?"
+    case Delete = "Are you sure you want to delete your account? This action cannot be undone. All your data willl be permanently deleted."
 }
 
 enum PopButtonTitle:String{
     case OK = "Ok"
     case Cancel = "Cancel"
-    case Yes = "Yes, Proceed"
+    case Yes = "Yes"
     case No = "No, Cancel"
+    case Delete = "Delete"
 }
 
 extension UIViewController {
+    
+    // MARK: - Bottom Sheet Helper
+    
+     func presentBottomSheet(items: [Country], title: String, onSelect: @escaping (Country) -> Void) {
+        let bottomSheet = BottomSheetVC.create(countries: items,title: title, bottomSheetType: .Country, onSelect: onSelect)
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        present(bottomSheet, animated: true)
+    }
     
     // MARK: - Navigation
 

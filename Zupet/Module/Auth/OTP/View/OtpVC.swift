@@ -44,10 +44,7 @@ class OtpVC: UIViewController {
         setupHighlightsAsync()
         
         otpView.delegate = self
-        
-#if DEBUG
-        otp = "15"
-#endif
+
         // ✅ Start 30 sec timer
         startTimer()
     }

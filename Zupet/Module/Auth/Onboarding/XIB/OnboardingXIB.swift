@@ -19,7 +19,7 @@ class OnboardingXIB: UICollectionViewCell {
     
     func configure(with page: OnboardingPage) {
         imgOnBoarding.image = UIImage(named: page.imageName)
-        lblTitle.text = page.title
-        lblSubTitle.text = page.subtitle
+        lblTitle.localize(page.title)
+        lblSubTitle.localize(page.subtitle)
     }
 }

@@ -121,11 +121,11 @@ struct Pet: Codable {
     let species: String
     let breed: String
     let color: String
-    let age: Int
+    let dob: String
     let mood: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "_id", name, avatar, species, breed, color, age, mood
+        case id = "_id", name, avatar, species, breed, color, dob, mood
     }
 }
 
@@ -200,13 +200,13 @@ struct PetInfo: Codable {
     let name: String
     let species: String
     let color: String
-    let age: Int
+    let dob: String
     let weight: Int
     let height: PetHeight
     let avatar: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "_id", name, species, color, age, weight, height, avatar
+        case id = "_id", name, species, color, dob, weight, height, avatar
     }
 }
 

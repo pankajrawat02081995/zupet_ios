@@ -26,17 +26,18 @@ final class PetDetailsViewModel{
                 await ToastManager.shared.showToast(message: "Invalid URL")
                 return
             }
-            
            
             // Construct request parameters
             let parameters: [String: Any] = await [
                 ConstantApiParam.name: self.view?.txtPetName.text ?? "",
                 ConstantApiParam.species: self.view?.petSpecies ?? "",
                 ConstantApiParam.noseId: "1234",
+                ConstantApiParam.mood: "happy",
+                ConstantApiParam.avatar: "http://172.105.13.154:9003/api/v1/mobile-app/pets/create",
                 ConstantApiParam.breed : self.view?.txtBreed.text ?? "",
-                ConstantApiParam.age: Int(self.view?.txtAge.text ?? "") ?? 0,
+                ConstantApiParam.dob: self.view?.txtAge.text ?? "",
                 ConstantApiParam.weight: Int(self.view?.txtWeight.text ?? "") ?? 0,
-                ConstantApiParam.color: Int(self.view?.txtColor.text ?? "") ?? 0,
+                ConstantApiParam.color: self.view?.txtColor.text ?? "",
                 ConstantApiParam.height: [ConstantApiParam.feet:Int(self.view?.txtHeight.text ?? "") ?? 0,
                                           ConstantApiParam.inches:Int(self.view?.txtHeightInch.text ?? "") ?? 0]
             ]

@@ -19,11 +19,11 @@
         <array key="Manrope-ExtraBold.ttf">
             <string>Manrope-ExtraBold</string>
         </array>
-        <array key="Manrope-Medium.ttf">
-            <string>Manrope-Medium</string>
+        <array key="Manrope-Regular.ttf">
+            <string>Manrope-Regular</string>
         </array>
         <array key="Manrope-VariableFont_wght.ttf">
-            <string>Manrope-Regular</string>
+            <string>Manrope-Medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -113,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" name="ThemeOrangeEnd"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-Sb-3vC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-Sb-3vC" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                 <rect key="frame" x="20" y="734" width="353" height="50"/>
                                 <color key="backgroundColor" name="TextWhite"/>
                                 <constraints>
@@ -128,6 +128,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="asda"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextOnPress:" destination="La9-Vo-Bo9" eventType="touchUpInside" id="8G7-EK-1zG"/>
@@ -196,13 +197,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_small_bone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Zy1-S4-H19">
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoY-cb-Lej">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoY-cb-Lej" customClass="LocalizedLabel" customModule="Zupet" customModuleProvider="target">
                                 <rect key="frame" x="16" y="181" width="367" height="87.666666666666686"/>
                                 <string key="text">Welcome
 Back!</string>
                                 <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Welcome Back!"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMY-A5-TfF">
                                 <rect key="frame" x="0.0" y="316.66666666666669" width="393" height="535.33333333333326"/>
@@ -280,7 +284,7 @@ Back!</string>
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-dC-Yvt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-dC-Yvt" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                         <rect key="frame" x="16" y="234.33333333333331" width="108" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="ZMc-zp-HWu"/>
@@ -291,11 +295,14 @@ Back!</string>
                                             <color key="titleColor" name="AppGray"/>
                                         </state>
                                         <state key="selected" image="ic_checkbox"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Remember me"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="rememberMeOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="TTu-dX-6GZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-KG-oTq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-KG-oTq" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                         <rect key="frame" x="274" y="230.33333333333331" width="103" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jqG-23-zna"/>
@@ -305,6 +312,9 @@ Back!</string>
                                         <state key="normal" title="Forgot Password ?">
                                             <color key="titleColor" name="ThemeOrangeEnd"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Forgot Password ?"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="forgotPasswordOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="78A-GP-Ubv"/>
                                         </connections>
@@ -312,7 +322,7 @@ Back!</string>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="h78-fB-158">
                                         <rect key="frame" x="16" y="330.33333333333331" width="361" height="120"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7c-5M-CxL">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7c-5M-CxL" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
                                                 <color key="backgroundColor" name="ThemeOrangeEnd"/>
                                                 <constraints>
@@ -327,12 +337,13 @@ Back!</string>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Sign In"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="signOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="bFU-EW-2yn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBm-o5-tKz">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBm-o5-tKz" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="68" width="361" height="52"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -353,6 +364,7 @@ Back!</string>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Login with Google"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="googleOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="rie-Z1-NaR"/>
@@ -360,7 +372,7 @@ Back!</string>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WeL-ha-Kwr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WeL-ha-Kwr" customClass="LocalizedButton" customModule="Zupet" customModuleProvider="target">
                                         <rect key="frame" x="114" y="443.33333333333331" width="165" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="HGq-jx-zVM"/>
@@ -396,6 +408,9 @@ Back!</string>
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Don’t have an account . Sign Up"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signupOnPress:" destination="7Xf-Gy-0sX" eventType="touchUpInside" id="Bsm-HD-8TC"/>
                                         </connections>
@@ -416,11 +431,14 @@ Back!</string>
                                     <constraint firstItem="Zil-KG-oTq" firstAttribute="trailing" secondItem="Moy-j1-Lfs" secondAttribute="trailing" id="ybj-op-XKU"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to acces your account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gER-Jz-wUq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to acces your account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gER-Jz-wUq" customClass="LocalizedLabel" customModule="Zupet" customModuleProvider="target">
                                 <rect key="frame" x="16" y="278.66666666666669" width="361" height="22"/>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                 <color key="textColor" name="TextWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Sign in to acces your account"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_girl_dog" translatesAutoresizingMaskIntoConstraints="NO" id="Ffx-MK-k0Y">
                                 <rect key="frame" x="214" y="141" width="179" height="248"/>
@@ -532,7 +550,7 @@ Started</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wee-yw-zSi">
                                                 <rect key="frame" x="0.0" y="68" width="393" height="60"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Valid email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="77m-VG-NVI">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="77m-VG-NVI">
                                                         <rect key="frame" x="16" y="4" width="361" height="52"/>
                                                         <color key="backgroundColor" name="AppLightGray"/>
                                                         <constraints>
@@ -578,7 +596,7 @@ Started</string>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_phone"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                <real key="value" value="16"/>
+                                                                <real key="value" value="62"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="8"/>
@@ -588,10 +606,55 @@ Started</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-Fv-p9W">
+                                                        <rect key="frame" x="32" y="13" width="42" height="34"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ca_flag" translatesAutoresizingMaskIntoConstraints="NO" id="je4-cQ-qLN">
+                                                                <rect key="frame" x="0.0" y="6" width="22" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="Hg8-Fd-lOU"/>
+                                                                    <constraint firstAttribute="width" constant="22" id="ds0-eZ-yza"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="Yvq-op-Q2I">
+                                                                <rect key="frame" x="28" y="10" width="14" height="14"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="14" id="meW-ll-aeH"/>
+                                                                    <constraint firstAttribute="height" constant="14" id="pqg-vu-PFV"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgC-Su-Nfq">
+                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="34"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" name="171717"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="countryPickerOnPress:" destination="Kz3-hm-kGd" eventType="touchUpInside" id="Pez-Y6-EvQ"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Yvq-op-Q2I" secondAttribute="trailing" id="3Ux-1J-Yvb"/>
+                                                            <constraint firstItem="je4-cQ-qLN" firstAttribute="centerY" secondItem="OrE-Fv-p9W" secondAttribute="centerY" id="4YJ-VS-RDJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="TgC-Su-Nfq" secondAttribute="trailing" id="9q7-D2-fd5"/>
+                                                            <constraint firstItem="Yvq-op-Q2I" firstAttribute="leading" secondItem="je4-cQ-qLN" secondAttribute="trailing" constant="6" id="CPt-ej-0ri"/>
+                                                            <constraint firstItem="TgC-Su-Nfq" firstAttribute="top" secondItem="OrE-Fv-p9W" secondAttribute="top" id="Nk3-rb-y6E"/>
+                                                            <constraint firstItem="TgC-Su-Nfq" firstAttribute="leading" secondItem="OrE-Fv-p9W" secondAttribute="leading" id="Ruv-ET-MVV"/>
+                                                            <constraint firstItem="TgC-Su-Nfq" firstAttribute="centerY" secondItem="OrE-Fv-p9W" secondAttribute="centerY" id="ZNI-qj-69Y"/>
+                                                            <constraint firstItem="je4-cQ-qLN" firstAttribute="leading" secondItem="OrE-Fv-p9W" secondAttribute="leading" id="g2j-OH-YzI"/>
+                                                            <constraint firstAttribute="height" constant="34" id="mjQ-JS-WTC"/>
+                                                            <constraint firstItem="je4-cQ-qLN" firstAttribute="centerY" secondItem="Yvq-op-Q2I" secondAttribute="centerY" id="sIA-Kw-1YQ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="TgC-Su-Nfq" secondAttribute="bottom" id="wHO-0J-qPR"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="deq-Sv-iVt" secondAttribute="trailing" constant="16" id="0Xr-EX-k5L"/>
+                                                    <constraint firstItem="OrE-Fv-p9W" firstAttribute="centerY" secondItem="7vm-f5-2c1" secondAttribute="centerY" id="AGo-Pq-hV2"/>
+                                                    <constraint firstItem="OrE-Fv-p9W" firstAttribute="leading" secondItem="7vm-f5-2c1" secondAttribute="leading" constant="32" id="Ddy-Fd-9N6"/>
                                                     <constraint firstItem="deq-Sv-iVt" firstAttribute="leading" secondItem="7vm-f5-2c1" secondAttribute="leading" constant="16" id="Hqp-jQ-W1r"/>
                                                     <constraint firstAttribute="bottom" secondItem="deq-Sv-iVt" secondAttribute="bottom" constant="4" id="sfj-lQ-EXz"/>
                                                     <constraint firstItem="deq-Sv-iVt" firstAttribute="top" secondItem="7vm-f5-2c1" secondAttribute="top" constant="4" id="wIA-Pk-9eM"/>
@@ -600,7 +663,7 @@ Started</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNQ-mY-ugA">
                                                 <rect key="frame" x="0.0" y="204" width="393" height="60"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Strong Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ulN-EV-cYq">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Strong Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ulN-EV-cYq" customClass="PasswordTextField" customModule="Zupet" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="4" width="361" height="52"/>
                                                         <color key="backgroundColor" name="AppLightGray"/>
                                                         <constraints>
@@ -608,9 +671,8 @@ Started</string>
                                                         </constraints>
                                                         <color key="textColor" name="TextBlack"/>
                                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_lock"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <real key="value" value="16"/>
                                                             </userDefinedRuntimeAttribute>
@@ -620,6 +682,7 @@ Started</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                                                 <color key="value" name="TextBlack"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="passwordrightImage" value="ic_eye"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
@@ -793,11 +856,12 @@ Started</string>
                         <outlet property="bgView" destination="uds-yd-OGF" id="7wk-rK-Q8b"/>
                         <outlet property="btnTerms" destination="gh7-nv-h5b" id="pXq-2o-crf"/>
                         <outlet property="containerView" destination="7St-cM-AIx" id="BGo-jU-meC"/>
+                        <outlet property="imgCountryFlag" destination="je4-cQ-qLN" id="vYJ-WK-4XS"/>
                         <outlet property="lblTerms" destination="cdp-hB-8ev" id="UFT-Bk-mZv"/>
                         <outlet property="txtEmail" destination="77m-VG-NVI" id="boq-Za-vxc"/>
                         <outlet property="txtFullName" destination="Pk7-VE-TFM" id="BFu-CO-pmo"/>
-                        <outlet property="txtPassword" destination="ulN-EV-cYq" id="vCM-d8-7Xh"/>
-                        <outlet property="txtPhone" destination="deq-Sv-iVt" id="ZvT-la-En3"/>
+                        <outlet property="txtPassword" destination="ulN-EV-cYq" id="CRk-5T-byR"/>
+                        <outlet property="txtPhone" destination="deq-Sv-iVt" id="THi-FO-4hQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJW-lo-Th2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1796,7 +1860,7 @@ your Dog</string>
                                                                         <color key="textColor" name="TextBlack"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-gx-dMP">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-gx-dMP">
                                                                         <rect key="frame" x="16" y="24.333333333333368" width="361" height="47.666666666666657"/>
                                                                         <color key="backgroundColor" name="AppLightGray"/>
                                                                         <color key="textColor" name="TextBlack"/>
@@ -1943,6 +2007,123 @@ your Dog</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sF6-9A-iY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6507.6335877862593" y="23.943661971830988"/>
+        </scene>
+        <!--Bottom SheetVC-->
+        <scene sceneID="nm4-Vo-ayV">
+            <objects>
+                <viewController storyboardIdentifier="BottomSheetVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fbR-uQ-uPw" customClass="BottomSheetVC" customModule="Zupet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="g0a-xL-Bsz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-iN-IiE">
+                                <rect key="frame" x="0.0" y="145" width="393" height="639"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clm-la-MGt">
+                                        <rect key="frame" x="16" y="20" width="361" height="48"/>
+                                        <color key="backgroundColor" name="TextWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="5Fk-hl-9Wa"/>
+                                        </constraints>
+                                        <color key="textColor" name="TextBlack"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                                <color key="value" name="AppGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_search"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.8862745098" green="0.90980392160000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-Zc-QFk">
+                                        <rect key="frame" x="0.0" y="68" width="393" height="571"/>
+                                        <color key="backgroundColor" name="TextWhite"/>
+                                        <color key="separatorColor" name="BoarderColor"/>
+                                        <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" name="TextWhite"/>
+                                <constraints>
+                                    <constraint firstItem="clm-la-MGt" firstAttribute="leading" secondItem="a4G-iN-IiE" secondAttribute="leading" constant="16" id="3ru-8H-Gzx"/>
+                                    <constraint firstItem="Aba-Zc-QFk" firstAttribute="leading" secondItem="a4G-iN-IiE" secondAttribute="leading" id="8Ny-cG-dCy"/>
+                                    <constraint firstItem="clm-la-MGt" firstAttribute="top" secondItem="a4G-iN-IiE" secondAttribute="top" constant="20" id="S5W-HM-LGV"/>
+                                    <constraint firstItem="Aba-Zc-QFk" firstAttribute="top" secondItem="clm-la-MGt" secondAttribute="bottom" id="m4d-Ec-ASL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aba-Zc-QFk" secondAttribute="trailing" id="qzd-lS-sET"/>
+                                    <constraint firstAttribute="bottom" secondItem="Aba-Zc-QFk" secondAttribute="bottom" id="y6A-fv-1cK"/>
+                                    <constraint firstAttribute="trailing" secondItem="clm-la-MGt" secondAttribute="trailing" constant="16" id="yvs-G2-OHJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" name="TextBlack"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJj-Rh-daN">
+                                <rect key="frame" x="0.0" y="784" width="393" height="68"/>
+                                <color key="backgroundColor" name="TextWhite"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZJH-2N-GLN"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NJj-Rh-daN" secondAttribute="bottom" id="0gg-hx-ijR"/>
+                            <constraint firstItem="ZJH-2N-GLN" firstAttribute="trailing" secondItem="a4G-iN-IiE" secondAttribute="trailing" id="Fb5-Zl-oEt"/>
+                            <constraint firstAttribute="trailing" secondItem="NJj-Rh-daN" secondAttribute="trailing" id="WKj-WE-eWT"/>
+                            <constraint firstItem="NJj-Rh-daN" firstAttribute="leading" secondItem="g0a-xL-Bsz" secondAttribute="leading" id="atD-Eb-dW0"/>
+                            <constraint firstItem="a4G-iN-IiE" firstAttribute="leading" secondItem="g0a-xL-Bsz" secondAttribute="leading" id="doh-G4-Z9w"/>
+                            <constraint firstItem="a4G-iN-IiE" firstAttribute="height" secondItem="g0a-xL-Bsz" secondAttribute="height" multiplier="0.75" id="iX9-W0-jAL"/>
+                            <constraint firstItem="ZJH-2N-GLN" firstAttribute="bottom" secondItem="a4G-iN-IiE" secondAttribute="bottom" id="u1N-49-w4B"/>
+                            <constraint firstItem="NJj-Rh-daN" firstAttribute="top" secondItem="a4G-iN-IiE" secondAttribute="bottom" id="wJe-Uk-KR7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="conatinerView" destination="a4G-iN-IiE" id="5pn-qt-gey"/>
+                        <outlet property="tableView" destination="Aba-Zc-QFk" id="IMn-bV-wse"/>
+                        <outlet property="txtSearch" destination="clm-la-MGt" id="fFK-cF-Gl6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTm-XV-teQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6403.8167938931292" y="790.84507042253529"/>
+        </scene>
+        <!--ChatVC-->
+        <scene sceneID="Kil-cF-OXo">
+            <objects>
+                <tableViewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bh2-Eh-UyO" customClass="ChatVC" customModule="Zupet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cf7-WZ-eWd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bh2-Eh-UyO" id="CGO-SA-EmT"/>
+                            <outlet property="delegate" destination="bh2-Eh-UyO" id="oTj-bO-C0W"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uBz-x1-u2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7405" y="773"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="huO-j0-e7C">
@@ -2198,7 +2379,7 @@ Reset</string>
                                 <rect key="frame" x="0.0" y="301" width="393" height="551"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N2O-u1-U7C">
-                                        <rect key="frame" x="16" y="431" width="361" height="52"/>
+                                        <rect key="frame" x="16" y="364.33333333333337" width="361" height="52"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72A-oN-laE">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -2223,28 +2404,28 @@ Reset</string>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost There" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTS-6Z-Dcf">
-                                        <rect key="frame" x="16" y="122" width="361" height="44"/>
+                                        <rect key="frame" x="16" y="112" width="361" height="44"/>
                                         <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="32"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwJ-uX-LjD">
-                                        <rect key="frame" x="16" y="172" width="361" height="38.333333333333343"/>
+                                        <rect key="frame" x="16" y="162" width="361" height="38.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="TextBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R2-7o-osy" customClass="OTPView" customModule="Zupet" customModuleProvider="target">
-                                        <rect key="frame" x="44" y="260.33333333333337" width="305" height="50"/>
+                                        <rect key="frame" x="44" y="230.33333333333337" width="305" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="mjq-If-GwR"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HV4-GP-iWp">
-                                        <rect key="frame" x="0.0" y="360.33333333333337" width="393" height="60"/>
+                                        <rect key="frame" x="0.0" y="310.33333333333337" width="393" height="60"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mo9-J5-Cyn">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mo9-J5-Cyn" customClass="PasswordTextField" customModule="Zupet" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="4" width="361" height="52"/>
                                                 <color key="backgroundColor" name="AppLightGray"/>
                                                 <constraints>
@@ -2254,7 +2435,6 @@ Reset</string>
                                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_eye"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2264,6 +2444,7 @@ Reset</string>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                                         <color key="value" name="TextBlack"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="passwordrightImage" value="ic_eye"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
@@ -2275,17 +2456,34 @@ Reset</string>
                                             <constraint firstAttribute="bottom" secondItem="mo9-J5-Cyn" secondAttribute="bottom" constant="4" id="yta-LM-fpl"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn’t receive any code? Resend Again" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBN-Ou-fLl">
+                                        <rect key="frame" x="73" y="440.33333333333337" width="247" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
+                                        <color key="textColor" name="TextBlack"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqp-C5-Nka">
+                                        <rect key="frame" x="105.66666666666667" y="463.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
+                                        <color key="textColor" name="AppGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="N2O-u1-U7C" firstAttribute="leading" secondItem="tJ6-QN-9dq" secondAttribute="leading" constant="16" id="27q-N4-Hku"/>
-                                    <constraint firstItem="5R2-7o-osy" firstAttribute="top" secondItem="gwJ-uX-LjD" secondAttribute="bottom" constant="50" id="4ZN-59-x1s"/>
-                                    <constraint firstItem="HV4-GP-iWp" firstAttribute="top" secondItem="5R2-7o-osy" secondAttribute="bottom" constant="50" id="AYl-qe-JRt"/>
+                                    <constraint firstItem="5R2-7o-osy" firstAttribute="top" secondItem="gwJ-uX-LjD" secondAttribute="bottom" constant="30" id="4ZN-59-x1s"/>
+                                    <constraint firstItem="HV4-GP-iWp" firstAttribute="top" secondItem="5R2-7o-osy" secondAttribute="bottom" constant="30" id="AYl-qe-JRt"/>
+                                    <constraint firstItem="Xqp-C5-Nka" firstAttribute="top" secondItem="wBN-Ou-fLl" secondAttribute="bottom" constant="4" id="B7P-FD-Uig"/>
                                     <constraint firstItem="HV4-GP-iWp" firstAttribute="leading" secondItem="tJ6-QN-9dq" secondAttribute="leading" id="CTw-c0-UZK"/>
                                     <constraint firstItem="gwJ-uX-LjD" firstAttribute="top" secondItem="dTS-6Z-Dcf" secondAttribute="bottom" constant="6" id="N7M-Qf-gYd"/>
+                                    <constraint firstItem="Xqp-C5-Nka" firstAttribute="top" secondItem="wBN-Ou-fLl" secondAttribute="bottom" constant="4" id="NAw-It-YUW"/>
                                     <constraint firstItem="5R2-7o-osy" firstAttribute="centerX" secondItem="tJ6-QN-9dq" secondAttribute="centerX" id="OON-3c-fno"/>
+                                    <constraint firstItem="wBN-Ou-fLl" firstAttribute="centerX" secondItem="tJ6-QN-9dq" secondAttribute="centerX" id="UEw-Ec-WbJ"/>
                                     <constraint firstItem="gwJ-uX-LjD" firstAttribute="leading" secondItem="tJ6-QN-9dq" secondAttribute="leading" constant="16" id="UvB-EE-II4"/>
+                                    <constraint firstItem="Xqp-C5-Nka" firstAttribute="centerX" secondItem="tJ6-QN-9dq" secondAttribute="centerX" id="VmD-K5-kAB"/>
                                     <constraint firstItem="5R2-7o-osy" firstAttribute="leading" secondItem="tJ6-QN-9dq" secondAttribute="leading" constant="44" id="aTF-yt-7EX"/>
+                                    <constraint firstItem="wBN-Ou-fLl" firstAttribute="top" secondItem="N2O-u1-U7C" secondAttribute="bottom" constant="24" id="f4Z-kW-ydt"/>
                                     <constraint firstAttribute="trailing" secondItem="dTS-6Z-Dcf" secondAttribute="trailing" constant="16" id="lKp-VP-zKE"/>
                                     <constraint firstAttribute="trailing" secondItem="gwJ-uX-LjD" secondAttribute="trailing" constant="16" id="myD-ur-Mez"/>
                                     <constraint firstAttribute="trailing" secondItem="N2O-u1-U7C" secondAttribute="trailing" constant="16" id="rcs-wa-1Qn"/>
@@ -2306,9 +2504,9 @@ Reset</string>
                             <constraint firstAttribute="bottom" secondItem="tJ6-QN-9dq" secondAttribute="bottom" id="BTo-wL-Kfs"/>
                             <constraint firstItem="uT5-Ix-XP0" firstAttribute="leading" secondItem="ApP-oj-5TC" secondAttribute="leading" id="Hh4-KH-rWi"/>
                             <constraint firstItem="hj3-99-V0f" firstAttribute="trailing" secondItem="ApP-oj-5TC" secondAttribute="trailing" id="Jao-tv-6Dn"/>
+                            <constraint firstItem="ApP-oj-5TC" firstAttribute="bottom" secondItem="Xqp-C5-Nka" secondAttribute="bottom" id="Ooj-9F-8V3"/>
                             <constraint firstItem="uT5-Ix-XP0" firstAttribute="top" secondItem="EUQ-er-piI" secondAttribute="top" id="RgQ-Vs-lb7"/>
-                            <constraint firstItem="dTS-6Z-Dcf" firstAttribute="top" secondItem="WaF-CS-rkX" secondAttribute="bottom" constant="30" id="UUx-AH-bgE"/>
-                            <constraint firstItem="ApP-oj-5TC" firstAttribute="bottom" secondItem="N2O-u1-U7C" secondAttribute="bottom" id="X6P-ij-Cdy"/>
+                            <constraint firstItem="dTS-6Z-Dcf" firstAttribute="top" secondItem="WaF-CS-rkX" secondAttribute="bottom" constant="20" id="UUx-AH-bgE"/>
                             <constraint firstItem="hj3-99-V0f" firstAttribute="leading" secondItem="ApP-oj-5TC" secondAttribute="leading" id="f45-BZ-NwM"/>
                             <constraint firstItem="ApP-oj-5TC" firstAttribute="trailing" secondItem="WaF-CS-rkX" secondAttribute="trailing" id="gSe-hy-vmN"/>
                             <constraint firstItem="hj3-99-V0f" firstAttribute="top" secondItem="ApP-oj-5TC" secondAttribute="top" id="ipd-au-LVw"/>
@@ -2320,8 +2518,11 @@ Reset</string>
                     </view>
                     <connections>
                         <outlet property="bgView" destination="tJ6-QN-9dq" id="TYG-AT-nKk"/>
+                        <outlet property="lblResendOtp" destination="wBN-Ou-fLl" id="xIC-pg-qno"/>
+                        <outlet property="lblSubTitle" destination="gwJ-uX-LjD" id="fxI-O4-0lP"/>
+                        <outlet property="lblTimeCount" destination="Xqp-C5-Nka" id="ofl-Pf-9NI"/>
                         <outlet property="otpView" destination="5R2-7o-osy" id="VcF-pK-6fi"/>
-                        <outlet property="txtPassword" destination="mo9-J5-Cyn" id="EXS-69-xYv"/>
+                        <outlet property="txtPassword" destination="mo9-J5-Cyn" id="bUf-cN-ckL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYw-vK-FPz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2332,6 +2533,7 @@ Reset</string>
     <resources>
         <image name="SplashBG" width="375" height="812"/>
         <image name="ic_app_name" width="157" height="109"/>
+        <image name="ic_ca_flag" width="14" height="14"/>
         <image name="ic_cat" width="149" height="264"/>
         <image name="ic_checkbox" width="16" height="16"/>
         <image name="ic_dog" width="187" height="333"/>
@@ -2349,19 +2551,25 @@ Reset</string>
         <image name="ic_full_name" width="24" height="24"/>
         <image name="ic_girl_dog" width="179" height="248"/>
         <image name="ic_google" width="24" height="24"/>
-        <image name="ic_lock" width="24" height="24"/>
         <image name="ic_pet_profile_bg" width="347" height="144"/>
         <image name="ic_phone" width="24" height="24"/>
         <image name="ic_refresh" width="49" height="48"/>
+        <image name="ic_search" width="24" height="24"/>
         <image name="ic_small_bone_icon" width="343" height="63"/>
         <image name="ic_small_icon" width="343" height="63"/>
         <image name="ic_uncheckbox" width="16" height="16"/>
         <image name="ic_welcome_msg" width="343" height="279"/>
+        <namedColor name="171717">
+            <color red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AppGray">
             <color red="0.63099998235702515" green="0.63099998235702515" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppLightGray">
             <color red="0.76899999380111694" green="0.76899999380111694" blue="0.76899999380111694" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BoarderColor">
+            <color red="0.88599997758865356" green="0.9100000262260437" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextBlack">
             <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

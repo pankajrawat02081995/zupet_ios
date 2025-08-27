@@ -1,0 +1,189 @@
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "0Dy-on-jEp"; */
+"0Dy-on-jEp.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Get \nStarted"; ObjectID = "0uq-Vy-RPo"; */
+"0uq-Vy-RPo.text" = "Get \nStarted";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "1gu-nD-SCP"; */
+"1gu-nD-SCP.placeholder" = "Choose here";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "3KJ-gx-dMP"; */
+"3KJ-gx-dMP.placeholder" = "Type here";
+
+/* Class = "UILabel"; text = "Tell us about \nyour Dog"; ObjectID = "3aj-FU-C4g"; */
+"3aj-FU-C4g.text" = "Tell us about \nyour Dog";
+
+/* Class = "UITextField"; placeholder = "Type here"; ObjectID = "4rX-Zk-I7E"; */
+"4rX-Zk-I7E.placeholder" = "Type here";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "4ud-3J-Esp"; */
+"4ud-3J-Esp.placeholder" = "Choose here";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "72A-oN-laE"; */
+"72A-oN-laE.normalTitle" = "Continue";
+
+/* Class = "UITextField"; placeholder = "Valid email"; ObjectID = "77m-VG-NVI"; */
+"77m-VG-NVI.placeholder" = "Valid email";
+
+/* Class = "UILabel"; text = "Let’s Start by adding your furry friend"; ObjectID = "A9R-zq-dVD"; */
+"A9R-zq-dVD.text" = "Let’s Start by adding your furry friend";
+
+/* Class = "UILabel"; text = "Almost There"; ObjectID = "BI7-NW-Ot1"; */
+"BI7-NW-Ot1.text" = "Almost There";
+
+/* Class = "UILabel"; text = "This helps us create a unique ID for \nyour furyy friend"; ObjectID = "C09-KK-G78"; */
+"C09-KK-G78.text" = "This helps us create a unique ID for \nyour furyy friend";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "DGU-w9-1N6"; */
+"DGU-w9-1N6.placeholder" = "Choose here";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "DKb-qW-RWs"; */
+"DKb-qW-RWs.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Height.Weight"; ObjectID = "EQj-NO-agG"; */
+"EQj-NO-agG.text" = "Height.Weight";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "HBm-o5-tKz"; */
+"HBm-o5-tKz.normalTitle" = "Login with Google";
+
+/* Class = "UILabel"; text = "Password\nReset"; ObjectID = "I5r-mq-KRZ"; */
+"I5r-mq-KRZ.text" = "Password\nReset";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "Inp-DH-9ZM"; */
+"Inp-DH-9ZM.placeholder" = "Choose here";
+
+/* Class = "UILabel"; text = "Who’s joining \nZupet with You?"; ObjectID = "MHA-n4-o2Z"; */
+"MHA-n4-o2Z.text" = "Who’s joining \nZupet with You?";
+
+/* Class = "UILabel"; text = "Height (feet)"; ObjectID = "MLZ-CW-30Z"; */
+"MLZ-CW-30Z.text" = "Height (feet)";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Moy-j1-Lfs"; */
+"Moy-j1-Lfs.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "← back to login"; ObjectID = "OIi-Qb-PHT"; */
+"OIi-Qb-PHT.normalTitle" = "← back to login";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "Pk7-VE-TFM"; */
+"Pk7-VE-TFM.placeholder" = "Full Name";
+
+/* Class = "UILabel"; text = "Welcome to \nZupet AI"; ObjectID = "Q8y-Ep-AdZ"; */
+"Q8y-Ep-AdZ.text" = "Welcome to \nZupet AI";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "R7c-5M-CxL"; */
+"R7c-5M-CxL.normalTitle" = "Sign In";
+
+/* Class = "UILabel"; text = "Species"; ObjectID = "RVn-Qi-FB1"; */
+"RVn-Qi-FB1.text" = "Species";
+
+/* Class = "UILabel"; text = "Enter Your Email account to reset password"; ObjectID = "Rav-7q-ba6"; */
+"Rav-7q-ba6.text" = "Enter Your Email account to reset password";
+
+/* Class = "UILabel"; text = "Welcome\nBack!"; ObjectID = "RoY-cb-Lej"; */
+"RoY-cb-Lej.text" = "Welcome\nBack!";
+
+/* Class = "UILabel"; text = "Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification."; ObjectID = "TC2-FX-Ouu"; */
+"TC2-FX-Ouu.text" = "Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification.";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "Wx0-DJ-pFj"; */
+"Wx0-DJ-pFj.text" = "Age";
+
+/* Class = "UILabel"; text = "Didn’t receive any code? Resend Again"; ObjectID = "XLp-pq-fEl"; */
+"XLp-pq-fEl.text" = "Didn’t receive any code? Resend Again";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password ?"; ObjectID = "Zil-KG-oTq"; */
+"Zil-KG-oTq.normalTitle" = "Forgot Password ?";
+
+/* Class = "UILabel"; text = "Pet’s Name"; ObjectID = "bzc-6c-Nb5"; */
+"bzc-6c-Nb5.text" = "Pet’s Name";
+
+/* Class = "UILabel"; text = "By checking the box you agree to our Terms and Conditions"; ObjectID = "cdp-hB-8ev"; */
+"cdp-hB-8ev.text" = "By checking the box you agree to our Terms and Conditions";
+
+/* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "ceZ-51-ttE"; */
+"ceZ-51-ttE.placeholder" = "Enter your email";
+
+/* Class = "UITextField"; placeholder = "Search here..."; ObjectID = "clm-la-MGt"; */
+"clm-la-MGt.placeholder" = "Search here...";
+
+/* Class = "UILabel"; text = "Almost There"; ObjectID = "dTS-6Z-Dcf"; */
+"dTS-6Z-Dcf.text" = "Almost There";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "deq-Sv-iVt"; */
+"deq-Sv-iVt.placeholder" = "Phone number";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "f8C-Zs-JJc"; */
+"f8C-Zs-JJc.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Sign in to acces your account"; ObjectID = "gER-Jz-wUq"; */
+"gER-Jz-wUq.text" = "Sign in to acces your account";
+
+/* Class = "UILabel"; text = "Weight"; ObjectID = "gUz-TB-5yG"; */
+"gUz-TB-5yG.text" = "Weight";
+
+/* Class = "UILabel"; text = "Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification."; ObjectID = "gwJ-uX-LjD"; */
+"gwJ-uX-LjD.text" = "Please enter the 6-digit code sent to your email contact.ZupetAI@gmail.com for verification.";
+
+/* Class = "UILabel"; text = "Breed.Age"; ObjectID = "hIv-va-Yga"; */
+"hIv-va-Yga.text" = "Breed.Age";
+
+/* Class = "UILabel"; text = "Breed"; ObjectID = "i2f-Jp-FgK"; */
+"i2f-Jp-FgK.text" = "Breed";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iSK-1b-AAU"; */
+"iSK-1b-AAU.normalTitle" = "Get Started";
+
+/* Class = "UILabel"; text = "Let’s Scan your \nPets nose"; ObjectID = "jLq-Dw-BEf"; */
+"jLq-Dw-BEf.text" = "Let’s Scan your \nPets nose";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "jXJ-fa-rve"; */
+"jXJ-fa-rve.text" = "Color";
+
+/* Class = "UIButton"; normalTitle = "Verify OTP"; ObjectID = "kgY-Iy-0aB"; */
+"kgY-Iy-0aB.normalTitle" = "Verify OTP";
+
+/* Class = "UILabel"; text = "By Creating a Free Account"; ObjectID = "lpt-E7-xcn"; */
+"lpt-E7-xcn.text" = "By Creating a Free Account";
+
+/* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "mKp-ud-7uX"; */
+"mKp-ud-7uX.placeholder" = "Enter your email";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "mo9-J5-Cyn"; */
+"mo9-J5-Cyn.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Select your pet type to begin"; ObjectID = "q8Y-kd-D2V"; */
+"q8Y-kd-D2V.text" = "Select your pet type to begin";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "sws-Xk-lY8"; */
+"sws-Xk-lY8.placeholder" = "Choose here";
+
+/* Class = "UILabel"; text = "Request new code in 00:30s"; ObjectID = "syH-m9-uoJ"; */
+"syH-m9-uoJ.text" = "Request new code in 00:30s";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "tqq-Sb-3vC"; */
+"tqq-Sb-3vC.normalTitle" = "Next";
+
+/* Class = "UITextField"; placeholder = "Strong Password"; ObjectID = "ulN-EV-cYq"; */
+"ulN-EV-cYq.placeholder" = "Strong Password";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "w7l-t2-2ix"; */
+"w7l-t2-2ix.text" = "Name";
+
+/* Class = "UITextField"; placeholder = "Choose here"; ObjectID = "w91-94-3jg"; */
+"w91-94-3jg.placeholder" = "Choose here";
+
+/* Class = "UILabel"; text = "Your AI Powered buddy to take \ncare of your Pet"; ObjectID = "wDt-xK-RBq"; */
+"wDt-xK-RBq.text" = "Your AI Powered buddy to take \ncare of your Pet";
+
+/* Class = "UILabel"; text = "Height (inches)"; ObjectID = "wVk-Gj-go7"; */
+"wVk-Gj-go7.text" = "Height (inches)";
+
+/* Class = "UIButton"; normalTitle = "   Remember me"; ObjectID = "xUz-dC-Yvt"; */
+"xUz-dC-Yvt.normalTitle" = "   Remember me";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "xbR-33-sL8"; */
+"xbR-33-sL8.normalTitle" = "Continue";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "yFs-dg-epJ"; */
+"yFs-dg-epJ.normalTitle" = "Sign Up";

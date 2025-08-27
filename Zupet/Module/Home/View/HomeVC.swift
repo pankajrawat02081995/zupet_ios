@@ -55,6 +55,11 @@ class HomeVC: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         
+        tableView.addRefreshControl { [weak self] in
+            self?.tableView.endRefreshing()
+            self?.viewModel?.callHomeApi()
+        }
+        
         // Register PetTableCellXIB
         //          let nib = UINib(nibName: "PetTableCellXIB", bundle: nil)
         //          tableView.register(nib, forCellReuseIdentifier: "PetTableCellXIB")
@@ -70,9 +75,6 @@ class HomeVC: UIViewController {
     }
 
     @IBAction func imgUserOnPress(_ sender: UIButton) {
-        presentPopup(from: self, mainTitle: .Logout, subTitle: .Logout, btnOkTitle: .Yes, btnCancelTitle: .No) {
-            self.viewModel?.callLogoutApi()
-        }
     }
 }
 
