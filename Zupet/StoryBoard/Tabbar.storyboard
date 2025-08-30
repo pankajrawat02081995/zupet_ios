@@ -7,7 +7,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -366,7 +365,7 @@
                                                 <rect key="frame" x="0.0" y="32" width="393" height="66"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tl4-dR-s15">
-                                                        <rect key="frame" x="174" y="23.666666666666657" width="45.333333333333343" height="18.666666666666671"/>
+                                                        <rect key="frame" x="172.66666666666666" y="22" width="47.666666666666657" height="22"/>
                                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
                                                         <color key="textColor" name="TextWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -531,28 +530,19 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a6J-PG-fNM">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a6J-PG-fNM">
                                                                 <rect key="frame" x="16" y="244.33333333333331" width="361" height="164"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="164" id="HQL-ss-ojr"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vpR-UP-6hS">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vpR-UP-6hS">
                                                                     <size key="itemSize" width="128" height="128"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
-                                                                <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EkW-Rp-dPx">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PPx-12-man">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                        </collectionViewCellContentView>
-                                                                    </collectionViewCell>
-                                                                </cells>
+                                                                <cells/>
                                                             </collectionView>
                                                         </subviews>
                                                         <color key="backgroundColor" name="TextWhite"/>
@@ -613,6 +603,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="bgView" destination="Pcc-ip-Xab" id="GuZ-1A-6yx"/>
+                        <outlet property="collectionView" destination="a6J-PG-fNM" id="OnM-yp-g6I"/>
                         <outlet property="containerView" destination="NIG-Um-CQA" id="56U-I1-Bk5"/>
                         <outlet property="imgUser" destination="cNV-IN-7TR" id="iHg-1S-eOr"/>
                         <outlet property="lblEmail" destination="hiD-hx-QDp" id="sOk-KZ-mAL"/>

@@ -9,6 +9,7 @@ import UIKit
 
 class ProfileVC: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
             lblTitle.font = .manropeBold(18)
@@ -37,7 +38,13 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(cellType: PetCollectionXIB.self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,7 +56,48 @@ class ProfileVC: UIViewController {
     }
 
     @IBAction func settingOnPress(_ sender: UIButton) {
-        push(SettingVC.self, from: .profile)
+        push(AppointmentDetailsVC.self, from: .profile)
     }
     
+}
+
+extension ProfileVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : PetCollectionXIB = collectionView.dequeueReusableCell(for: indexPath)
+        if indexPath.item == 0{
+            cell.addView.isHidden = false
+            cell.petView.isHidden = true
+        }else{
+            cell.addView.isHidden = true
+            cell.petView.isHidden = false
+        }
+        return cell
+    }
+    
+    // 🔹 Cell size
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = collectionView.bounds.width / 3   // half width
+        let height = collectionView.bounds.height     // full height of collection view
+        return CGSize(width: width, height: height)
+    }
+    
+    // (optional) spacing between cells
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
 }

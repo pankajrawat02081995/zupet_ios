@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppointmentTimelineXIB" rowHeight="252" id="KGk-i7-Jjw" customClass="AppointmentTimelineXIB" customModule="Zupet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="252"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="252"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqz-rC-2RI">
+                        <rect key="frame" x="30" y="0.0" width="2" height="252"/>
+                        <color key="backgroundColor" name="ThemeOrangeEnd"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="2" id="5Mc-bd-Nb8"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-W4-Vgf">
+                        <rect key="frame" x="16" y="0.0" width="30" height="30"/>
+                        <color key="backgroundColor" name="ThemeOrangeEnd"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="srd-sz-J7V"/>
+                            <constraint firstAttribute="height" constant="30" id="vJa-UV-N2m"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appointment Request Sent" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3V-XU-loa">
+                        <rect key="frame" x="54" y="0.0" width="314" height="20.333333333333332"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="TextBlack"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You successfully submitted your preferred appointment deatils for a check-up at Vet Pup Clinic." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-ej-eFq">
+                        <rect key="frame" x="54" y="24.333333333333329" width="314" height="61"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="TextBlack"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1CL-nh-mwy">
+                        <rect key="frame" x="54" y="101.33333333333333" width="192" height="31.999999999999986"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3C1-Pv-52H">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="32"/>
+                                <color key="backgroundColor" name="ThemeOrangeEnd"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="agA-7u-MpO"/>
+                                    <constraint firstAttribute="width" constant="90" id="idT-7g-qQ1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Accept"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeZ-4l-6j8">
+                                <rect key="frame" x="102" y="0.0" width="90" height="32"/>
+                                <color key="backgroundColor" name="TextWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Decline">
+                                    <color key="titleColor" name="TextBlack"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="BoarderColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="innerShadowEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="r3V-XU-loa" firstAttribute="leading" secondItem="Rv9-W4-Vgf" secondAttribute="trailing" constant="8" id="0gf-8Q-hvX"/>
+                    <constraint firstItem="1CL-nh-mwy" firstAttribute="top" secondItem="ppa-ej-eFq" secondAttribute="bottom" constant="16" id="CRW-ww-sy2"/>
+                    <constraint firstItem="1CL-nh-mwy" firstAttribute="leading" secondItem="r3V-XU-loa" secondAttribute="leading" id="DYv-Kb-q6p"/>
+                    <constraint firstItem="Rv9-W4-Vgf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GVN-JS-HV2"/>
+                    <constraint firstItem="Rv9-W4-Vgf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Gyf-5a-Oy3"/>
+                    <constraint firstItem="r3V-XU-loa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JjL-w5-iWC"/>
+                    <constraint firstAttribute="bottom" secondItem="Tqz-rC-2RI" secondAttribute="bottom" id="QA4-3u-LN5"/>
+                    <constraint firstAttribute="trailing" secondItem="r3V-XU-loa" secondAttribute="trailing" constant="8" id="RdC-sW-gc0"/>
+                    <constraint firstItem="Tqz-rC-2RI" firstAttribute="centerX" secondItem="Rv9-W4-Vgf" secondAttribute="centerX" id="W7F-wb-MD1"/>
+                    <constraint firstItem="ppa-ej-eFq" firstAttribute="leading" secondItem="r3V-XU-loa" secondAttribute="leading" id="Wpv-h2-2rh"/>
+                    <constraint firstItem="ppa-ej-eFq" firstAttribute="trailing" secondItem="r3V-XU-loa" secondAttribute="trailing" id="YmK-ZI-olC"/>
+                    <constraint firstItem="Tqz-rC-2RI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hh7-N5-7hm"/>
+                    <constraint firstItem="ppa-ej-eFq" firstAttribute="top" secondItem="r3V-XU-loa" secondAttribute="bottom" constant="4" id="hu5-yQ-YQN"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1CL-nh-mwy" secondAttribute="bottom" constant="10" id="ucz-0v-dye"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnAccept" destination="3C1-Pv-52H" id="BCm-ws-bTq"/>
+                <outlet property="btnDecline" destination="DeZ-4l-6j8" id="90k-Bl-len"/>
+                <outlet property="imgTimeline" destination="Rv9-W4-Vgf" id="okR-cr-wav"/>
+                <outlet property="lblSubtitle" destination="ppa-ej-eFq" id="kn2-jU-aDB"/>
+                <outlet property="lblTitle" destination="r3V-XU-loa" id="UBx-EJ-YfC"/>
+                <outlet property="timelineView" destination="Tqz-rC-2RI" id="UGi-V5-eyp"/>
+            </connections>
+            <point key="canvasLocation" x="172.51908396946564" y="40.845070422535215"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BoarderColor">
+            <color red="0.88599997758865356" green="0.9100000262260437" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextBlack">
+            <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ThemeOrangeEnd">
+            <color red="1" green="0.46299999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
