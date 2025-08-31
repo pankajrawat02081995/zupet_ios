@@ -58,7 +58,12 @@ enum ConstantParam:String, Codable{
 }
 
 struct ConstantApiParam{
+    static let Page = "page"
+    static let StageId = "stageId"
+    static let Decision = "decision"
+    static let AlternateSlot = "alternateSlot"
     static let Phone = "phone"
+    static let Id = "id"
     static let CountryCode = "countryCode"
     static let FullName = "fullName"
     static let OldPassword = "oldPassword"

@@ -258,7 +258,9 @@ public actor APIManager {
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
+            if body != nil{
+                request.httpBody = body
+            }
             request.setValue("Bearer \(await UserDefaultsManager.shared.fatchCurentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
             
             setHeaders(request: &request, headers: headers)

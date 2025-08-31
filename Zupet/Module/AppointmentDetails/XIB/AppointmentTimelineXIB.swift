@@ -32,6 +32,9 @@ class AppointmentTimelineXIB: UITableViewCell {
     }
     @IBOutlet weak var imgTimeline: UIImageView!
     
+    var acceptOnPress : ((Int) -> Void)?
+    var declineOnPress : ((Int) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,6 +44,14 @@ class AppointmentTimelineXIB: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func acceptOnPress(_ sender: UIButton) {
+        acceptOnPress?(sender.tag)
+    }
+    
+    @IBAction func declineOnPress(_ sender: UIButton) {
+        declineOnPress?(sender.tag)
     }
     
 }

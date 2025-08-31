@@ -9,8 +9,16 @@ import UIKit
 
 class PetCollectionXIB: UICollectionViewCell {
 
-    @IBOutlet weak var addView: UIView!
-    @IBOutlet weak var petView: UIView!
+    @IBOutlet weak var addView: UIView!{
+        didSet{
+            addView.addInnerShadow(cornerRadius: addView.layer.cornerRadius)
+        }
+    }
+    @IBOutlet weak var petView: UIView!{
+        didSet{
+            petView.addInnerShadow(cornerRadius: petView.layer.cornerRadius)
+        }
+    }
     @IBOutlet weak var imgPet: UIImageView!
     @IBOutlet weak var lblAge: UILabel!{
         didSet{

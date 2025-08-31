@@ -14,6 +14,8 @@ enum DateFormatType: String {
     case ddMMyyyy = "dd-MM-yyyy"
     case MMMddyyyy = "MMM dd, yyyy"
     case fullDateTime = "yyyy-MM-dd HH:mm:ss"
+    case utcFormate = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    case localWithDate = "EEE, MMMM dd . hh:mm a"
     case custom // use only if you want to provide your own format string manually
 }
 

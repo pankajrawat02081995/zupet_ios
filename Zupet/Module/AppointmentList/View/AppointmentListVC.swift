@@ -23,9 +23,14 @@ class AppointmentListVC: UIViewController {
             lbltitle.localize("My Appointments")
         }
     }
+    
+    private var viewModel : AppointmentListViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = AppointmentListViewModel(view: self)
         setupTableView()
+        viewModel?.getAppointmentsData()
     }
     
     private func setupTableView(){
@@ -34,10 +39,22 @@ class AppointmentListVC: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         tableView.register(cellType: AppointmentListXIB.self)
+        
+        tableView.addRefreshControl { [weak self] in
+            self?.tableView.endRefreshing()
+            self?.viewModel?.getAppointmentsData()
+        }
     }
     
     @IBAction func backOnPress(_ sender: UIButton) {
         popView()
+    }
+    
+    @IBAction func addOnPress(_ sender: UIButton) {
+        push(VetDetailsVC.self, from: .vet){ [weak self] vc in
+            guard self != nil else {return}
+            vc.isDirectAppointment = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,11 +69,19 @@ class AppointmentListVC: UIViewController {
 
 extension AppointmentListVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel?.appointmentModel?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : AppointmentListXIB = tableView.dequeueReusableCell(for: indexPath)
+        let indexData = viewModel?.appointmentModel?.data?[indexPath.row]
+        cell.lblPetName.text = indexData?.vet?.name ?? ""
+        cell.lblDoctorName.text = "Special Notes : \(indexData?.specialNotes ?? "")"
+        cell.lblDate.text = "\(indexData?.date?.toLocalTime(inputFormat: .utcFormate, outputFormat: .localWithDate) ?? "")"
+        cell.lblStatus.text = indexData?.status?.capitalized ?? ""
+        cell.imgPet.setImage(from: indexData?.vet?.photos?.first ?? "")
+        
+        cell.lblStatus.backgroundColor = indexData?.status?.lowercased() == "pending" ? .ThemeOrangeEnd : indexData?.status?.lowercased() == "confirmed" ? .appGreen : .appRed
         return cell
     }
     
@@ -65,6 +90,11 @@ extension AppointmentListVC:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        push(AppointmentDetailsVC.self, from: .profile)
+        push(AppointmentDetailsVC.self, from: .profile) { [weak self ] vc in
+            guard let self = self else{return}
+            vc.appointmentId = viewModel?.appointmentModel?.data?[indexPath.row].id ?? ""
+            vc.vetName = viewModel?.appointmentModel?.data?[indexPath.row].vet?.name ?? ""
+            vc.date = viewModel?.appointmentModel?.data?[indexPath.row].date ?? ""
+        }
     }
 }

@@ -115,6 +115,7 @@ extension UIImageView {
         // Check cache
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
+            self.contentMode = .scaleAspectFill
             loader?.stopAnimating()
             loader?.removeFromSuperview()
             return
@@ -136,6 +137,7 @@ extension UIImageView {
                 imageCache.setObject(image, forKey: urlString as NSString)
                 DispatchQueue.main.async {
                     self.image = image
+                    self.contentMode = .scaleAspectFill
                     loader?.stopAnimating()
                     loader?.removeFromSuperview()
                 }

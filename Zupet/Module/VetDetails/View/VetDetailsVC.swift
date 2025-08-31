@@ -53,13 +53,17 @@ class VetDetailsVC: UIViewController {
     
     // MARK: - Data
     var photos: [UIImage] = [] // Populate with your images
-//    var services: [String] = [] // Populate with service names
-
+    var isDirectAppointment : Bool?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectButton(btnInfo,infoView)
+        if isDirectAppointment ?? false{
+            selectButton(btnAppointment,appointmentView)
+        }else{
+            selectButton(btnInfo,infoView)
+        }
         setupCollections()
     }
     
