@@ -11,6 +11,7 @@ class PetDetailVC: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var containerView: UIView! {
         didSet {
@@ -41,12 +42,13 @@ class PetDetailVC: UIViewController {
     
     private let heightFeetOptions: [String] = ["0 ft", "1 ft", "2 ft", "3 ft", "4 ft", "5 ft", "6 ft", "7 ft"]
     private let heightInchOptions: [String] = ["0 inch", "1 inch", "2 inch", "3 inch", "4 inch", "5 inch", "6 inch", "7 inch", "8 inch", "9 inch", "10 inch", "11 inch"]
-
+    
     private var breedOptions: [String]?
     private var colorOptions: [String]?
     var petSpecies: String?
     var ageDate: Date? = nil
-    
+    var isBackVisible: Bool = false
+    var petNoseModel : PetNoseScanerData?
     @IBOutlet weak var lblTitle: UILabel! {
         didSet {
             lblTitle.text = "Tell us about \nyour \(petSpecies ?? "")"
@@ -57,7 +59,9 @@ class PetDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Preload breed options in background without blocking UI
+        
+        btnBack.isHidden = !isBackVisible
+        
         Task { [weak self] in
             await self?.loadBreedOptions()
         }
@@ -75,6 +79,8 @@ class PetDetailVC: UIViewController {
         
         bgView.applyDiagonalGradient()
         bgView.updateGradientFrameIfNeeded()
+        
+        txtBreed.text = petNoseModel?.breed ?? ""
     }
     
     // MARK: - Data Load
@@ -89,14 +95,7 @@ class PetDetailVC: UIViewController {
     
     private func setupTextFields() {
         [txtPetName,txtColor, txtAge, txtHeight,txtHeightInch, txtBreed].forEach { $0?.delegate = self }
-        
         txtPetName.addTarget(self, action: #selector(petNameChanged), for: .editingChanged)
-//        txtAge.addTarget(self, action: #selector(ageInfoChanged), for: .editingDidBegin)
-//        txtHeight.addTarget(self, action: #selector(heightInfoChanged), for: .editingDidBegin)
-//        txtBreed.addTarget(self, action: #selector(breedInfoChanged), for: .editingDidBegin)
-//        txtColor.addTarget(self, action: #selector(colorInfoChanged), for: .editingDidBegin)
-//        txtHeightInch.addTarget(self, action: #selector(heightInchInfoChanged), for: .editingDidBegin)
-//        txtWeight.addTarget(self, action: #selector(weightInfoChanged), for: .editingChanged)
     }
     
     // MARK: - UITextField Events
@@ -172,6 +171,9 @@ class PetDetailVC: UIViewController {
     
     // MARK: - Continue Action
     
+    @IBAction func backOnPress(_ sender: UIButton) {
+        popView()
+    }
     @IBAction func continueButtonTapped(_ sender: UIButton) {
         Task {
             if await isValid() {

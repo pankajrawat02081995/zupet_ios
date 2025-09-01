@@ -39,6 +39,8 @@ enum APIConstants{
     static var updateProfile: URL? { url("users/profile/update") }
     static var changePassword: URL? { url("users/profile/update/password") }
     
+    static var noseScaner: URL? { URL(string: "https://zupet-ai.nwaro.com/predict_image") }
+    
     private static func url(_ path: String) -> URL? {
         URL(string: baseURL + version + path)
     }

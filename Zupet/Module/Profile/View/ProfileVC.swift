@@ -185,7 +185,10 @@ extension ProfileVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            push(PetSelectionVC.self, from: .main)
+            push(PetSelectionVC.self, from: .main) { [weak self] vc in
+                guard let self = self else{return}
+                vc.isBackVisible = true
+            }
         }else{
             
         }

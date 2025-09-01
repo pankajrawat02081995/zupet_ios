@@ -937,7 +937,7 @@ Started</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syH-m9-uoJ">
-                                        <rect key="frame" x="105.66666666666669" y="459.66666666666663" width="182" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666667" y="459.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -1139,13 +1139,16 @@ care of your Pet</string>
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NM9-jA-T0h">
-                                        <rect key="frame" x="16" y="102" width="34" height="34"/>
+                                        <rect key="frame" x="16" y="134" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="U2v-YA-VTE"/>
                                             <constraint firstAttribute="width" constant="34" id="hqj-E8-pie"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="backOnPress:" destination="HqT-lc-y6W" eventType="touchUpInside" id="naa-2q-uew"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="ThemeOrangeStart"/>
@@ -1234,7 +1237,7 @@ Zupet with You?</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u1E-Tl-KXK" firstAttribute="bottom" secondItem="uNa-WY-BPq" secondAttribute="bottom" id="3Om-Qz-a7U"/>
-                            <constraint firstItem="u1E-Tl-KXK" firstAttribute="top" secondItem="NM9-jA-T0h" secondAttribute="top" constant="16" id="5wD-FR-O7b"/>
+                            <constraint firstItem="NM9-jA-T0h" firstAttribute="top" secondItem="u1E-Tl-KXK" secondAttribute="top" constant="16" id="5O2-wX-D7b"/>
                             <constraint firstItem="Hi5-oU-h2B" firstAttribute="trailing" secondItem="u1E-Tl-KXK" secondAttribute="trailing" id="6WC-32-MnT"/>
                             <constraint firstItem="MHA-n4-o2Z" firstAttribute="top" secondItem="u1E-Tl-KXK" secondAttribute="top" constant="40" id="9Xy-J2-lC1"/>
                             <constraint firstAttribute="bottom" secondItem="0Ee-hy-uZj" secondAttribute="bottom" id="Bde-tA-oKt"/>
@@ -1255,6 +1258,7 @@ Zupet with You?</string>
                     </view>
                     <connections>
                         <outlet property="bgView" destination="BzO-gq-qTH" id="BWp-FQ-gql"/>
+                        <outlet property="btnBack" destination="NM9-jA-T0h" id="jqv-sC-wbM"/>
                         <outlet property="btnContinue" destination="DKb-qW-RWs" id="N2H-gH-701"/>
                         <outlet property="collectionView" destination="1Gw-gt-F7F" id="hav-xV-50q"/>
                         <outlet property="containerView" destination="0Ee-hy-uZj" id="eOZ-91-HbH"/>
@@ -1274,7 +1278,24 @@ Zupet with You?</string>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1JG-p8-fTa">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0V-rl-eXd">
+                                        <rect key="frame" x="16" y="134" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="6aH-jQ-rfp"/>
+                                            <constraint firstAttribute="height" constant="34" id="UpW-TH-M10"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="backOnPress:" destination="XBV-x9-xil" eventType="touchUpInside" id="idh-xa-FHk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" name="ThemeOrangeStart"/>
+                                <constraints>
+                                    <constraint firstItem="j0V-rl-eXd" firstAttribute="leading" secondItem="1JG-p8-fTa" secondAttribute="leading" constant="16" id="DxX-s4-ePH"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLq-Dw-BEf">
                                 <rect key="frame" x="16" y="128" width="361" height="109.33333333333331"/>
@@ -1288,7 +1309,7 @@ Pets nose</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C09-KK-G78">
-                                <rect key="frame" x="16" y="237.33333333333337" width="361" height="44"/>
+                                <rect key="frame" x="16" y="237.33333333333334" width="361" height="37.333333333333343"/>
                                 <string key="text">This helps us create a unique ID for 
 your furyy friend</string>
                                 <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="16"/>
@@ -1302,10 +1323,10 @@ your furyy friend</string>
                                 </constraints>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9l-fA-bN4">
-                                <rect key="frame" x="0.0" y="219" width="393" height="633"/>
+                                <rect key="frame" x="0.0" y="249" width="393" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="v10-pP-FUj">
-                                        <rect key="frame" x="16" y="513" width="361" height="52"/>
+                                        <rect key="frame" x="16" y="483" width="361" height="52"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-Zs-JJc">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
@@ -1330,26 +1351,17 @@ your furyy friend</string>
                                         </subviews>
                                     </stackView>
                                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kt-dc-PpG" customClass="PageIndicatorView" customModule="Zupet" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="30" width="361" height="30"/>
+                                        <rect key="frame" x="16" y="30" width="361" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="8KY-bN-0G5"/>
+                                            <constraint firstAttribute="height" id="8KY-bN-0G5"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDn-6F-mh4">
-                                        <rect key="frame" x="16" y="72" width="361" height="361"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dummy_nose_scaner" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-h9-DLh">
-                                                <rect key="frame" x="0.0" y="0.0" width="361" height="361"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDn-6F-mh4" customClass="CameraView" customModule="Zupet" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="42" width="361" height="361"/>
+                                        <color key="backgroundColor" name="TextBlack"/>
                                         <constraints>
-                                            <constraint firstItem="UMw-h9-DLh" firstAttribute="leading" secondItem="sDn-6F-mh4" secondAttribute="leading" id="K3t-ci-xRz"/>
-                                            <constraint firstAttribute="trailing" secondItem="UMw-h9-DLh" secondAttribute="trailing" id="Vkz-Oe-yhf"/>
-                                            <constraint firstItem="UMw-h9-DLh" firstAttribute="top" secondItem="sDn-6F-mh4" secondAttribute="top" id="bif-Gk-XPr"/>
                                             <constraint firstAttribute="width" secondItem="sDn-6F-mh4" secondAttribute="height" multiplier="1:1" id="cwa-qD-Psg"/>
-                                            <constraint firstAttribute="bottom" secondItem="UMw-h9-DLh" secondAttribute="bottom" id="ipU-LV-PVE"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1357,8 +1369,39 @@ your furyy friend</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nuj-yd-uim">
+                                        <rect key="frame" x="16" y="42" width="361" height="361"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNv-Ty-dPm">
+                                        <rect key="frame" x="171.66666666666666" y="323" width="50" height="50"/>
+                                        <color key="backgroundColor" name="ThemeOrangeEnd"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fr8-Fu-m2j"/>
+                                            <constraint firstAttribute="width" constant="50" id="kze-cy-sbQ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="TextWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="captureTapped:" destination="XBV-x9-xil" eventType="touchUpInside" id="GvM-NG-p1a"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="4yl-Il-KsO">
-                                        <rect key="frame" x="99" y="445" width="195" height="48"/>
+                                        <rect key="frame" x="99" y="415" width="195" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNp-AX-XC3">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="48"/>
@@ -1392,17 +1435,23 @@ your furyy friend</string>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="nuj-yd-uim" firstAttribute="bottom" secondItem="sDn-6F-mh4" secondAttribute="bottom" id="6hF-Ih-cmc"/>
                                     <constraint firstItem="3Kt-dc-PpG" firstAttribute="top" secondItem="n9l-fA-bN4" secondAttribute="top" constant="30" id="7kY-qT-mV9"/>
+                                    <constraint firstItem="nuj-yd-uim" firstAttribute="trailing" secondItem="sDn-6F-mh4" secondAttribute="trailing" id="8mG-12-Obf"/>
                                     <constraint firstItem="3Kt-dc-PpG" firstAttribute="leading" secondItem="n9l-fA-bN4" secondAttribute="leading" constant="16" id="9sD-Yg-xQa"/>
                                     <constraint firstItem="v10-pP-FUj" firstAttribute="leading" secondItem="n9l-fA-bN4" secondAttribute="leading" constant="16" id="GUz-M3-fcc"/>
                                     <constraint firstItem="sDn-6F-mh4" firstAttribute="top" secondItem="3Kt-dc-PpG" secondAttribute="bottom" constant="12" id="Mg1-Y8-Ayz"/>
                                     <constraint firstItem="v10-pP-FUj" firstAttribute="top" secondItem="4yl-Il-KsO" secondAttribute="bottom" constant="20" id="Mvq-hc-mGC"/>
                                     <constraint firstAttribute="trailing" secondItem="3Kt-dc-PpG" secondAttribute="trailing" constant="16" id="SDE-tw-Zdh"/>
+                                    <constraint firstItem="NNv-Ty-dPm" firstAttribute="bottom" secondItem="sDn-6F-mh4" secondAttribute="bottom" constant="-30" id="XGs-gZ-8bb"/>
                                     <constraint firstAttribute="trailing" secondItem="sDn-6F-mh4" secondAttribute="trailing" constant="16" id="YEq-uo-0Io"/>
                                     <constraint firstAttribute="trailing" secondItem="v10-pP-FUj" secondAttribute="trailing" constant="16" id="Z9W-8t-h7N"/>
+                                    <constraint firstItem="nuj-yd-uim" firstAttribute="leading" secondItem="sDn-6F-mh4" secondAttribute="leading" id="bjJ-YC-cL1"/>
+                                    <constraint firstItem="nuj-yd-uim" firstAttribute="top" secondItem="sDn-6F-mh4" secondAttribute="top" id="cFx-RF-i6k"/>
                                     <constraint firstItem="sDn-6F-mh4" firstAttribute="leading" secondItem="n9l-fA-bN4" secondAttribute="leading" constant="16" id="fTt-UJ-Kz7"/>
                                     <constraint firstItem="4yl-Il-KsO" firstAttribute="centerX" secondItem="n9l-fA-bN4" secondAttribute="centerX" id="ihk-dB-3Lx"/>
                                     <constraint firstItem="4yl-Il-KsO" firstAttribute="top" secondItem="sDn-6F-mh4" secondAttribute="bottom" constant="12" id="rL0-35-u9E"/>
+                                    <constraint firstItem="NNv-Ty-dPm" firstAttribute="centerX" secondItem="n9l-fA-bN4" secondAttribute="centerX" id="wvT-bJ-R2k"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1413,6 +1462,7 @@ your furyy friend</string>
                             <constraint firstItem="n9l-fA-bN4" firstAttribute="leading" secondItem="rCf-Sp-ZVp" secondAttribute="leading" id="5fk-qo-5I0"/>
                             <constraint firstItem="n9l-fA-bN4" firstAttribute="trailing" secondItem="rCf-Sp-ZVp" secondAttribute="trailing" id="63x-HG-0DB"/>
                             <constraint firstItem="rCf-Sp-ZVp" firstAttribute="trailing" secondItem="C09-KK-G78" secondAttribute="trailing" constant="16" id="6yA-2Q-FrP"/>
+                            <constraint firstItem="j0V-rl-eXd" firstAttribute="top" secondItem="rCf-Sp-ZVp" secondAttribute="top" constant="16" id="AAx-65-lmD"/>
                             <constraint firstItem="rCf-Sp-ZVp" firstAttribute="bottom" secondItem="v10-pP-FUj" secondAttribute="bottom" id="CUn-uu-vuF"/>
                             <constraint firstAttribute="bottom" secondItem="1JG-p8-fTa" secondAttribute="bottom" id="XwE-NM-eAN"/>
                             <constraint firstItem="1JG-p8-fTa" firstAttribute="leading" secondItem="rCf-Sp-ZVp" secondAttribute="leading" id="YEY-b8-X86"/>
@@ -1430,12 +1480,15 @@ your furyy friend</string>
                     </view>
                     <connections>
                         <outlet property="bgView" destination="1JG-p8-fTa" id="FMI-ma-Toa"/>
+                        <outlet property="btnBack" destination="j0V-rl-eXd" id="Vuq-6O-yuf"/>
+                        <outlet property="btnCapture" destination="NNv-Ty-dPm" id="Zxg-kz-wwO"/>
                         <outlet property="btnContinue" destination="f8C-Zs-JJc" id="6dW-hG-owH"/>
                         <outlet property="btnFlash" destination="qif-Pe-Mqj" id="C88-35-MHc"/>
                         <outlet property="btnFlip" destination="tNp-AX-XC3" id="ggq-lr-JOM"/>
                         <outlet property="btnRefresh" destination="ojr-X2-hKy" id="Cts-WG-H2W"/>
-                        <outlet property="cameraView" destination="sDn-6F-mh4" id="wJV-8S-k5q"/>
+                        <outlet property="cameraView" destination="sDn-6F-mh4" id="B90-pr-fCh"/>
                         <outlet property="containerView" destination="n9l-fA-bN4" id="SVi-Wj-oX5"/>
+                        <outlet property="imgPet" destination="nuj-yd-uim" id="8jB-mc-FyL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tR8-0T-uOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1452,7 +1505,24 @@ your furyy friend</string>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zx9-Em-5ob">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWO-6f-zKO">
+                                        <rect key="frame" x="16" y="134" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="7d2-sL-Em8"/>
+                                            <constraint firstAttribute="width" constant="34" id="NmL-4G-BWf"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="backOnPress:" destination="gu6-9O-6aS" eventType="touchUpInside" id="JNM-T1-LaL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" name="ThemeOrangeStart"/>
+                                <constraints>
+                                    <constraint firstItem="HWO-6f-zKO" firstAttribute="leading" secondItem="zx9-Em-5ob" secondAttribute="leading" constant="16" id="k9O-pn-NVs"/>
+                                </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_small_bone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UDs-6d-F8D">
                                 <rect key="frame" x="0.0" y="118" width="393" height="63"/>
@@ -1989,6 +2059,7 @@ your Dog</string>
                             <constraint firstItem="6XP-Qs-Hbd" firstAttribute="trailing" secondItem="GhN-xk-Ksx" secondAttribute="trailing" id="CjQ-UG-8Sd"/>
                             <constraint firstItem="zx9-Em-5ob" firstAttribute="top" secondItem="Fx1-Cm-ja4" secondAttribute="top" id="DrO-dr-QwS"/>
                             <constraint firstItem="3aj-FU-C4g" firstAttribute="leading" secondItem="6XP-Qs-Hbd" secondAttribute="leading" constant="16" id="KVI-ZT-cR3"/>
+                            <constraint firstItem="HWO-6f-zKO" firstAttribute="top" secondItem="6XP-Qs-Hbd" secondAttribute="top" constant="16" id="Pic-lc-tU7"/>
                             <constraint firstItem="3aj-FU-C4g" firstAttribute="top" secondItem="UDs-6d-F8D" secondAttribute="bottom" id="R3O-r3-7vS"/>
                             <constraint firstAttribute="bottom" secondItem="zx9-Em-5ob" secondAttribute="bottom" id="X6F-je-Zb3"/>
                             <constraint firstAttribute="bottom" secondItem="WM2-nz-bKM" secondAttribute="bottom" id="ZVi-c1-Vzl"/>
@@ -2003,6 +2074,7 @@ your Dog</string>
                     <size key="freeformSize" width="393" height="1000"/>
                     <connections>
                         <outlet property="bgView" destination="zx9-Em-5ob" id="FRw-sT-IE7"/>
+                        <outlet property="btnBack" destination="HWO-6f-zKO" id="DLu-Ub-TNQ"/>
                         <outlet property="btnContinue" destination="0Dy-on-jEp" id="Lyt-mn-nzF"/>
                         <outlet property="containerView" destination="WM2-nz-bKM" id="peu-39-sAP"/>
                         <outlet property="lblBreed" destination="hIv-va-Yga" id="wM4-LD-zUT"/>
@@ -2478,7 +2550,7 @@ Reset</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqp-C5-Nka">
-                                        <rect key="frame" x="105.66666666666669" y="463.66666666666663" width="182" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666667" y="463.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -2557,7 +2629,6 @@ Reset</string>
         <image name="ic_dog_with_shadow" width="144" height="199"/>
         <image name="ic_dropdown" width="18" height="18"/>
         <image name="ic_dummy_dog" width="100" height="100"/>
-        <image name="ic_dummy_nose_scaner" width="343" height="343"/>
         <image name="ic_email" width="24" height="24"/>
         <image name="ic_eye" width="24" height="24"/>
         <image name="ic_family_with_dog" width="183" height="215"/>

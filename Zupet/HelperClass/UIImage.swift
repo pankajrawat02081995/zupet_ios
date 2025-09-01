@@ -151,3 +151,17 @@ extension UIImageView {
     }
 
 }
+
+extension UIImage {
+    /// Convert UIImage to Base64 string
+    func toBase64(compressionQuality: CGFloat = 0.05) -> String? {
+        guard let data = self.jpegData(compressionQuality: compressionQuality) else { return nil }
+        return data.base64EncodedString(options: .lineLength64Characters)
+    }
+
+    /// Create UIImage from Base64 string
+    static func fromBase64(_ base64: String) -> UIImage? {
+        guard let data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else { return nil }
+        return UIImage(data: data)
+    }
+}

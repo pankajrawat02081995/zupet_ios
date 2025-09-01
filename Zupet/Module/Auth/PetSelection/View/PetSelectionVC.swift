@@ -15,6 +15,7 @@ struct PetSelection {
 
 class PetSelectionVC: UIViewController {
 
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var containerView: UIView!{
         didSet{
@@ -33,9 +34,12 @@ class PetSelectionVC: UIViewController {
 
     private let cellSpacing: CGFloat = 16
     private let horizontalMargin: CGFloat = 18
-
+    
+    var isBackVisible:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnBack.isHidden = !isBackVisible
         setupCollectionView()
         updateContinueButtonState()
     }
@@ -68,9 +72,15 @@ class PetSelectionVC: UIViewController {
 
     }
 
+    @IBAction func backOnPress(_ sender: UIButton) {
+        popView()
+    }
+    
     @IBAction func continueOnPress(_ sender: UIButton) {
         push(PetNoseScanerVC.self, from: .main) { [weak self] vc in
-            vc.petSpecies = self?.pages.firstIndex(where: { $0.isSelected }) == 0 ? "Dog" : "Cat"
+            guard let self = self else {return}
+            vc.petSpecies = self.pages.firstIndex(where: { $0.isSelected }) == 0 ? "Dog" : "Cat"
+            vc.isBackVisible = self.isBackVisible
         }
     }
 

@@ -38,6 +38,7 @@ enum ErrorMessages: String {
     case confirmPasswordRequired = "Confirm password must be at least 8 characters, include uppercase, lowercase, and a number."
     
     case SelectPreferredTime = "Please select preferred time"
+    case CaptureImage = "Please capture image first"
 }
 
 enum ConstantParam:String, Codable{
@@ -60,6 +61,7 @@ enum ConstantParam:String, Codable{
 }
 
 struct ConstantApiParam{
+    static let ImageData = "image_data"
     static let Page = "page"
     static let StageId = "stageId"
     static let Decision = "decision"
