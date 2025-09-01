@@ -9,6 +9,7 @@ import UIKit
 
 class DateXIB: UICollectionViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lblDate: UILabel!{
         didSet{
             lblDate.font = .manropeBold(18)

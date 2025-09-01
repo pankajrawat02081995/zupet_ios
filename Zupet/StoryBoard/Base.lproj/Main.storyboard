@@ -937,7 +937,7 @@ Started</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syH-m9-uoJ">
-                                        <rect key="frame" x="105.66666666666667" y="459.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666669" y="459.66666666666663" width="182" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -1137,7 +1137,21 @@ care of your Pet</string>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzO-gq-qTH">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NM9-jA-T0h">
+                                        <rect key="frame" x="16" y="102" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="U2v-YA-VTE"/>
+                                            <constraint firstAttribute="width" constant="34" id="hqj-E8-pie"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_back"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" name="ThemeOrangeStart"/>
+                                <constraints>
+                                    <constraint firstItem="NM9-jA-T0h" firstAttribute="leading" secondItem="BzO-gq-qTH" secondAttribute="leading" constant="16" id="1Fi-r4-mx0"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHA-n4-o2Z">
                                 <rect key="frame" x="16" y="158" width="361" height="109.33333333333331"/>
@@ -1220,6 +1234,7 @@ Zupet with You?</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u1E-Tl-KXK" firstAttribute="bottom" secondItem="uNa-WY-BPq" secondAttribute="bottom" id="3Om-Qz-a7U"/>
+                            <constraint firstItem="u1E-Tl-KXK" firstAttribute="top" secondItem="NM9-jA-T0h" secondAttribute="top" constant="16" id="5wD-FR-O7b"/>
                             <constraint firstItem="Hi5-oU-h2B" firstAttribute="trailing" secondItem="u1E-Tl-KXK" secondAttribute="trailing" id="6WC-32-MnT"/>
                             <constraint firstItem="MHA-n4-o2Z" firstAttribute="top" secondItem="u1E-Tl-KXK" secondAttribute="top" constant="40" id="9Xy-J2-lC1"/>
                             <constraint firstAttribute="bottom" secondItem="0Ee-hy-uZj" secondAttribute="bottom" id="Bde-tA-oKt"/>
@@ -2463,7 +2478,7 @@ Reset</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:30s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqp-C5-Nka">
-                                        <rect key="frame" x="105.66666666666667" y="463.66666666666663" width="181.66666666666663" height="19.333333333333314"/>
+                                        <rect key="frame" x="105.66666666666669" y="463.66666666666663" width="182" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Manrope-Regular" family="Manrope" pointSize="14"/>
                                         <color key="textColor" name="AppGray"/>
                                         <nil key="highlightedColor"/>
@@ -2533,6 +2548,7 @@ Reset</string>
     <resources>
         <image name="SplashBG" width="375" height="812"/>
         <image name="ic_app_name" width="157" height="109"/>
+        <image name="ic_back" width="24" height="24"/>
         <image name="ic_ca_flag" width="14" height="14"/>
         <image name="ic_cat" width="149" height="264"/>
         <image name="ic_checkbox" width="16" height="16"/>

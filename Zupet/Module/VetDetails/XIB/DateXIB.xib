@@ -64,6 +64,7 @@
             </constraints>
             <size key="customSize" width="119" height="113"/>
             <connections>
+                <outlet property="containerView" destination="dxs-47-ROf" id="qGz-Wk-vxT"/>
                 <outlet property="lblDate" destination="oqr-TJ-1tw" id="pfz-Bf-wSi"/>
                 <outlet property="lblDay" destination="ueQ-nO-qMx" id="mNA-rf-trf"/>
             </connections>

@@ -59,6 +59,7 @@ class AppointmentDetailsVC: UIViewController {
     var appointmentId : String?
     var vetName : String?
     var date : String?
+    var selectedDate : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +105,13 @@ class AppointmentDetailsVC: UIViewController {
     @IBAction func cancelOnPress(_ sender: UIButton) {
     }
     
+    private func deleteAppointment(index:Int){
+        presentPopup(from: self, mainTitle: .DeleteAppointment, subTitle: .DeleteAppointment, btnOkTitle: .Yes, btnCancelTitle: .No) { [weak self] in
+            guard let self = self else { return }
+            viewModel?.submitDecision(Id: appointmentId ?? "", index: index, decision: "declined")
+        }
+    }
+    
 }
 
 extension AppointmentDetailsVC:UITableViewDataSource, UITableViewDelegate{
@@ -127,17 +135,29 @@ extension AppointmentDetailsVC:UITableViewDataSource, UITableViewDelegate{
         cell.btnAccept.tag = indexPath.row
         cell.btnDecline.tag = indexPath.row
         
-        cell.btnAccept.isHidden = indexData?.requiresAction ?? false == false
-        cell.btnDecline.isHidden = indexData?.requiresAction ?? false == false
+        cell.btnActionStackConatiner.isHidden = indexData?.requiresAction ?? false == false
+        cell.collectonViewContainer.isHidden = indexData?.requiresAction ?? false == false
+        
+        cell.configData(dates: indexData?.alternateSlots ?? [])
         
         cell.acceptOnPress = { [weak self] index in
             guard let self = self else { return }
-            viewModel?.submitDecision(Id: appointmentId ?? "", index: index, decision: "accepted")
+            if selectedDate.isEmpty{
+                Task{
+                    await ToastManager.shared.showToast(message: ErrorMessages.SelectPreferredTime.rawValue)
+                }
+            }else{
+                viewModel?.submitDecision(Id: appointmentId ?? "", index: index, decision: "accepted")
+            }
         }
         
         cell.declineOnPress = { [weak self] index in
             guard let self = self else { return }
-            viewModel?.submitDecision(Id: appointmentId ?? "", index: index, decision: "declined")
+            deleteAppointment(index: index)
+        }
+        cell.selectDate = { [weak self] date in
+            guard let self = self else { return }
+            selectedDate = date
         }
         return cell
     }

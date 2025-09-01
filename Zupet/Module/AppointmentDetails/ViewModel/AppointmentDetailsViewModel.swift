@@ -64,7 +64,10 @@ final class AppointmentDetailsViewModel{
             
             do {
                 let data = appointmentModel?.data?.timeline?[index]
-                let param : [String:Any] = [ConstantApiParam.StageId:data?.id ?? "",ConstantApiParam.Decision:decision,ConstantApiParam.AlternateSlot:""]
+                var param : [String:Any] = [ConstantApiParam.StageId:data?.id ?? "",ConstantApiParam.Decision:decision]
+                if decision == "accepted"{
+                    param[ConstantApiParam.AlternateSlot] = await view?.selectedDate
+                }
                 let jsonData = try await APIManagerHelper.shared.convertIntoData(from: param)
 
                 // Perform the network request and decode response into SignupModel

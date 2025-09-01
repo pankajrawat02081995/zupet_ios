@@ -34,10 +34,12 @@ enum AppIdentifire:String{
 enum PopupMainTitle : String{
     case Logout = "Logout"
     case Delete = "Delete Account"
+    case DeleteAppointment = "Delete Appointment"
 }
 
 enum PopupSubTitle: String{
     case Logout = "Are you sure you want to logout?"
+    case DeleteAppointment = "Are you sure you want to delete appointment?"
     case Delete = "Are you sure you want to delete your account? This action cannot be undone. All your data willl be permanently deleted."
 }
 
@@ -45,7 +47,7 @@ enum PopButtonTitle:String{
     case OK = "Ok"
     case Cancel = "Cancel"
     case Yes = "Yes"
-    case No = "No, Cancel"
+    case No = "No"
     case Delete = "Delete"
 }
 

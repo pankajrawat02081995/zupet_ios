@@ -185,7 +185,7 @@ extension ProfileVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            push(LetsStartVC.self, from: .main)
+            push(PetSelectionVC.self, from: .main)
         }else{
             
         }

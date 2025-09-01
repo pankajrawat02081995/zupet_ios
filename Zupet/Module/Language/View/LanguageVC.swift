@@ -25,7 +25,7 @@ class LanguageVC: UIViewController {
         }
     }
     
-    private var selectedIndex : Int?
+    private var selectedIndex : Int? = 0
     private var viewModel : LanguageViewModel?
     
     override func viewDidLoad() {
@@ -80,8 +80,8 @@ extension LanguageVC:UITableViewDelegate,UITableViewDataSource{
         return 60
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        tableView.reloadData()
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        selectedIndex = indexPath.row
+//        tableView.reloadData()
+//    }
 }

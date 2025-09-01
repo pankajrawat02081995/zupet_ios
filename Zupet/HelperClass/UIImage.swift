@@ -100,15 +100,18 @@ extension UIImageView {
         
         // Add loader if required
         var loader: UIActivityIndicatorView?
-        if showLoader {
+        if showLoader && urlString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false{
             loader = UIActivityIndicatorView(style: .medium)
-            loader?.center = CGPoint(x: bounds.midX, y: bounds.midY)
+            loader?.translatesAutoresizingMaskIntoConstraints = false
             loader?.startAnimating()
             loader?.hidesWhenStopped = true
             DispatchQueue.main.async { [weak self] in
-                if let loader = loader {
-                    self?.addSubview(loader)
-                }
+                guard let self = self, let loader = loader else { return }
+                self.addSubview(loader)
+                NSLayoutConstraint.activate([
+                    loader.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                    loader.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+                ])
             }
         }
         
@@ -146,4 +149,5 @@ extension UIImageView {
         task.resume()
         currentTask = task
     }
+
 }

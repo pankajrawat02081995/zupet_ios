@@ -36,6 +36,8 @@ enum ErrorMessages: String {
     case validNewPassword = "New password must be at least 8 characters, include uppercase, lowercase, and a number."
     case validOldPassword = "Current password must be at least 8 characters, include uppercase, lowercase, and a number."
     case confirmPasswordRequired = "Confirm password must be at least 8 characters, include uppercase, lowercase, and a number."
+    
+    case SelectPreferredTime = "Please select preferred time"
 }
 
 enum ConstantParam:String, Codable{

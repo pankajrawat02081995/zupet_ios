@@ -33,7 +33,7 @@ final class ProfileViewModel{
                 
                 // Perform the network request and decode response into SignupModel
                 let response: ProfileModel = try await APIManagerHelper.shared.handleRequest(
-                    .getRequest(url: url, headers: [:]),
+                    .getRequest(url: url, headers: [:]),isloaderHide:profileModel == nil,
                     responseType: ProfileModel.self
                 )
                 // Handle successful response
@@ -69,7 +69,7 @@ final class ProfileViewModel{
                 
                 // Perform the network request and decode response into SignupModel
                 let response: OwnPetModel = try await APIManagerHelper.shared.handleRequest(
-                    .getRequest(url: url, headers: [:]),
+                    .getRequest(url: url, headers: [:]),isloaderHide:petModel == nil,
                     responseType: OwnPetModel.self
                 )
                 // Handle successful response

@@ -51,9 +51,9 @@ class AppointmentListVC: UIViewController {
     }
     
     @IBAction func addOnPress(_ sender: UIButton) {
-        push(VetDetailsVC.self, from: .vet){ [weak self] vc in
+        push(FindVetVC.self, from: .vet){ [weak self] vc in
             guard self != nil else {return}
-            vc.isDirectAppointment = true
+//            vc.isDirectAppointment = true
         }
     }
     
