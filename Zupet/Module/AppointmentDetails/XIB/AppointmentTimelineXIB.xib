@@ -25,7 +25,7 @@
                             <constraint firstAttribute="width" constant="2" id="5Mc-bd-Nb8"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-W4-Vgf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-W4-Vgf">
                         <rect key="frame" x="16" y="0.0" width="30" height="30"/>
                         <color key="backgroundColor" name="ThemeOrangeEnd"/>
                         <constraints>
@@ -37,6 +37,9 @@
                                 <real key="value" value="15"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W3T-Rj-Ldi">
+                        <rect key="frame" x="21" y="5" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appointment Request Sent" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3V-XU-loa">
                         <rect key="frame" x="54" y="0.0" width="306" height="20.333333333333332"/>
@@ -160,9 +163,12 @@
                 <constraints>
                     <constraint firstItem="r3V-XU-loa" firstAttribute="leading" secondItem="Rv9-W4-Vgf" secondAttribute="trailing" constant="8" id="0gf-8Q-hvX"/>
                     <constraint firstItem="1CL-nh-mwy" firstAttribute="trailing" secondItem="ppa-ej-eFq" secondAttribute="trailing" id="8Sv-vf-xw5"/>
+                    <constraint firstItem="W3T-Rj-Ldi" firstAttribute="leading" secondItem="Rv9-W4-Vgf" secondAttribute="leading" constant="5" id="B5V-Mm-PQM"/>
                     <constraint firstItem="1CL-nh-mwy" firstAttribute="top" secondItem="ppa-ej-eFq" secondAttribute="bottom" constant="16" id="CRW-ww-sy2"/>
                     <constraint firstItem="1CL-nh-mwy" firstAttribute="leading" secondItem="r3V-XU-loa" secondAttribute="leading" id="DYv-Kb-q6p"/>
+                    <constraint firstItem="W3T-Rj-Ldi" firstAttribute="bottom" secondItem="Rv9-W4-Vgf" secondAttribute="bottom" constant="-5" id="Frt-jG-a0q"/>
                     <constraint firstItem="Rv9-W4-Vgf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GVN-JS-HV2"/>
+                    <constraint firstItem="W3T-Rj-Ldi" firstAttribute="trailing" secondItem="Rv9-W4-Vgf" secondAttribute="trailing" constant="-5" id="Glf-sv-LE7"/>
                     <constraint firstItem="Rv9-W4-Vgf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Gyf-5a-Oy3"/>
                     <constraint firstItem="r3V-XU-loa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JjL-w5-iWC"/>
                     <constraint firstAttribute="bottom" secondItem="Tqz-rC-2RI" secondAttribute="bottom" id="QA4-3u-LN5"/>
@@ -172,6 +178,7 @@
                     <constraint firstItem="ppa-ej-eFq" firstAttribute="trailing" secondItem="r3V-XU-loa" secondAttribute="trailing" id="YmK-ZI-olC"/>
                     <constraint firstItem="Tqz-rC-2RI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hh7-N5-7hm"/>
                     <constraint firstItem="ppa-ej-eFq" firstAttribute="top" secondItem="r3V-XU-loa" secondAttribute="bottom" constant="4" id="hu5-yQ-YQN"/>
+                    <constraint firstItem="W3T-Rj-Ldi" firstAttribute="top" secondItem="Rv9-W4-Vgf" secondAttribute="top" constant="5" id="oWa-q4-oRZ"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1CL-nh-mwy" secondAttribute="bottom" constant="10" id="ucz-0v-dye"/>
                 </constraints>
             </tableViewCellContentView>
@@ -183,7 +190,7 @@
                 <outlet property="btnDecline" destination="DeZ-4l-6j8" id="90k-Bl-len"/>
                 <outlet property="collectionView" destination="cvz-Ln-eRn" id="B4A-Bh-wVc"/>
                 <outlet property="collectonViewContainer" destination="OfR-4F-LJm" id="U34-C3-KVI"/>
-                <outlet property="imgTimeline" destination="Rv9-W4-Vgf" id="okR-cr-wav"/>
+                <outlet property="imgTimeline" destination="W3T-Rj-Ldi" id="YgS-2Z-Qxj"/>
                 <outlet property="lblPreferdTitle" destination="1Xp-VN-CHE" id="fFQ-FO-IPH"/>
                 <outlet property="lblSubtitle" destination="ppa-ej-eFq" id="kn2-jU-aDB"/>
                 <outlet property="lblTitle" destination="r3V-XU-loa" id="UBx-EJ-YfC"/>

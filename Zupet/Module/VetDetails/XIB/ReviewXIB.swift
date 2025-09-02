@@ -27,7 +27,7 @@ class ReviewXIB: UITableViewCell {
     }
     @IBOutlet weak var imgUser: UIImageView!
     
-    private var reviews: [String] = [] // replace `Review` with your model
+    private var reviews: Review? // replace `Review` with your model
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,12 +41,12 @@ class ReviewXIB: UITableViewCell {
         collectionViewHeight.constant = 0 // default hidden
     }
 
-    func configure(with reviews: [String]) {
+    func configure(with reviews: Review) {
         self.reviews = reviews
         collectionView.reloadData()
         
         // Set height based on data
-        collectionViewHeight.constant = reviews.isEmpty ? 0 : 72
+        collectionViewHeight.constant = reviews.photos?.isEmpty == true ? 0 : 72
     }
 }
 
@@ -54,13 +54,14 @@ class ReviewXIB: UITableViewCell {
 extension ReviewXIB: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return reviews.count
+        return reviews?.photos?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : PhotoXIB = collectionView.dequeueReusableCell(for: indexPath)
-        // configure your cell with `reviews[indexPath.item]`
+        let indexData = reviews?.photos?[indexPath.row] ?? ""
+        cell.imgVet.setImage(from: indexData)
         return cell
     }
     

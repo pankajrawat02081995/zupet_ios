@@ -10,6 +10,12 @@ import CoreLocation
 import MapboxMaps
 
 class FindVetVC: UIViewController {
+    
+    @IBOutlet private weak var lblTitle: UILabel! {
+        didSet {
+            lblTitle.font = .manropeBold(18)
+        }
+    }
 
     @IBOutlet weak var txtSearch: UITextField!{
         didSet{
@@ -111,7 +117,8 @@ class FindVetVC: UIViewController {
 extension FindVetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.vetModel?.data?.count ?? 0
+        let count = viewModel?.vetModel?.data?.count ?? 0
+        return count >= 5 ? 5 : count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,6 +141,8 @@ extension FindVetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         push(VetDetailsVC.self, from: .vet){ [weak self] vc in
             guard let self = self else {return}
+            let indexData = viewModel?.vetModel?.data?[indexPath.row]
+            vc.vetID = indexData?.id ?? ""
         }
     }
 }

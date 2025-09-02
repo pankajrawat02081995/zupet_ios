@@ -12,7 +12,7 @@ class PetTableCellXIB: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageIndicator: PageIndicatorView!
     
-    private var pets: [Pet] = [] // Replace String with your Pet model if needed
+    private var pets: [PetData] = [] // Replace String with your Pet model if needed
     private var cellWidth: CGFloat = 0
     var petID : ((String)->Void)?
     override func awakeFromNib() {
@@ -22,7 +22,7 @@ class PetTableCellXIB: UITableViewCell {
     }
     
     // MARK: - Public Setup Method
-    func configure(with pets: [Pet],index:Int) {
+    func configure(with pets: [PetData],index:Int) {
         self.pets = pets
         pageIndicator.numberOfPages = pets.count
         pageIndicator.currentPage = index
@@ -96,7 +96,7 @@ extension PetTableCellXIB: UIScrollViewDelegate {
     private func updateCurrentPage() {
         let page = Int(round(collectionView.contentOffset.x / cellWidth))
         pageIndicator.currentPage = page
-        petID?(pets[page].id)
+        petID?(pets[page].id ?? "")
     }
 }
 

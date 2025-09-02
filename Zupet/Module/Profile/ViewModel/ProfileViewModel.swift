@@ -77,6 +77,7 @@ final class ProfileViewModel{
                     await ToastManager.shared.showToast(message: response.message )
                 }else{
                     petModel = response
+                    await UserDefaultsManager.shared.set(response.data ?? [], forKey: UserDefaultsKey.Pets)
                     await self.view?.collectionView.reloadData()
                 }
                 

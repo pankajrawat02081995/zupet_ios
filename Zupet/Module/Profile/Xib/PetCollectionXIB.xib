@@ -98,9 +98,18 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_uncheck_circle" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-oc-AjX">
+                                <rect key="frame" x="164" y="8" width="24" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="BFi-oH-ffz"/>
+                                    <constraint firstAttribute="height" constant="25" id="Zxj-X0-hi6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843159999998" green="0.96862745289999996" blue="0.93333333730000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="GT8-oc-AjX" firstAttribute="top" secondItem="k8O-hM-0p2" secondAttribute="top" constant="8" id="GcX-1f-U69"/>
+                            <constraint firstAttribute="trailing" secondItem="GT8-oc-AjX" secondAttribute="trailing" constant="8" id="Uia-f3-isg"/>
                             <constraint firstItem="NIS-rZ-vKV" firstAttribute="leading" secondItem="k8O-hM-0p2" secondAttribute="leading" id="WCP-Fv-Xe3"/>
                             <constraint firstAttribute="bottom" secondItem="NIS-rZ-vKV" secondAttribute="bottom" id="oAR-sL-L69"/>
                             <constraint firstAttribute="trailing" secondItem="NIS-rZ-vKV" secondAttribute="trailing" id="xLl-U4-dqT"/>
@@ -124,6 +133,8 @@
             <size key="customSize" width="196" height="532"/>
             <connections>
                 <outlet property="addView" destination="OYs-g7-g13" id="IfK-o2-0TZ"/>
+                <outlet property="containerView" destination="k8O-hM-0p2" id="fED-rJ-qjw"/>
+                <outlet property="imgCheck" destination="GT8-oc-AjX" id="DBw-eU-MgD"/>
                 <outlet property="imgPet" destination="N7D-XK-Ncs" id="9L0-EX-ghR"/>
                 <outlet property="lblAddPet" destination="I1H-cT-Txu" id="MkS-bM-yM2"/>
                 <outlet property="lblAge" destination="OUB-aF-cue" id="Tqb-7d-79g"/>
@@ -136,6 +147,7 @@
     <resources>
         <image name="ic_dummy_nose_scaner" width="343" height="343"/>
         <image name="ic_plus_orange" width="40" height="41"/>
+        <image name="ic_uncheck_circle" width="24" height="25"/>
         <namedColor name="AppGray">
             <color red="0.63099998235702515" green="0.63099998235702515" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

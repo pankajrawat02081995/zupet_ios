@@ -39,7 +39,7 @@ final class HomeViewModel {
                 homeModel = response
                 
 
-                let pets = response.getAllPets()
+                let pets = await response.getAllPets()
 //                
 //                let sections = response.getSections(for: pets.first?.id ?? "")
 //                let explore = response.getExplore(for: "68a462a1b7468c4fb3747be3")

@@ -15,7 +15,7 @@ class PetCollectionCellXIB: UICollectionViewCell {
         // Initialization code
     }
 
-    func config(data: Pet){
+    func config(data: PetData){
         lblName.text = data.name 
     }
 }

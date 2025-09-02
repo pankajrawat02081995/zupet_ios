@@ -30,6 +30,7 @@ enum APIConstants{
     
     static var home: URL? { url("home") }
     static var getVetList: URL? { url("vets/") }
+    static func getVetDetails(_ id: String) -> URL? { url("vets/\(id)") }
     static var getAppointments: URL? { url("vets/appointment/my-appointments") }
     static func getAppointmentDetails(_ id: String) -> URL? { url("vets/appointment/\(id)") }
     static func submitDecsion(_ id: String) -> URL? { url("vets/appointment/\(id)/submit-decision") }

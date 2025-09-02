@@ -98,9 +98,15 @@ extension UIImageView {
         currentTask?.cancel()
         self.image = placeholder
         
-        // Add loader if required
+        // If placeholder exists and URL is empty/invalid → just show placeholder (skip loader)
+        guard urlString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false,
+              let url = URL(string: urlString) else {
+            return
+        }
+        
+        // Add loader only if placeholder is nil
         var loader: UIActivityIndicatorView?
-        if showLoader && urlString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false{
+        if showLoader && placeholder == nil {
             loader = UIActivityIndicatorView(style: .medium)
             loader?.translatesAutoresizingMaskIntoConstraints = false
             loader?.startAnimating()
@@ -124,11 +130,12 @@ extension UIImageView {
             return
         }
         
-        guard let url = URL(string: urlString) else { return }
-        
         // Progressive download
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let self = self, let data = data, error == nil else {
+            guard let self = self else { return }
+            
+            // On failure → keep placeholder, remove loader
+            if error != nil || data == nil {
                 DispatchQueue.main.async {
                     loader?.stopAnimating()
                     loader?.removeFromSuperview()
@@ -136,7 +143,7 @@ extension UIImageView {
                 return
             }
             
-            if let image = UIImage(data: data) {
+            if let data = data, let image = UIImage(data: data) {
                 imageCache.setObject(image, forKey: urlString as NSString)
                 DispatchQueue.main.async {
                     self.image = image
@@ -149,8 +156,8 @@ extension UIImageView {
         task.resume()
         currentTask = task
     }
-
 }
+
 
 extension UIImage {
     /// Convert UIImage to Base64 string

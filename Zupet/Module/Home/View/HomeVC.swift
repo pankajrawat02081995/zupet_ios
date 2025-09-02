@@ -121,14 +121,16 @@ extension HomeVC: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableCellXIB", for: indexPath) as? PetTableCellXIB else {
                     return UITableViewCell()
                 }
-                let index = viewModel?.homeModel?.getAllPets().firstIndex { pet in
-                    pet.id == self.petID ?? ""
-                }
-                cell.configure(with: viewModel?.homeModel?.getAllPets() ?? [], index: index ?? 0)
-                cell.petID = { [weak self] id in
-                    guard let self = self else {return}
-                    self.petID = id
-                    self.tableView.reloadData()
+                Task{
+                    let index = await viewModel?.homeModel?.getAllPets().firstIndex { pet in
+                        pet.id == self.petID ?? ""
+                    }
+                    await cell.configure(with: viewModel?.homeModel?.getAllPets() ?? [], index: index ?? 0)
+                    cell.petID = { [weak self] id in
+                        guard let self = self else {return}
+                        self.petID = id
+                        self.tableView.reloadData()
+                    }
                 }
                 return cell
             case "exploreSection":

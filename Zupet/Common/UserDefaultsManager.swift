@@ -10,7 +10,7 @@ import Foundation
 struct UserDefaultsKey{
     static let LoginResponse = "loginResponse"
     static let BreedData = "BreedData"
-    static let Agencies = "Agencies"
+    static let Pets = "Pets"
     static let SelectedAgencies = "SelectedAgencies"
 }
 

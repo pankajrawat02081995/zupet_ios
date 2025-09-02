@@ -73,7 +73,7 @@ struct PetSubSection: Codable {
 
 // Handle different section types (pet, explore, about, activity)
 enum PetSubData: Codable {
-    case pet(Pet)
+    case pet(PetData)
     case explore([ExploreItem])
     case about([AboutItem])
     case activity([RecentActivity])
@@ -82,7 +82,7 @@ enum PetSubData: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
-        if let pet = try? container.decode(Pet.self) {
+        if let pet = try? container.decode(PetData.self) {
             self = .pet(pet)
             return
         }
@@ -228,8 +228,8 @@ struct LostUser: Codable {
 extension HomeResponse {
     
     /// ✅ Get all pets array
-    func getAllPets() -> [Pet] {
-        var pets: [Pet] = []
+    func getAllPets() async -> [PetData] {
+        var pets: [PetData] = []
         for section in data {
             if case .petGroups(let groups) = section.data {
                 for group in groups {
@@ -241,11 +241,12 @@ extension HomeResponse {
                 }
             }
         }
+        await UserDefaultsManager.shared.set(pets, forKey: UserDefaultsKey.Pets)
         return pets
     }
     
     /// ✅ Get pet details by ID
-    func getPetDetails(by id: String) -> Pet? {
+    func getPetDetails(by id: String) -> PetData? {
         for section in data {
             if case .petGroups(let groups) = section.data {
                 for group in groups {

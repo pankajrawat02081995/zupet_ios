@@ -48,6 +48,7 @@ enum PopButtonTitle:String{
     case Cancel = "Cancel"
     case Yes = "Yes"
     case No = "No"
+    case Done = "Done"
     case Delete = "Delete"
 }
 
