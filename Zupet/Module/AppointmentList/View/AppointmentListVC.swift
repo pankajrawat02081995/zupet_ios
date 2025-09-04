@@ -77,11 +77,14 @@ extension AppointmentListVC:UITableViewDataSource,UITableViewDelegate{
         let indexData = viewModel?.appointmentModel?.data?[indexPath.row]
         cell.lblPetName.text = indexData?.vet?.name ?? ""
         cell.lblDoctorName.text = "Special Notes : \(indexData?.specialNotes ?? "")"
-        cell.lblDate.text = "\(indexData?.date?.toLocalTime(inputFormat: .utcFormate, outputFormat: .localWithDate) ?? "")"
+        cell.lblDate.text = "Requested Time:\n\(indexData?.date?.toLocalTime(inputFormat: .utcFormate, outputFormat: .localWithDate) ?? "")"
         cell.lblStatus.text = indexData?.status?.capitalized ?? ""
         cell.imgPet.setImage(from: indexData?.vet?.photos?.first ?? "")
         
-        cell.lblStatus.backgroundColor = indexData?.status?.lowercased() == "pending" ? .ThemeOrangeEnd : indexData?.status?.lowercased() == "confirmed" ? .appGreen : .appRed
+        cell.lblStatus.textColor = indexData?.status?.lowercased() == "pending" ? .appDarkGray : indexData?.status?.lowercased() == "confirmed" ? .ThemeOrangeEnd : indexData?.status?.lowercased() == "completed" ? .textBlack : .textBlack
+        
+        cell.imgStatus.image = indexData?.status?.lowercased() == "pending" ? .icGrayClock : indexData?.status?.lowercased() == "confirmed" ? .icCheckCircle : indexData?.status?.lowercased() == "completed" ? .icGreenCheck : .icRedCross
+        
         return cell
     }
     

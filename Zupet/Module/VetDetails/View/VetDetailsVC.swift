@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import MapKit
 
 class VetDetailsVC: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var tvNotes: UITextView!
+    @IBOutlet weak var lblWorkLocation: UILabel!
     @IBOutlet weak var lblTitle: UILabel! {
         didSet { lblTitle.font = .manropeBold(18) }
     }
@@ -74,6 +77,7 @@ class VetDetailsVC: UIViewController {
     
     private var selectedDateIndex : Int?
     private var selectedTimeIndex : Int?
+    var appointmenDate : String?
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,11 +98,13 @@ class VetDetailsVC: UIViewController {
         lblRate.text = "\(data?.rating ?? 0.0)"
         lblVetName.text = data?.name ?? ""
         lblLocation.text = data?.address ?? ""
+        lblWorkLocation.text = data?.address ?? ""
         lblReviewCount.text = "(\(data?.totalReviews ?? 0))+ Reviews"
         lblRateCount.text = "\(data?.rating ?? 0.0)/5.0"
         rateView.rating = data?.rating ?? 0.0
         lblAbout.text = data?.aboutPlace ?? ""
         imgUser.setImage(from: data?.photos?.first ?? "")
+        imgUser.backgroundColor = .textBlack
         
         calenderDate = SlotGenerator.generateSlots(
             weekdayDescriptions: data?.weekdayDescriptions ?? [],
@@ -138,6 +144,54 @@ class VetDetailsVC: UIViewController {
     @IBAction func calenderOnPress(_ sender: UIButton) {}
     
     @IBAction func backOnPress(_ sender: UIButton) { popView() }
+
+    @IBAction func locationOnPress(_ sender: UIButton) {
+        let destinationLng = viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.first ?? 0.0
+        let destinationLat = viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.last ?? 0.0
+        Log.debug(destinationLat)
+        
+        let googleMapsAction = ActionSheetAction(title: "Google Maps", type: .default, handler: {
+            let destination = "\(destinationLat),\(destinationLng)"
+            if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                let urlString = "comgooglemaps://?saddr=&daddr=\(destination)&directionsmode=driving"
+                if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            } else {
+                // If Google Maps is not installed, fallback to web
+                if let url = URL(string: "https://www.google.com/maps/dir/?api=1&destination=\(destination)") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        })
+        
+        let appleMapsAction = ActionSheetAction(title: "Apple Maps", type: .default, handler: { [self] in
+            let coordinate = CLLocationCoordinate2D(latitude: destinationLat, longitude: destinationLng)
+            let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = viewModel?.vetDetailsModel?.data?.name ?? ""
+            mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        })
+        
+        let cancelAction = ActionSheetAction(title: "Cancel", type: .cancel, handler: {
+            // nothing, just dismiss
+        })
+        
+        ActionSheetHelper.showActionSheet(on: self, actions: [googleMapsAction, appleMapsAction, cancelAction])
+    }
+
+
+    @IBAction func bookOnPress(_ sender: UIButton) {
+        let dateString = "\(calenderDate?[selectedDateIndex ?? 0].date ?? "") \(calenderDate?[selectedDateIndex ?? 0].day ?? "") \(slots?[selectedTimeIndex ?? 0].slotTime ?? "")"
+
+        Log.debug("Raw: \(dateString)")
+        let utcString = dateString.toUTC(inputFormat: .localAppointmentTime, outputFormat: .utcFormate)
+        Log.debug("UTC: \(utcString)")
+        let backToLocal = utcString.toLocalTime(inputFormat: .utcFormate, outputFormat: .localAppointmentTime)
+        Log.debug("Back to Local: \(backToLocal)")
+        appointmenDate = utcString
+        viewModel?.createAppointment()
+    }
     
     @IBAction func infoOnPress(_ sender: UIButton) { selectButton(sender, infoView) }
     @IBAction func appointmentOnPress(_ sender: UIButton) { selectButton(sender,appointmentView) }
@@ -256,15 +310,9 @@ extension VetDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if collectionView == photoCollection {
             let cell : PhotoXIB = collectionView.dequeueReusableCell(for: indexPath)
             let indexData = viewModel?.vetDetailsModel?.data?.photos?[indexPath.row]
-            let count = viewModel?.vetDetailsModel?.data?.photos?.count ?? 0
-            if count > 3{
-                cell.lblMore.isHidden = indexPath.item != (count - 1)
-                cell.imgVet.isHidden = indexPath.item == (count - 1)
-            }else{
-                cell.lblMore.isHidden = true
-                cell.imgVet.isHidden = false
-            }
-            cell.imgVet.setImage(from: indexData ?? "")
+            cell.lblMore.isHidden = true
+            cell.imgVet.isHidden = false
+            cell.imgVet.setImage(from: indexData ?? "",isPreview: true)
             return cell
         } else if collectionView == morningSetCollection {
             let cell : TimeXIB = collectionView.dequeueReusableCell(for: indexPath)

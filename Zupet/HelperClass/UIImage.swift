@@ -92,11 +92,16 @@ extension UIImageView {
     func setImage(
         from urlString: String,
         placeholder: UIImage? = nil,
-        showLoader: Bool = true
+        showLoader: Bool = true,
+        isPreview: Bool = false
     ) {
         // Cancel previous task (important for table/collection cell reuse)
         currentTask?.cancel()
         self.image = placeholder
+        
+        // Remove old preview gestures if reused
+        self.isUserInteractionEnabled = false
+        self.gestureRecognizers?.forEach { self.removeGestureRecognizer($0) }
         
         // If placeholder exists and URL is empty/invalid → just show placeholder (skip loader)
         guard urlString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false,
@@ -127,6 +132,8 @@ extension UIImageView {
             self.contentMode = .scaleAspectFill
             loader?.stopAnimating()
             loader?.removeFromSuperview()
+            
+            if isPreview { self.enablePreview(for: cachedImage) }
             return
         }
         
@@ -150,13 +157,94 @@ extension UIImageView {
                     self.contentMode = .scaleAspectFill
                     loader?.stopAnimating()
                     loader?.removeFromSuperview()
+                    
+                    if isPreview { self.enablePreview(for: image) }
                 }
             }
         }
         task.resume()
         currentTask = task
     }
+    
+    // MARK: - Enable Image Preview
+    private func enablePreview(for image: UIImage) {
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openPreview))
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc private func openPreview() {
+        guard let image = self.image else { return }
+        let previewVC = ImagePreviewController(image: image)
+        previewVC.modalPresentationStyle = .fullScreen
+        
+        if let topVC = UIApplication.shared.connectedScenes
+            .compactMap({ ($0 as? UIWindowScene)?.keyWindow })
+            .first?.rootViewController {
+            topVC.present(previewVC, animated: true)
+        }
+    }
 }
+
+// MARK: - Full Screen Image Preview Controller
+final class ImagePreviewController: UIViewController, UIScrollViewDelegate {
+    private var image: UIImage? // weak ref after dismiss
+    
+    init(image: UIImage) {
+        self.image = image
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+        
+        let scrollView = UIScrollView(frame: view.bounds)
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 4.0
+        view.addSubview(scrollView)
+        
+        if let image = image {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            imageView.frame = scrollView.bounds
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            scrollView.addSubview(imageView)
+        }
+        
+        // Close Button
+        let closeButton = UIButton(type: .system)
+        closeButton.setImage(.icRedCross, for: .normal)
+        closeButton.tintColor = .white
+        closeButton.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        closeButton.layer.cornerRadius = 18
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
+        view.addSubview(closeButton)
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            closeButton.widthAnchor.constraint(equalToConstant: 36),
+            closeButton.heightAnchor.constraint(equalToConstant: 36)
+        ])
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.subviews.first
+    }
+    
+    @objc private func dismissSelf() {
+        dismiss(animated: true) { [weak self] in
+            // release image memory after dismiss
+            self?.image = nil
+        }
+    }
+}
+
 
 
 extension UIImage {

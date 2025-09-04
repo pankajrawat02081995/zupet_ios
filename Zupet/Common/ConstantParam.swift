@@ -61,6 +61,10 @@ enum ConstantParam:String, Codable{
 }
 
 struct ConstantApiParam{
+    static let Date = "date"
+    static let SpecialNotes = "specialNotes"
+    static let Pets = "pets"
+    static let Vet = "vet"
     static let Radius = "radius"
     static let Lng = "lng"
     static let Lat = "lat"

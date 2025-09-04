@@ -9,27 +9,29 @@ import UIKit
 
 class AppointmentListXIB: UITableViewCell {
 
+    @IBOutlet weak var imgStatus: UIImageView!
     @IBOutlet weak var lblDoctorName: UILabel!{
         didSet{
-            lblDoctorName.font = .manropeRegular(14)
+            lblDoctorName.font = .manropeBold(12)
         }
     }
     
     @IBOutlet weak var lblDate: UILabel!{
         didSet{
-            lblDate.font = .manropeRegular(14)
+            lblDate.textColor = .textBlack
+            lblDate.font = .manropeRegular(12)
         }
     }
     
     @IBOutlet weak var lblStatus: UILabel!{
         didSet{
-            lblStatus.font = .manropeRegular(14)
+            lblStatus.font = .manropeRegular(12)
         }
     }
     
     @IBOutlet weak var lblPetName: UILabel!{
         didSet{
-            lblPetName.font = .manropeRegular(12)
+            lblPetName.font = .manropeBold(12)
         }
     }
     

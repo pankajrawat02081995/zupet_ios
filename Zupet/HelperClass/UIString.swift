@@ -8,20 +8,57 @@
 import Foundation
 
 extension String {
-    /// Convert UTC/ETC datetime string to local 12-hour format
+    func toUTC(
+        inputFormat: DateFormatType,
+        outputFormat: DateFormatType
+    ) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = .current  // input is local
+        
+        var inputString = self
+        var inputFormatString = inputFormat.rawValue
+        
+        let now = Date()
+        let calendar = Calendar.current
+        
+        // ✅ If input format doesn’t include month, add current month
+        if !inputFormatString.contains("M") {
+            let currentMonth = calendar.component(.month, from: now)
+            inputString += " \(currentMonth)"
+            inputFormatString += " MM"
+        }
+        
+        // ✅ If input format doesn’t include year, add current year
+        if !inputFormatString.contains("y") {
+            let currentYear = calendar.component(.year, from: now)
+            inputString += " \(currentYear)"
+            inputFormatString += " yyyy"
+        }
+        
+        // Parse local string into Date
+        formatter.dateFormat = inputFormatString
+        guard let date = formatter.date(from: inputString) else { return self }
+        
+        // Convert → UTC string
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = outputFormat.rawValue
+        return formatter.string(from: date)
+    }
+    
     func toLocalTime(
         inputFormat: DateFormatType,
         outputFormat: DateFormatType
     ) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(abbreviation: "UTC") // server time (ETC/UTC)
+        formatter.timeZone = TimeZone(abbreviation: "UTC") // input is UTC
         
-        // Parse server date
+        // Parse UTC string into Date
         formatter.dateFormat = inputFormat.rawValue
         guard let date = formatter.date(from: self) else { return self }
         
-        // Convert to local
+        // Convert → Local string
         formatter.timeZone = .current
         formatter.dateFormat = outputFormat.rawValue
         return formatter.string(from: date)

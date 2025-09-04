@@ -117,7 +117,7 @@ extension SettingVC:UITableViewDelegate,UITableViewDataSource{
         case "Logout".localized:
             logoutPress()
         case "Delete Account".localized:
-            deletePress()
+            push(DeleteAccountVC.self, from: .profile)
         case "Edit Profile".localized:
             push(EditProfileVC.self, from: .profile)
         case "Change Password".localized:
