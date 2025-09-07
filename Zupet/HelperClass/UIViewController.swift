@@ -54,6 +54,19 @@ enum PopButtonTitle:String{
 
 extension UIViewController {
     
+    /// Render the CustomMarker XIB into a UIImage (cheaper than using iconView)
+     func imageFromMarkerXib(title: String?, image: String?, size: CGSize = CGSize(width: 50, height: 70)) -> UIImage {
+        let view = CustomMarker.fromNib()
+        view.configure(image: image, title: title)
+        view.bounds = CGRect(origin: .zero, size: size)
+        view.layoutIfNeeded()
+        
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { ctx in
+            view.layer.render(in: ctx.cgContext)
+        }
+    }
+    
     // MARK: - Bottom Sheet Helper
     
      func presentBottomSheet(items: [Country], title: String, onSelect: @escaping (Country) -> Void) {

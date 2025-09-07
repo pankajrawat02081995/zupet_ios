@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class VetNearMeViewModel{
     
@@ -45,6 +46,15 @@ final class VetNearMeViewModel{
                     .postRequest(url: url, body: jsonData, method: .post, headers: [:]),isloaderHide: search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true,
                     responseType: FindVetModel.self
                 )
+                
+                // For CollectionView
+                if response.data?.isEmpty == true{
+                    await self?.view?.collectionView.setEmptyView(title: "No Items Available",
+                                                subtitle: "Please try again later",
+                                                image: UIImage(named: "ic_girl_dog"))
+                } else {
+                    await self?.view?.collectionView.restore()
+                }
                 // Handle successful response
                 if response.success == false {
                     await ToastManager.shared.showToast(message: response.message )

@@ -9,6 +9,8 @@ import UIKit
 import GoogleSignIn
 import IQKeyboardManagerSwift
 import IQKeyboardToolbarManager
+import GoogleMaps
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             await APIManager.initializeShared()
             Log.debug("ApiManager is Ready")
         }
+        
+        if let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+           let dict = NSDictionary(contentsOfFile: path),
+           let apiKey = dict["GOOGLE_MAPS_API_KEY"] as? String {
+            GMSServices.provideAPIKey(apiKey)
+            GMSPlacesClient.provideAPIKey(apiKey)
+        }
+
         
         return true
     }

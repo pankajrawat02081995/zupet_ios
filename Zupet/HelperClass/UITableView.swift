@@ -124,3 +124,20 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
+
+extension UITableView {
+    func setEmptyView(title: String,
+                      subtitle: String? = nil,
+                      image: UIImage? = nil) {
+        let emptyView = NoDataXIB.loadFromNib()
+        emptyView.configure(title: title, subtitle: subtitle, image: image)
+        // make it resize with table bounds
+        emptyView.frame = bounds
+        emptyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundView = emptyView
+    }
+
+    func restore() {
+        backgroundView = nil
+    }
+}

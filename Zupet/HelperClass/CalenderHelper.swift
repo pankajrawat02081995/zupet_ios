@@ -159,7 +159,7 @@ public final class SlotGenerator {
         for offset in 0..<days {
             guard let date = calendar.date(byAdding: .day, value: offset, to: today) else { continue }
             let dayName = weekdayFormatter.string(from: date) // e.g. "Tuesday"
-            let dayKey = dayName.lowercased()
+            _ = dayName.lowercased()
             let dateStr = String(calendar.component(.day, from: date))
             
             // find line by day name prefix (case-insensitive). fallback to google index mapping if not found.

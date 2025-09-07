@@ -18,8 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="141" height="75"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nL-Zi-MhY">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nL-Zi-MhY">
                         <rect key="frame" x="0.0" y="0.0" width="141" height="75"/>
+                        <color key="backgroundColor" name="TextWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="TextBlack"/>
                         <nil key="highlightedColor"/>
@@ -57,6 +58,9 @@
         </namedColor>
         <namedColor name="TextBlack">
             <color red="0.078000001609325409" green="0.078000001609325409" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

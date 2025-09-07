@@ -1,3 +1,22 @@
-PODFILE CHECKSUM: 1664234d2310ed2508b1f450dc5259709dc25070
+PODS:
+  - GoogleMaps (9.4.0):
+    - GoogleMaps/Maps (= 9.4.0)
+  - GoogleMaps/Maps (9.4.0)
+  - GooglePlaces (9.4.1)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - GooglePlaces
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+    - GooglePlaces
+
+SPEC CHECKSUMS:
+  GoogleMaps: 0608099d4870cac8754bdba9b6953db543432438
+  GooglePlaces: 8afca6c4e946472e91298589d1640d614b51749a
+
+PODFILE CHECKSUM: d29686a4b34fe8e329ceb9aa1414f00fb48c3355
 
 COCOAPODS: 1.16.2

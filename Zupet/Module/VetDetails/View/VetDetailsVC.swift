@@ -7,10 +7,11 @@
 
 import UIKit
 import MapKit
-
+import GoogleMaps
 class VetDetailsVC: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var tvNotes: UITextView!
     @IBOutlet weak var lblWorkLocation: UILabel!
     @IBOutlet weak var lblTitle: UILabel! {
@@ -65,15 +66,17 @@ class VetDetailsVC: UIViewController {
     private var slots: [Slot]? = []
     var vetID : String?
     
-//    let weekdayDescriptions = [
-//        "Monday: 10:00 AM – 5:30 PM",
-//        "Tuesday: Open 24 hours",
-//        "Wednesday: Closed",
-//        "Thursday: 9:00 AM – 12:00 PM, 1:00 PM – 5:00 PM",
-//        "Friday: 10:00 AM – 2:00 AM",  // overnight close
-//        "Saturday: 10:00 AM – 5:30 PM",
-//        "Sunday: Closed"
-//    ]
+    private var googleMapView: GMSMapView?
+    
+    //    let weekdayDescriptions = [
+    //        "Monday: 10:00 AM – 5:30 PM",
+    //        "Tuesday: Open 24 hours",
+    //        "Wednesday: Closed",
+    //        "Thursday: 9:00 AM – 12:00 PM, 1:00 PM – 5:00 PM",
+    //        "Friday: 10:00 AM – 2:00 AM",  // overnight close
+    //        "Saturday: 10:00 AM – 5:30 PM",
+    //        "Sunday: Closed"
+    //    ]
     
     private var selectedDateIndex : Int?
     private var selectedTimeIndex : Int?
@@ -112,7 +115,7 @@ class VetDetailsVC: UIViewController {
             slotMinutes: 30,
             includePastSlotsForToday: true
         )
-
+        
         slots = calenderDate?.first?.slots ?? []
         
         for d in calenderDate ?? [] {
@@ -125,6 +128,19 @@ class VetDetailsVC: UIViewController {
         morningSetCollection.reloadData()
         photoCollection.reloadData()
         serviceCollection.reloadData()
+        
+        googleMapView = addGoogleMap(to: mapView, latitude: viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.last ?? 0.0, longitude: viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.first ?? 0.0)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cleanupGoogleMap()
+    }
+    
+    deinit {
+        cleanupGoogleMap()
+        print("VetDetailsVC deinitialized")
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,7 +160,7 @@ class VetDetailsVC: UIViewController {
     @IBAction func calenderOnPress(_ sender: UIButton) {}
     
     @IBAction func backOnPress(_ sender: UIButton) { popView() }
-
+    
     @IBAction func locationOnPress(_ sender: UIButton) {
         let destinationLng = viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.first ?? 0.0
         let destinationLat = viewModel?.vetDetailsModel?.data?.Vetlocation?.coordinates?.last ?? 0.0
@@ -179,11 +195,11 @@ class VetDetailsVC: UIViewController {
         
         ActionSheetHelper.showActionSheet(on: self, actions: [googleMapsAction, appleMapsAction, cancelAction])
     }
-
-
+    
+    
     @IBAction func bookOnPress(_ sender: UIButton) {
         let dateString = "\(calenderDate?[selectedDateIndex ?? 0].date ?? "") \(calenderDate?[selectedDateIndex ?? 0].day ?? "") \(slots?[selectedTimeIndex ?? 0].slotTime ?? "")"
-
+        
         Log.debug("Raw: \(dateString)")
         let utcString = dateString.toUTC(inputFormat: .localAppointmentTime, outputFormat: .utcFormate)
         Log.debug("UTC: \(utcString)")
@@ -341,17 +357,17 @@ extension VetDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             cell.lblDay.text = indexData?.day ?? ""
             cell.lblDate.text = "\(indexData?.date ?? "")"
             
-//            if indexData?.isClosed ?? false == false{
-//                cell.lblDay.textColor = .textBlack
-//                cell.lblDate.textColor = .textBlack
-//                cell.containerView.backgroundColor = .TextWhite
-//                cell.isUserInteractionEnabled = true
-//            }else{
-//                cell.lblDay.textColor = .appDarkGray
-//                cell.lblDate.textColor = .appDarkGray
-//                cell.containerView.backgroundColor = .BoarderColor
-//                cell.isUserInteractionEnabled = false
-//            }
+            //            if indexData?.isClosed ?? false == false{
+            //                cell.lblDay.textColor = .textBlack
+            //                cell.lblDate.textColor = .textBlack
+            //                cell.containerView.backgroundColor = .TextWhite
+            //                cell.isUserInteractionEnabled = true
+            //            }else{
+            //                cell.lblDay.textColor = .appDarkGray
+            //                cell.lblDate.textColor = .appDarkGray
+            //                cell.containerView.backgroundColor = .BoarderColor
+            //                cell.isUserInteractionEnabled = false
+            //            }
             if indexPath.item == selectedDateIndex{
                 cell.containerView.borderColor = .ThemeOrangeEnd
                 cell.lblDay.textColor = .ThemeOrangeEnd
@@ -467,4 +483,54 @@ extension VetDetailsVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+}
+
+extension VetDetailsVC{
+    
+    func addGoogleMap(to containerView: UIView, latitude: Double, longitude: Double) -> GMSMapView {
+        // Remove previous map if any
+        containerView.subviews.forEach { $0.removeFromSuperview() }
+        
+        // Create camera at given location
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let camera = GMSCameraPosition(latitude: latitude, longitude: longitude, zoom: 15)
+        
+        // Create map
+        let mapView = GMSMapView(frame: containerView.bounds, camera: camera)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Disable all gestures
+        mapView.settings.setAllGesturesEnabled(false)
+        mapView.isUserInteractionEnabled = false
+        
+        // Add marker at center
+        let marker = GMSMarker(position: coordinate)
+        let icon = imageFromMarkerXib(title: "\(viewModel?.vetDetailsModel?.data?.rating ?? 0.0)",
+                                      image: viewModel?.vetDetailsModel?.data?.photos?.first ?? "")
+        marker.icon = icon
+        marker.groundAnchor = CGPoint(x: 0.5, y: 0.95)
+        //        googleMapView = mapView
+        marker.map = mapView
+        
+        // Add map to container view
+        containerView.addSubview(mapView)
+        
+        return mapView
+    }
+    
+    func cleanupGoogleMap() {
+        // Remove markers
+        googleMapView?.clear()
+        
+        // Remove from superview
+        googleMapView?.removeFromSuperview()
+        
+        // Release camera delegate if set
+        googleMapView?.delegate = nil
+        
+        // Release map view
+        googleMapView = nil
+    }
+    
+    
 }

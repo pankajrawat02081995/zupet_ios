@@ -33,3 +33,20 @@ extension UICollectionView{
         return cell
     }
 }
+
+
+extension UICollectionView {
+    func setEmptyView(title: String,
+                      subtitle: String? = nil,
+                      image: UIImage? = nil) {
+        let emptyView = NoDataXIB.loadFromNib()
+        emptyView.configure(title: title, subtitle: subtitle, image: image)
+        emptyView.frame = bounds
+        emptyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundView = emptyView
+    }
+
+    func restore() {
+        backgroundView = nil
+    }
+}
